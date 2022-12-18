@@ -5,6 +5,7 @@ import {
   Text,
   HStack,
   Link,
+  Image,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FaBook, FaInfoCircle } from "react-icons/fa";
@@ -17,40 +18,79 @@ function HeaderBar() {
       position="fixed"
       w="100%"
       h="64px"
-      bg={useColorModeValue("headerBar.light", "headerBar.dark")}
+      bg={"black"}
       flexDirection="row"
-      justifyContent="space-between"
+      justifyContent="center"
       alignItems="center"
       zIndex="1000"
       px={{ base: 6, md: 10 }}
     >
       <Flex justifyContent="center" alignItems="center">
-        <Link href="/">
-          <Flex alignItems="center" flexDirection="row" cursor="pointer">
-            <Heading
-              ml="2"
-              fontSize={{ base: "lg", md: "xl" }}
-              fontWeight="800"
-              color={useColorModeValue("heading.light", "heading.dark")}
-              display={{ base: "none", md: "inline-block" }}
-            >
-              NTUCourse Neo
-            </Heading>
-          </Flex>
-        </Link>
-        <Link href="/course">
-          <Button
-            variant="ghost"
-            size="md"
-            ml={{ base: 4, md: 6 }}
-            color={useColorModeValue("link.light", "link.dark")}
-          >
-            關於我們
-          </Button>
-        </Link>
-      </Flex>
-      <Flex justifyContent="center" alignItems="center">
-        <ThemeToggleButton />
+        <Button
+          variant="ghost"
+          size="md"
+          fontWeight="semibold"
+          mx="4"
+          color={"gray.500"}
+          _hover={{
+            bg: "gray.700",
+          }}
+          disabled
+        >
+          願景
+        </Button>
+        <Button
+          variant="ghost"
+          size="md"
+          fontWeight="semibold"
+          mx="4"
+          color={"gray.500"}
+          _hover={{
+            bg: "gray.700",
+          }}
+          disabled
+        >
+          特色
+        </Button>
+        <Button
+          variant="ghost"
+          size="md"
+          fontWeight="semibold"
+          mx="4"
+          color={"gray.500"}
+          _hover={{
+            bg: "gray.700",
+          }}
+          disabled
+        >
+          歷程
+        </Button>
+        <Button
+          variant="ghost"
+          size="md"
+          fontWeight="semibold"
+          mx="4"
+          color={"gray.500"}
+          _hover={{
+            bg: "gray.700",
+          }}
+          disabled
+        >
+          成員
+        </Button>
+        <Button
+          variant="ghost"
+          size="md"
+          fontWeight="semibold"
+          mx="4"
+          color={"gray.500"}
+          _hover={{
+            bg: "gray.700",
+          }}
+          disabled
+        >
+          致謝
+        </Button>
       </Flex>
     </Flex>
   );

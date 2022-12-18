@@ -3,15 +3,19 @@ import { Flex, Button } from "@chakra-ui/react";
 function HeaderBar() {
   return (
     <Flex
+      top={0}
       position="fixed"
       w="100%"
       h="64px"
-      bg={"black"}
       flexDirection="row"
       justifyContent="center"
       alignItems="center"
       zIndex="1000"
       px={{ base: 6, md: 10 }}
+      sx={{
+        backdropFilter: "blur(10px)",
+        bg: "#00000050",
+      }}
     >
       <Flex justifyContent="center" alignItems="center">
         <Button

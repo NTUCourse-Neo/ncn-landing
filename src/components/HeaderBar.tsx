@@ -1,16 +1,4 @@
-import {
-  Flex,
-  Heading,
-  Button,
-  Text,
-  HStack,
-  Link,
-  Image,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import { FaBook, FaInfoCircle } from "react-icons/fa";
-import ThemeToggleButton from "./ThemeToggleButton";
-
+import { Flex, Button } from "@chakra-ui/react";
 
 function HeaderBar() {
   return (

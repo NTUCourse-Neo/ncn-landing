@@ -3,16 +3,11 @@ import {
   Spacer,
   Text,
   Button,
-  ButtonGroup,
   HStack,
   Icon,
   Center,
-  Image,
-  Link,
-
-  useColorModeValue,
 } from "@chakra-ui/react";
-import { FaCodeBranch, FaGithub, FaHeartbeat } from "react-icons/fa";
+import { FaCodeBranch, FaGithub } from "react-icons/fa";
 
 function Footer() {
   const ver = "alpha-20221217";
@@ -42,27 +37,27 @@ function Footer() {
         </Text>
       </HStack>
       <Spacer display={{ base: "none", lg: "inline-block" }} />
-        <Text fontSize="sm" color={secondaryColor} fontWeight="500">
-          Copyright © 2022 NTUCourse Neo Team.
-        </Text>
-        <Button
-          size="md"
-          variant="ghost"
-          color={secondaryColor}
-          px="1"
-          justifyContent={"center"}
-          alignItems={"center"}
-          onClick={() => {
-            handleOpenPage("https://github.com/NTUCourse-Neo");
-          }}
+      <Text fontSize="sm" color={secondaryColor} fontWeight="500">
+        Copyright © 2022 NTUCourse Neo Team.
+      </Text>
+      <Button
+        size="md"
+        variant="ghost"
+        color={secondaryColor}
+        px="1"
+        justifyContent={"center"}
+        alignItems={"center"}
+        onClick={() => {
+          handleOpenPage("https://github.com/NTUCourse-Neo");
+        }}
+      >
+        <Center
+          w={{ base: "20px", md: "20px" }}
+          h={{ base: "20px", md: "20px" }}
         >
-          <Center
-            w={{ base: "20px", md: "20px" }}
-            h={{ base: "20px", md: "20px" }}
-          >
-            <FaGithub size="20" />
-          </Center>
-        </Button>
+          <FaGithub size="20" />
+        </Center>
+      </Button>
     </Flex>
   );
 }

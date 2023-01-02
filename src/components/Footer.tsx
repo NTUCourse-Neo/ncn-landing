@@ -10,7 +10,7 @@ import {
 import { FaCodeBranch, FaGithub } from "react-icons/fa";
 
 function Footer() {
-  const ver = "alpha-20221217";
+  const ver = "alpha-20230102";
   const secondaryColor = "gray.600";
   const handleOpenPage = (page: string) => {
     window.open(page, "_blank");
@@ -38,7 +38,7 @@ function Footer() {
       </HStack>
       <Spacer display={{ base: "none", lg: "inline-block" }} />
       <Text fontSize="sm" color={secondaryColor} fontWeight="500">
-        Copyright © 2022 NTUCourse Neo Team.
+        Copyright © 2022 NTUCourse Neo Team (swh00tw / jc-hiroto).
       </Text>
       <Button
         size="md"

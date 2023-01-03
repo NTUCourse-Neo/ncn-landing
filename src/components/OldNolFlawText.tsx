@@ -11,10 +11,10 @@ export function OldNolFlawText({
   const { t, i18n } = useTranslation();
   return (
     <Flex flexDirection={"column"} alignItems={"start"} my="4">
-      <Text fontSize="3xl" fontWeight="900" color={"gray.400"}>
+      <Text fontSize="2xl" fontWeight="900" color={"gray.400"}>
         {t(title)}
       </Text>
-      <Text fontSize="xl" fontWeight="300" color={"gray.400"}>
+      <Text fontSize="lg" fontWeight="300" color={"gray.400"}>
         {t(content)}
       </Text>
     </Flex>

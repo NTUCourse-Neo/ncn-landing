@@ -1,5 +1,35 @@
-import { Flex, Button } from "@chakra-ui/react";
+import { Flex, Button, Tooltip } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
+
+function HeaderBtn({ text = "首頁", href = "/#", isComingSoon = false }) {
+  return isComingSoon ? (
+    <Tooltip label="敬請期待">
+      <Button
+        variant="ghost"
+        size="md"
+        fontWeight="semibold"
+        mx="4"
+        colorScheme={"whiteAlpha"}
+        disabled
+      >
+        {text}
+      </Button>
+    </Tooltip>
+  ) : (
+    <Button
+      variant="ghost"
+      size="md"
+      fontWeight="800"
+      mx="4"
+      colorScheme={"whiteAlpha"}
+      onClick={() => {
+        window.location.href = href;
+      }}
+    >
+      {text}
+    </Button>
+  );
+}
 
 function HeaderBar() {
   const { ref: startScrollingDetecter, inView: startScrolling } = useInView({
@@ -22,9 +52,6 @@ function HeaderBar() {
         sx={{
           backdropFilter: "blur(10px)",
           bg: "#00000050",
-          borderBottom: `0.2px solid ${
-            startScrolling ? "#ffffff50" : "transparent"
-          }`,
           transition: "all 0.3s ease-in-out",
           ":before": {
             position: "absolute",
@@ -34,77 +61,17 @@ function HeaderBar() {
             left: "-50%",
             right: "-50%",
             bottom: "-50%",
-            borderBottom: "1px solid #000",
             transform: "scale(0.5)",
           },
         }}
       >
         <Flex justifyContent="center" alignItems="center">
-          <Button
-            variant="ghost"
-            size="md"
-            fontWeight="semibold"
-            mx="4"
-            color={"gray.500"}
-            _hover={{
-              bg: "gray.700",
-            }}
-            disabled
-          >
-            願景
-          </Button>
-          <Button
-            variant="ghost"
-            size="md"
-            fontWeight="semibold"
-            mx="4"
-            color={"gray.500"}
-            _hover={{
-              bg: "gray.700",
-            }}
-            disabled
-          >
-            特色
-          </Button>
-          <Button
-            variant="ghost"
-            size="md"
-            fontWeight="semibold"
-            mx="4"
-            color={"gray.500"}
-            _hover={{
-              bg: "gray.700",
-            }}
-            disabled
-          >
-            歷程
-          </Button>
-          <Button
-            variant="ghost"
-            size="md"
-            fontWeight="semibold"
-            mx="4"
-            color={"gray.500"}
-            _hover={{
-              bg: "gray.700",
-            }}
-            disabled
-          >
-            成員
-          </Button>
-          <Button
-            variant="ghost"
-            size="md"
-            fontWeight="semibold"
-            mx="4"
-            color={"gray.500"}
-            _hover={{
-              bg: "gray.700",
-            }}
-            disabled
-          >
-            致謝
-          </Button>
+          <HeaderBtn text="首頁" href="/#" />
+          <HeaderBtn text="願景" href="/#vision" />
+          <HeaderBtn text="特色" href="/#feature" isComingSoon />
+          <HeaderBtn text="歷程" href="/#history" isComingSoon />
+          <HeaderBtn text="成員" href="/#team" isComingSoon />
+          <HeaderBtn text="致謝" href="/#credit" isComingSoon />
         </Flex>
       </Flex>
       <Flex

@@ -7,7 +7,7 @@ import {
   Tooltip,
   HStack,
 } from "@chakra-ui/react";
-import { Callout } from "@/components/CallOut";
+import { Callout } from "@/components/Callout";
 import { OldNolWindows } from "@/components/OldNolWindows";
 import { OldNolFlawText } from "@/components/OldNolFlawText";
 import { useTranslation } from "react-i18next";

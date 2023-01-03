@@ -1,7 +1,7 @@
 import { Flex, Text, Link } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-export function Callout() {
+export function CalloutSection() {
   const { t, i18n } = useTranslation();
   return (
     <Flex

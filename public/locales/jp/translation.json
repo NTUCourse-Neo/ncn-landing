@@ -1,0 +1,25 @@
+{
+  "header": {
+    "home": "ホーム",
+    "vision": "ビジョン",
+    "features": "機能",
+    "story": "ストーリー",
+    "team": "チーム",
+    "credits": "特別感謝"
+  },
+  "utils": {
+    "stayTuned": "アップデートをお楽しみに",
+    "comingSoon": "もうすぐ"
+  },
+  "home": {
+    "title": "コース計画を改革する。",
+    "nolBtn": "NTUCourse Online へ"
+  },
+  "vision": {
+    "title": "コース計画を簡単にすることができます。"
+  },
+  "stayTuned": {
+    "title": "アップデートをお楽しみに。",
+    "content": "Neo にまつわる多くのエピソードをまだ伝えたいと思っています。"
+  }
+}

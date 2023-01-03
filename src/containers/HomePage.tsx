@@ -7,11 +7,14 @@ import {
   Tooltip,
   HStack,
 } from "@chakra-ui/react";
-import { SiteConstruction as HiWereStillAlive } from "@/sections/SiteConstruction";
+import { Callout } from "@/components/CallOut";
 import { OldNolWindows } from "@/components/OldNolWindows";
 import { OldNolFlawText } from "@/components/OldNolFlawText";
+import { useTranslation } from "react-i18next";
+import { StayTunedSection } from "@/components/StayTunedSection";
 
 export function HomePage() {
+  const { t, i18n } = useTranslation();
   const bg = "black";
   return (
     <Box
@@ -57,11 +60,17 @@ export function HomePage() {
                 color={"gray.400"}
                 mb="4"
               >
-                選課排課，重新定義。
+                {t("home.title")}
               </Text>
-              <Tooltip label="即將推出" aria-label="coming-soon">
-                <Button bg="teal.200" variant="solid" size="lg" mr={4} disabled>
-                  前往臺大課程網
+              <Tooltip label={t("utils.comingSoon")} aria-label="coming-soon">
+                <Button
+                  colorScheme="teal"
+                  variant="solid"
+                  size="lg"
+                  mr={4}
+                  disabled
+                >
+                  {t("home.nolBtn")}
                 </Button>
               </Tooltip>
             </Flex>
@@ -76,7 +85,8 @@ export function HomePage() {
             </Flex>
           </Flex>
         </Flex>
-        <HiWereStillAlive />
+        <Callout />
+        {/* Vision Section */}
         <Flex
           id="vision"
           flexDirection="column"
@@ -97,7 +107,7 @@ export function HomePage() {
             zIndex={10}
             textShadow="0px 10px 10px rgba(0, 0, 0, 0.3)"
           >
-            選課可以更簡單。
+            {t("vision.title")}
           </Text>
           <Box
             bg="black"
@@ -119,12 +129,12 @@ export function HomePage() {
         >
           <Text
             align="center"
-            fontSize={["4xl", "4xl"]}
+            fontSize={["3xl", "3xl"]}
             w="100%"
             fontWeight="300"
             color={"gray.200"}
           >
-            「臺大提供了許多值得修習的課程，但規劃與登記選課的過程往往讓學生感到頭痛。」
+            {t("vision.callout1")}
           </Text>
         </Flex>
         <Flex
@@ -135,23 +145,23 @@ export function HomePage() {
         >
           <Flex w="30%" ml="24" flexDirection={"column"} alignItems={"start"}>
             <OldNolFlawText
-              title="老舊的介面"
-              content="課程網的介面已經經過數十年沒有重新設計，除了在電腦版本介面難以檢索資訊外，也未有提供手機版本的介面。"
+              title="vision.oldInterface.title"
+              content="vision.oldInterface.content"
             />
             <OldNolFlawText
-              title="惱人的彈出視窗"
-              content="我們理解學校經常需要提醒學生課程的異動或是注意事項，但是應該有比彈出視窗更「優雅」的方式。"
+              title="vision.popups.title"
+              content="vision.popups.content"
             />
           </Flex>
           <OldNolWindows scale={0.8} />
           <Flex w="30%" mr="24" flexDirection={"column"} alignItems={"start"}>
             <OldNolFlawText
-              title="不直覺的彈出式課表"
-              content="知道自己選了什麼課程、以及了解課程的時間安排都很重要。但現今的彈出式課表不只惱人，對於衝堂的課程顯示也很難讓學生一目了然。"
+              title="vision.courseTable.title"
+              content="vision.courseTable.content"
             />
             <OldNolFlawText
-              title="四散的資訊"
-              content="除了課程本身的資訊，學生往往也會查閱選課人數、課程評價、評分方式等等。但這些資訊都分散在不同的地方，學生很難一次性獲得所有資訊。"
+              title="vision.information.title"
+              content="vision.information.content"
             />
           </Flex>
         </Flex>
@@ -166,29 +176,15 @@ export function HomePage() {
         >
           <Text
             align="center"
-            fontSize={["4xl", "4xl"]}
+            fontSize={["3xl", "3xl"]}
             w="100%"
             fontWeight="300"
             color={"gray.200"}
           >
-            如果選課可以更加直覺，學生便能更專注在挑選自己喜愛的課程。所以我們創造了
-            Neo。
+            {t("vision.callout2")}
           </Text>
         </Flex>
-        <Flex
-          w="100%"
-          flexDirection={"column"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          my="64"
-        >
-          <Text fontSize="2xl" fontWeight="400" color={"gray.600"}>
-            我們還有好多關於 Neo 的一切想要告訴你。
-          </Text>
-          <Text fontSize="8xl" fontWeight="500" color={"gray.700"}>
-            敬請期待
-          </Text>
-        </Flex>
+        <StayTunedSection />
       </Flex>
     </Box>
   );

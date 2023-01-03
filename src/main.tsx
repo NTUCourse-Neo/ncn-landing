@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import HeaderBar from "@/components/HeaderBar";
 import theme from "@/styles/theme";
 import Footer from "@/components/Footer";
+import "@/i18n";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

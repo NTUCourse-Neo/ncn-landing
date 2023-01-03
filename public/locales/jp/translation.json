@@ -21,5 +21,9 @@
   "stayTuned": {
     "title": "アップデートをお楽しみに。",
     "content": "Neo にまつわる多くのエピソードをまだ伝えたいと思っています。"
+  },
+  "mobile": {
+    "title": "モービル版建設中",
+    "content": "Browse in desktop for the best experience."
   }
 }

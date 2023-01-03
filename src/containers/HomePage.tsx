@@ -12,8 +12,14 @@ import { OldNolWindows } from "@/components/OldNolWindows";
 import { OldNolFlawText } from "@/components/OldNolFlawText";
 import { useTranslation } from "react-i18next";
 import { StayTunedSection } from "@/components/StayTunedSection";
+import { useEffect } from "react";
 
 export function HomePage() {
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      window.location.href = "/mobile";
+    }
+  });
   const { t, i18n } = useTranslation();
   const bg = "black";
   return (

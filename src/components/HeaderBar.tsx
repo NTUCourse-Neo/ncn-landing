@@ -1,15 +1,17 @@
 import { Flex, Button, Tooltip } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
+import { useTranslation } from "react-i18next";
 
-function HeaderBtn({ text = "首頁", href = "/#", isComingSoon = false }) {
+function HeaderBtn({ text = "", href = "/#", isComingSoon = false }) {
+  const { t, i18n } = useTranslation();
   return isComingSoon ? (
-    <Tooltip label="敬請期待">
+    <Tooltip label={t("utils.stayTuned")}>
       <Button
         variant="ghost"
         size="md"
-        fontWeight="semibold"
+        fontWeight="600"
         mx="4"
-        colorScheme={"whiteAlpha"}
+        colorScheme={"gray"}
         disabled
       >
         {text}
@@ -19,9 +21,9 @@ function HeaderBtn({ text = "首頁", href = "/#", isComingSoon = false }) {
     <Button
       variant="ghost"
       size="md"
-      fontWeight="800"
+      fontWeight="600"
       mx="4"
-      colorScheme={"whiteAlpha"}
+      colorScheme={"gray"}
       onClick={() => {
         window.location.href = href;
       }}
@@ -32,6 +34,7 @@ function HeaderBtn({ text = "首頁", href = "/#", isComingSoon = false }) {
 }
 
 function HeaderBar() {
+  const { t, i18n } = useTranslation();
   const { ref: startScrollingDetecter, inView: startScrolling } = useInView({
     /* Optional options */
     threshold: 0,
@@ -66,12 +69,28 @@ function HeaderBar() {
         }}
       >
         <Flex justifyContent="center" alignItems="center">
-          <HeaderBtn text="首頁" href="/#" />
-          <HeaderBtn text="願景" href="/#vision" />
-          <HeaderBtn text="特色" href="/#feature" isComingSoon />
-          <HeaderBtn text="歷程" href="/#history" isComingSoon />
-          <HeaderBtn text="成員" href="/#team" isComingSoon />
-          <HeaderBtn text="致謝" href="/#credit" isComingSoon />
+          <HeaderBtn text={t("header.home") as string} href="/#" />
+          <HeaderBtn text={t("header.vision") as string} href="/#vision" />
+          <HeaderBtn
+            text={t("header.features") as string}
+            href="/#features"
+            isComingSoon
+          />
+          <HeaderBtn
+            text={t("header.story") as string}
+            href="/#story"
+            isComingSoon
+          />
+          <HeaderBtn
+            text={t("header.team") as string}
+            href="/#team"
+            isComingSoon
+          />
+          <HeaderBtn
+            text={t("header.credits") as string}
+            href="/#credits"
+            isComingSoon
+          />
         </Flex>
       </Flex>
       <Flex

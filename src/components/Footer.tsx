@@ -8,6 +8,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { FaCodeBranch, FaGithub } from "react-icons/fa";
+import { LanguageMenuBtn } from "@/components/LanguageMenuBtn";
 
 function Footer() {
   const ver = "alpha-20230102";
@@ -36,7 +37,8 @@ function Footer() {
           {ver}
         </Text>
       </HStack>
-      <Spacer display={{ base: "none", lg: "inline-block" }} />
+      <LanguageMenuBtn />
+      <Spacer />
       <Text fontSize="sm" color={secondaryColor} fontWeight="500">
         Copyright © 2022 NTUCourse Neo Team (swh00tw / jc-hiroto).
       </Text>

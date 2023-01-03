@@ -1,0 +1,50 @@
+{
+  "header": {
+    "home": "Home",
+    "vision": "Vision",
+    "features": "Features",
+    "story": "Story",
+    "team": "Team",
+    "credits": "Credits"
+  },
+  "utils": {
+    "stayTuned": "Stay Tuned",
+    "comingSoon": "Coming Soon"
+  },
+  "home": {
+    "title": "Course Planning, Reimagined.",
+    "nolBtn": "Go to NTUCourse Online"
+  },
+  "callout": {
+    "title": "Hi! We're still alive!",
+    "content1": "We are collaborating with the Office of Academic Affairs at NTU to develop a new course website. A public beta will be launched soon.",
+    "content2": "NTUCourse Neo has stopped providing service and the website will be used to document the project",
+    "content3": "Thank you for your support and use of NTUCourse Neo. We look forward to seeing you soon!",
+    "neoTeam": ", and Neo Team."
+  },
+  "vision": {
+    "title": "Simplify Course Planning.",
+    "callout1": "\"National Taiwan University offers many valuable courses, but the process of planning them can be stressful.\"",
+    "callout2": "If course selection were more intuitive, students could focus more on choosing courses they are interested in. That's why we created Neo.",
+    "oldInterface": {
+      "title": "Outdated UI",
+      "content": "The course website interface has not been updated in decades and is difficult to navigate on both computer and mobile devices. As a result, it is difficult for students to search for and access important information."
+    },
+    "popups": {
+      "title": "Annoying pop-ups",
+      "content": "We understand that the school needs to keep students informed about changes to courses and important notices. However, there must be a more \"elegant\" way to do this than using pop-up windows."
+    },
+    "courseTable": {
+      "title": "Non-intuitive timetable",
+      "content": "It is important for students to know which courses they have chosen and understand the schedule for those courses. However, the current pop-up timetable is not user-friendly and does not clearly display overlapping courses."
+    },
+    "information": {
+      "title": "Scattered information",
+      "content": "Students often want access to more than just the basic information about courses, such as enrollment numbers, evaluations, and grading policies. However, this information is scattered and not easy to access all at once."
+    }
+  },
+  "stayTuned": {
+    "title": "Stay Tuned.",
+    "content": "We still have a lot of stories about Neo that we want to talk about."
+  }
+}

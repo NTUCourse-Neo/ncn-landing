@@ -1,6 +1,8 @@
 import { Flex, Text, Link } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
-export function SiteConstruction() {
+export function Callout() {
+  const { t, i18n } = useTranslation();
   return (
     <Flex
       flexDirection="column"
@@ -16,7 +18,7 @@ export function SiteConstruction() {
         color={"gray.400"}
         my="4"
       >
-        嗨！我們還在！
+        {t("callout.title")}
       </Text>
       <Text
         fontSize="xl"
@@ -24,11 +26,11 @@ export function SiteConstruction() {
         color={"gray.500"}
         textAlign="center"
       >
-        我們正努力與臺大教務處資訊組合作開發新一代課程網，並於近期即將展開公測。
+        {t("callout.content1")}
         <br />
-        NTUCourse Neo 目前已終止網站服務，此網站未來將用於紀錄此專案的歷史。
+        {t("callout.content2")}
         <br />
-        感謝您一直以來對 NTUCourse Neo 的支持與愛用，我們期待早日與您見面！
+        {t("callout.content3")}
       </Text>
       <Text
         fontSize="lg"
@@ -45,7 +47,7 @@ export function SiteConstruction() {
         <Link href="https://jchiroto.dev" isExternal>
           jc-hiroto
         </Link>
-        , 和 Neo 團隊。
+        {t("callout.neoTeam")}
       </Text>
     </Flex>
   );

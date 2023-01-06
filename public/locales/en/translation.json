@@ -16,7 +16,7 @@
     "nolBtn": "Go to NTUCourse Online"
   },
   "callout": {
-    "title": "Hi! We're still alive!",
+    "title": "Hey! We're still here!",
     "content1": "We are collaborating with the Office of Academic Affairs at NTU to develop a new course website. A public beta will be launched soon.",
     "content2": "NTUCourse Neo has stopped providing service and the website will be used to document the project",
     "content3": "Thank you for your support and use of NTUCourse Neo. We look forward to seeing you soon!",
@@ -25,7 +25,8 @@
   "vision": {
     "title": "Simplify Course Planning.",
     "callout1": "\"National Taiwan University offers many valuable courses, but the process of planning them can be stressful.\"",
-    "callout2": "If course selection were more intuitive, students could focus more on choosing courses they are interested in. That's why we created Neo.",
+    "callout2": "If course selection were more intuitive, students could focus more on choosing courses they are interested in.",
+    "createdNeo": "That's why we created",
     "oldInterface": {
       "title": "Outdated UI",
       "content": "The course website interface has not been updated in decades and is difficult to navigate on both computer and mobile devices. As a result, it is difficult for students to search for and access important information."
@@ -41,6 +42,22 @@
     "information": {
       "title": "Scattered information",
       "content": "Students often want access to more than just the basic information about courses, such as enrollment numbers, evaluations, and grading policies. However, this information is scattered and not easy to access all at once."
+    }
+  },
+  "team": {
+    "swh": {
+      "name": "Shu-Wei (Frank) Hsu",
+      "github": "swh00tw",
+      "website": "swh00tw.me",
+      "role": "Frontend Dev, Backend Dev",
+      "avatar": "img/team_avatar/swh00tw.webp"
+    },
+    "jc": {
+      "name": "Po-Hao (James) Chang",
+      "github": "jc-hiroto",
+      "website": "jchiroto.dev",
+      "role": "Backend Dev, System Architect",
+      "avatar": "img/team_avatar/jc-hiroto.png"
     }
   },
   "mobile": {

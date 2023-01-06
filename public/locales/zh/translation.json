@@ -24,8 +24,9 @@
   },
   "vision": {
     "title": "選課可以更簡單。",
-    "callout1": "「臺大提供了許多值得修習的課程，但規劃與登記選課的過程往往讓學生感到頭痛。」",
-    "callout2": "如果選課可以更加直覺，學生便能更專注在挑選自己喜愛的課程。所以我們創造了 Neo。",
+    "callout1": "「臺大提供了許多值得修習的課程，但規劃課程往往讓學生感到頭痛。」",
+    "callout2": "如果選課可以更加直覺，學生便能更專注在挑選自己喜愛的課程。",
+    "createdNeo": "這就是為什麼我們創造了",
     "oldInterface": {
       "title": "老舊的介面",
       "content": "課程網的介面已經經過數十年沒有重新設計，除了在電腦版本介面難以檢索資訊外，也未有提供手機版本的介面。"
@@ -41,6 +42,22 @@
     "information": {
       "title": "四散的資訊",
       "content": "除了課程本身的資訊，學生往往也會查閱選課人數、課程評價、評分方式等等。但這些資訊都分散在不同的地方，學生很難一次性獲得所有資訊。"
+    }
+  },
+  "team": {
+    "swh": {
+      "name": "許書維 Frank",
+      "github": "swh00tw",
+      "website": "swh00tw.me",
+      "role": "前端開發、後端開發",
+      "avatar": "img/team_avatar/swh00tw.webp"
+    },
+    "jc": {
+      "name": "張博皓 James",
+      "github": "jc-hiroto",
+      "website": "jchiroto.dev",
+      "role": "後端開發、系統架構",
+      "avatar": "img/team_avatar/jc-hiroto.png"
     }
   },
   "mobile": {

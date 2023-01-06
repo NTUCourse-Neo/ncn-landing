@@ -10,7 +10,6 @@ export function CalloutSection() {
       alignItems="center"
       w="100%"
       rounded="lg"
-      mb="64"
     >
       <Text
         fontSize={["xl", "7xl"]}

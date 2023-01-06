@@ -14,7 +14,7 @@ export function OldNolFlawText({
       <Text fontSize="2xl" fontWeight="900" color={"gray.400"}>
         {t(title)}
       </Text>
-      <Text fontSize="lg" fontWeight="300" color={"gray.400"}>
+      <Text fontSize="lg" fontWeight="400" color={"gray.400"}>
         {t(content)}
       </Text>
     </Flex>

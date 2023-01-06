@@ -50,7 +50,7 @@ function HeaderBar() {
         position="fixed"
         w="100%"
         h="64px"
-        overflow={"scroll"}
+        overflow={"hidden"}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"

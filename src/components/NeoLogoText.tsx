@@ -3,7 +3,13 @@ import { Text, Image, HStack } from "@chakra-ui/react";
 export function NeoLogoText() {
   return (
     <HStack>
-      <Image src={`/img/ncn_logo.png`} alt="ncnLogo" h="32px" />
+      <Image
+        src={`/img/ncn_logo.png`}
+        alt="ncnLogo"
+        h="32px"
+        draggable="false"
+        pointerEvents={"none"}
+      />
       <Text
         align="start"
         fontSize={["xl", "3xl"]}

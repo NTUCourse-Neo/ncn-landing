@@ -32,12 +32,20 @@ export function IntroSection() {
           </Tooltip>
         </Flex>
         <Flex flexDirection="row" alignItems="end" w="60%">
-          <Image src="img/dark_desktop.png" alt="dark-desktop" w="50vw" />
+          <Image
+            src="img/dark_desktop.png"
+            alt="dark-desktop"
+            w="50vw"
+            draggable="false"
+            pointerEvents={"none"}
+          />
           <Image
             src="img/dark_mobile.png"
             alt="dark-desktop"
             w="10vw"
             ml="-8vw"
+            draggable="false"
+            pointerEvents={"none"}
           />
         </Flex>
       </Flex>

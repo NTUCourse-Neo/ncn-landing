@@ -18,7 +18,13 @@ function TeamMemberBlock({
 }) {
   return (
     <Flex flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
-      <Image src={avatar} alt="neo-logo" w="150px" />
+      <Image
+        src={avatar}
+        alt="neo-logo"
+        w="150px"
+        draggable="false"
+        pointerEvents={"none"}
+      />
       <Flex flexDirection={"column"} alignItems={"start"}>
         <Text fontSize={["xl", "3xl"]} fontWeight="700" color={"gray.300"}>
           {name}

@@ -43,6 +43,10 @@
       "content": "Students often want access to more than just the basic information about courses, such as enrollment numbers, evaluations, and grading policies. However, this information is scattered and not easy to access all at once."
     }
   },
+  "mobile": {
+    "title": "Under construction",
+    "content": "Mobile Version of this site is still under construction. Browse in desktop for the best experience."
+  },
   "stayTuned": {
     "title": "Stay Tuned.",
     "content": "We still have a lot of stories about Neo that we want to talk about."

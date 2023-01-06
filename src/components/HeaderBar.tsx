@@ -1,4 +1,4 @@
-import { Flex, Button, Tooltip } from "@chakra-ui/react";
+import { Flex, Button, Tooltip, useMediaQuery } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { useTranslation } from "react-i18next";
 
@@ -35,23 +35,26 @@ function HeaderBtn({ text = "", href = "/#", isComingSoon = false }) {
 
 function HeaderBar() {
   const { t, i18n } = useTranslation();
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const { ref: startScrollingDetecter, inView: startScrolling } = useInView({
     /* Optional options */
     threshold: 0,
   });
 
-  return (
+  return isMobile ? (
+    <></>
+  ) : (
     <>
       <Flex
         top={0}
         position="fixed"
         w="100%"
         h="64px"
+        overflow={"hidden"}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
         zIndex="1000"
-        px={{ base: 6, md: 10 }}
         sx={{
           backdropFilter: "blur(10px)",
           bg: "#00000050",

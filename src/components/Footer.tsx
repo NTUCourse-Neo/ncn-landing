@@ -22,13 +22,17 @@ function Footer() {
       flexWrap="wrap"
       justifyContent="space-between"
       alignItems="center"
-      px="8"
+      px={{ base: 4, md: 8 }}
       py={{ base: 2, md: 4 }}
       zIndex="9999"
       css={{ gap: "10px" }}
       bg={"black"}
     >
-      <Text fontSize="lg" color={secondaryColor} fontWeight="800">
+      <Text
+        fontSize={{ base: "md", md: "lg" }}
+        color={secondaryColor}
+        fontWeight="800"
+      >
         Project Neo
       </Text>
       <HStack ml="2">
@@ -38,8 +42,31 @@ function Footer() {
         </Text>
       </HStack>
       <LanguageMenuBtn />
+      <Button
+        size="md"
+        variant="ghost"
+        color={secondaryColor}
+        px="1"
+        justifyContent={"center"}
+        alignItems={"center"}
+        onClick={() => {
+          handleOpenPage("https://github.com/NTUCourse-Neo");
+        }}
+        display={{ base: "flex", md: "none" }}
+      >
+        <Center
+          w={{ base: "20px", md: "20px" }}
+          h={{ base: "20px", md: "20px" }}
+        >
+          <FaGithub size="20" />
+        </Center>
+      </Button>
       <Spacer />
-      <Text fontSize="sm" color={secondaryColor} fontWeight="500">
+      <Text
+        fontSize={{ base: "xs", md: "sm" }}
+        color={secondaryColor}
+        fontWeight="500"
+      >
         Copyright © 2022 NTUCourse Neo Team (swh00tw / jc-hiroto).
       </Text>
       <Button
@@ -52,6 +79,7 @@ function Footer() {
         onClick={() => {
           handleOpenPage("https://github.com/NTUCourse-Neo");
         }}
+        display={{ base: "none", md: "flex" }}
       >
         <Center
           w={{ base: "20px", md: "20px" }}

@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, HStack, Text } from "@chakra-ui/react";
 import { OldNolWindows } from "@/components/OldNolWindows";
 import { OldNolFlawText } from "@/components/OldNolFlawText";
 import { useTranslation } from "react-i18next";
@@ -41,7 +41,7 @@ export function VisionSection() {
         alignItems="center"
         w="100%"
         rounded="lg"
-        mb="52"
+        mb="60"
       >
         <OldNolWindows />
         <Text
@@ -84,7 +84,7 @@ export function VisionSection() {
         w="100%"
         bg="#121316"
         my="10"
-        py="24"
+        py="12"
       >
         <Text
           align="center"
@@ -101,6 +101,7 @@ export function VisionSection() {
         flexDirection={"row"}
         justifyContent={"center"}
         alignItems={"center"}
+        py="12"
       >
         <Flex w="30%" ml="24" flexDirection={"column"} alignItems={"start"}>
           <OldNolFlawText

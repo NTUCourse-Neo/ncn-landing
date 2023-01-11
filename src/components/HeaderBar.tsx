@@ -74,6 +74,7 @@ function HeaderBar() {
         <Flex justifyContent="center" alignItems="center">
           <HeaderBtn text={t("header.home") as string} href="/#" />
           <HeaderBtn text={t("header.vision") as string} href="/#vision" />
+          <HeaderBtn text={t("header.team") as string} href="/#team" />
           <HeaderBtn
             text={t("header.features") as string}
             href="/#features"
@@ -82,11 +83,6 @@ function HeaderBar() {
           <HeaderBtn
             text={t("header.story") as string}
             href="/#story"
-            isComingSoon
-          />
-          <HeaderBtn
-            text={t("header.team") as string}
-            href="/#team"
             isComingSoon
           />
           <HeaderBtn

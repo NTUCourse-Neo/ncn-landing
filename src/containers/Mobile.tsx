@@ -19,7 +19,14 @@ export function Mobile() {
         justifyContent="center"
         alignItems="center"
       >
-        <Image src={`/img/mobile.svg`} alt="ncnLogo" w="60%" my="16" />
+        <Image
+          src={`/img/mobile.svg`}
+          alt="ncnLogo"
+          w="60%"
+          my="16"
+          draggable="false"
+          pointerEvents={"none"}
+        />
         <Text fontSize="3xl" fontWeight="800" color={"gray.400"} align="center">
           {t("mobile.title")}
         </Text>

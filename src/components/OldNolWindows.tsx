@@ -14,6 +14,8 @@ export function OldNolWindows({ scale = 1 }) {
         alt="old-ntu-course-website"
         w="50vw"
         zIndex={5}
+        draggable="false"
+        pointerEvents={"none"}
       />
       <Image
         src="img/section_vision/vision_1.png"
@@ -22,6 +24,8 @@ export function OldNolWindows({ scale = 1 }) {
         zIndex={6}
         alt="old-ntu-course-website"
         w="30vw"
+        draggable="false"
+        pointerEvents={"none"}
       />
       <Image
         src="img/section_vision/vision_2.png"
@@ -31,6 +35,8 @@ export function OldNolWindows({ scale = 1 }) {
         mt={"10em"}
         alt="old-ntu-course-website"
         w="30vw"
+        draggable="false"
+        pointerEvents={"none"}
       />
       <Image
         src="img/section_vision/vision_3.png"
@@ -40,6 +46,8 @@ export function OldNolWindows({ scale = 1 }) {
         zIndex={8}
         alt="old-ntu-course-website"
         w="30vw"
+        draggable="false"
+        pointerEvents={"none"}
       />
       <Image
         src="img/section_vision/vision_4.png"
@@ -49,6 +57,8 @@ export function OldNolWindows({ scale = 1 }) {
         zIndex={1}
         alt="old-ntu-course-website"
         w="50vw"
+        draggable="false"
+        pointerEvents={"none"}
       />
       <Image
         src="img/section_vision/vision_5.png"
@@ -58,6 +68,8 @@ export function OldNolWindows({ scale = 1 }) {
         zIndex={"1"}
         alt="old-ntu-course-website"
         w="40vw"
+        draggable="false"
+        pointerEvents={"none"}
       />
       <Image
         src="img/section_vision/vision_6.png"
@@ -67,6 +79,8 @@ export function OldNolWindows({ scale = 1 }) {
         zIndex={"5"}
         alt="old-ntu-course-website"
         w="30vw"
+        draggable="false"
+        pointerEvents={"none"}
       />
     </Flex>
   );

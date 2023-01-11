@@ -1,8 +1,9 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Divider, Flex } from "@chakra-ui/react";
 import { CalloutSection } from "@/containers/CalloutSection";
 import { StayTunedSection } from "@/containers/StayTunedSection";
 import { VisionSection } from "@/containers/VisionSection";
 import { IntroSection } from "@/containers/IntroSection";
+import { TeamSection } from "@/containers/TeamSection";
 
 export function HomePage() {
   return (
@@ -22,7 +23,10 @@ export function HomePage() {
       >
         <IntroSection />
         <CalloutSection />
+        <Divider w={"200px"} my="32" borderColor="gray.500" />
         <VisionSection />
+        <TeamSection />
+        <Divider w={"200px"} borderColor="gray.500" />
         <StayTunedSection />
       </Flex>
     </Box>

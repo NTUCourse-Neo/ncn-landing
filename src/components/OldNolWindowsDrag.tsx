@@ -21,6 +21,7 @@ export function OldNolWindowsDrag({ scale = 1 }) {
           alt="old-ntu-course-website"
           w="50vw"
           draggable={false}
+          pointerEvents={"none"}
         />
       </motion.div>
       <motion.div
@@ -35,6 +36,7 @@ export function OldNolWindowsDrag({ scale = 1 }) {
           alt="old-ntu-course-website"
           w="30vw"
           draggable={false}
+          pointerEvents={"none"}
         />
       </motion.div>
       <motion.div
@@ -49,6 +51,7 @@ export function OldNolWindowsDrag({ scale = 1 }) {
           alt="old-ntu-course-website"
           w="20vw"
           draggable={false}
+          pointerEvents={"none"}
         />
       </motion.div>
       <motion.div
@@ -63,6 +66,7 @@ export function OldNolWindowsDrag({ scale = 1 }) {
           alt="old-ntu-course-website"
           w="20vw"
           draggable={false}
+          pointerEvents={"none"}
         />
       </motion.div>
       <motion.div
@@ -77,6 +81,7 @@ export function OldNolWindowsDrag({ scale = 1 }) {
           alt="old-ntu-course-website"
           w="30vw"
           draggable={false}
+          pointerEvents={"none"}
         />
       </motion.div>
     </Flex>

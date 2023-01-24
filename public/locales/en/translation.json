@@ -13,7 +13,7 @@
   },
   "home": {
     "title": "Course Planning, Reimagined.",
-    "nolBtn": "Go to NTUCourse Online"
+    "nolBtn": "NTUCourse Online"
   },
   "callout": {
     "title": "Hey! We're still here!",
@@ -59,6 +59,11 @@
       "role": "Backend Dev, System Architect",
       "avatar": "img/team_avatar/jc-hiroto.png"
     }
+  },
+  "features": {
+    "simple": "Simple",
+    "intuitive": "Intuitive",
+    "integration": "Integration"
   },
   "mobile": {
     "title": "Under construction",

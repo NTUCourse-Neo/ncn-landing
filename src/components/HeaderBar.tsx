@@ -75,11 +75,7 @@ function HeaderBar() {
           <HeaderBtn text={t("header.home") as string} href="/#" />
           <HeaderBtn text={t("header.vision") as string} href="/#vision" />
           <HeaderBtn text={t("header.team") as string} href="/#team" />
-          <HeaderBtn
-            text={t("header.features") as string}
-            href="/#features"
-            isComingSoon
-          />
+          <HeaderBtn text={t("header.features") as string} href="/#features" />
           <HeaderBtn
             text={t("header.story") as string}
             href="/#story"

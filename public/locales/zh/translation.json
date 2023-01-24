@@ -13,7 +13,7 @@
   },
   "home": {
     "title": "選課排課，重新定義。",
-    "nolBtn": "前往臺大課程網"
+    "nolBtn": "臺大課程網"
   },
   "callout": {
     "title": "嗨！我們還在！",
@@ -59,6 +59,11 @@
       "role": "後端開發、系統架構",
       "avatar": "img/team_avatar/jc-hiroto.png"
     }
+  },
+  "features": {
+    "simple": "簡潔",
+    "intuitive": "直覺",
+    "integration": "整合"
   },
   "mobile": {
     "title": "手機版建置中",

@@ -1,4 +1,4 @@
-import { Flex, Button, Text, Image, Tooltip } from "@chakra-ui/react";
+import { Flex, Text, Image } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { NeoLogoText } from "@/components/NeoLogoText";
 
@@ -19,17 +19,6 @@ export function IntroSection() {
           >
             {t("home.title")}
           </Text>
-          <Tooltip label={t("utils.comingSoon")} aria-label="coming-soon">
-            <Button
-              colorScheme="teal"
-              variant="solid"
-              size="lg"
-              mr={4}
-              disabled
-            >
-              {t("home.nolBtn")}
-            </Button>
-          </Tooltip>
         </Flex>
         <Flex flexDirection="row" alignItems="end" w="60%">
           <Image

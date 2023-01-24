@@ -73,7 +73,7 @@ export function TeamSection() {
         justifyContent="center"
         alignItems="center"
         w="100%"
-        my="24"
+        mt="24"
       >
         <Flex
           w={"100%"}
@@ -93,7 +93,7 @@ export function TeamSection() {
         </Flex>
         <Flex
           w={"100%"}
-          my="24"
+          mt="16"
           flexDirection={"row"}
           justifyContent={"center"}
           alignItems={"center"}

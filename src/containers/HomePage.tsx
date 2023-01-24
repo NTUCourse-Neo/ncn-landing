@@ -4,6 +4,7 @@ import { StayTunedSection } from "@/containers/StayTunedSection";
 import { VisionSection } from "@/containers/VisionSection";
 import { IntroSection } from "@/containers/IntroSection";
 import { TeamSection } from "@/containers/TeamSection";
+import { FeatureSection } from "@/containers/FeatureSection";
 
 export function HomePage() {
   return (
@@ -26,7 +27,8 @@ export function HomePage() {
         <Divider w={"200px"} my="32" borderColor="gray.500" />
         <VisionSection />
         <TeamSection />
-        <Divider w={"200px"} borderColor="gray.500" />
+        <Divider w={"200px"} my="24" borderColor="gray.500" />
+        <FeatureSection />
         <StayTunedSection />
       </Flex>
     </Box>

@@ -9,6 +9,7 @@ import {
   TabPanels,
   TabPanel,
   HStack,
+  TextProps,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import {
@@ -20,6 +21,31 @@ import {
   FaRandom,
   FaTasks,
 } from "react-icons/fa";
+
+function GradientText(
+  props: TextProps & {
+    gradient: string;
+  }
+) {
+  const { gradient, ...rest } = props;
+  return (
+    <Text
+      w="100%"
+      align="center"
+      fontSize="6vw"
+      fontWeight="800"
+      zIndex={10}
+      bgClip="text"
+      bgGradient="linear(to-br, white, white)"
+      _hover={{
+        bgGradient: gradient,
+      }}
+      cursor="default"
+      userSelect={"none"}
+      {...rest}
+    />
+  );
+}
 
 export function FeatureSection() {
   const { t, i18n } = useTranslation();
@@ -40,45 +66,15 @@ export function FeatureSection() {
           h="60vh"
           position={"absolute"}
         />
-        <Text
-          align="center"
-          fontSize="6vw"
-          fontWeight="800"
-          zIndex={10}
-          bgClip="text"
-          bgGradient="linear(to-br, white, white)"
-          _hover={{
-            bgGradient: "linear(to-br, white, green.200, teal.300)",
-          }}
-        >
+        <GradientText gradient="linear(to-br, white, green.200, teal.300)">
           {t("features.simple")}
-        </Text>
-        <Text
-          align="center"
-          fontSize="6vw"
-          fontWeight="800"
-          zIndex={10}
-          bgClip="text"
-          bgGradient="linear(to-br, white, white)"
-          _hover={{
-            bgGradient: "linear(to-br, white, teal.200, blue.300)",
-          }}
-        >
+        </GradientText>
+        <GradientText gradient="linear(to-br, white, teal.200, blue.300)">
           {t("features.intuitive")}
-        </Text>
-        <Text
-          align="center"
-          fontSize="6vw"
-          fontWeight="800"
-          zIndex={10}
-          bgClip="text"
-          bgGradient="linear(to-br, white, white)"
-          _hover={{
-            bgGradient: "linear(to-br, white, blue.200, purple.300)",
-          }}
-        >
+        </GradientText>
+        <GradientText gradient="linear(to-br, white, blue.200, purple.300)">
           {t("features.integration")}
-        </Text>
+        </GradientText>
       </Flex>
       <Flex w="100%" bg="#121316" px="48" py="16" flexDirection={"column"}>
         <Flex flexDirection={"column"}>

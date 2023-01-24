@@ -19,7 +19,7 @@ function HeaderBtn({ text = "", href = "/#", isComingSoon = false }) {
       </Button>
     </Tooltip>
   ) : (
-    <ScrollLink to={href} smooth={true} duration={500}>
+    <ScrollLink to={href} smooth={true} duration={500} offset={-64}>
       <Button
         variant="ghost"
         size="md"

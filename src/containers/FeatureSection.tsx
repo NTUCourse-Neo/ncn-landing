@@ -29,21 +29,29 @@ function GradientText(
 ) {
   const { gradient, ...rest } = props;
   return (
-    <Text
-      w="100%"
-      align="center"
-      fontSize="6vw"
-      fontWeight="800"
-      zIndex={10}
-      bgClip="text"
-      bgGradient="linear(to-br, white, white)"
-      _hover={{
-        bgGradient: gradient,
-      }}
-      cursor="default"
-      userSelect={"none"}
-      {...rest}
-    />
+    <Flex zIndex={10} w="100%">
+      <Text
+        w="100vw"
+        align="center"
+        fontSize="6vw"
+        fontWeight="800"
+        cursor="default"
+        userSelect={"none"}
+        sx={{
+          backgroundColor: "white", // fallback color
+          backgroundImage: gradient,
+          backgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundSize: "100% 200%",
+          backgroundPosition: "top",
+          transition: "all 0.5s ease-in-out",
+          _hover: {
+            backgroundPosition: "100%",
+          },
+        }}
+        {...rest}
+      />
+    </Flex>
   );
 }
 
@@ -66,13 +74,13 @@ export function FeatureSection() {
           h="60vh"
           position={"absolute"}
         />
-        <GradientText gradient="linear(to-br, white, green.200, teal.300)">
+        <GradientText gradient="linear-gradient(180deg, #ffffff 38%, #9AE6B4 65%, #4FD1C5)">
           {t("features.simple")}
         </GradientText>
-        <GradientText gradient="linear(to-br, white, teal.200, blue.300)">
+        <GradientText gradient="linear-gradient(180deg, #ffffff 38%, #81E6D9 65%, #63B3ED)">
           {t("features.intuitive")}
         </GradientText>
-        <GradientText gradient="linear(to-br, white, blue.200, purple.300)">
+        <GradientText gradient="linear-gradient(180deg, #ffffff 38%, #90CDF4 65%, #B794F4)">
           {t("features.integration")}
         </GradientText>
       </Flex>
@@ -81,7 +89,9 @@ export function FeatureSection() {
           <Text
             fontSize="3xl"
             fontWeight="600"
-            bgGradient={"linear(to-br, white, green.200, teal.300)"}
+            bgGradient={
+              "linear-gradient(180deg, #ffffff 25%, #9AE6B4 , #4FD1C5)"
+            }
             bgClip="text"
             align="start"
           >
@@ -138,7 +148,9 @@ export function FeatureSection() {
           <Text
             fontSize="3xl"
             fontWeight="600"
-            bgGradient={"linear(to-br, white, teal.200, blue.300)"}
+            bgGradient={
+              "linear-gradient(180deg, #ffffff 25%, #81E6D9 65%, #63B3ED)"
+            }
             bgClip="text"
             align="start"
           >
@@ -205,7 +217,9 @@ export function FeatureSection() {
           <Text
             fontSize="3xl"
             fontWeight="600"
-            bgGradient={"linear(to-br, white, blue.200, purple.300)"}
+            bgGradient={
+              "linear-gradient(180deg, #ffffff 25%, #90CDF4 65%, #B794F4)"
+            }
             bgClip="text"
             align="start"
           >
@@ -230,7 +244,7 @@ export function FeatureSection() {
           </Text>
           <Tabs mt="8">
             <TabList>
-              <Tab color="teal.200">
+              <Tab color="blue.200">
                 <HStack>
                   <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
                     <FaPlus />
@@ -240,7 +254,7 @@ export function FeatureSection() {
                   </Text>
                 </HStack>
               </Tab>
-              <Tab color="teal.200">
+              <Tab color="blue.200">
                 <HStack>
                   <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
                     <FaInfoCircle />

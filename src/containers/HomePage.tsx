@@ -5,6 +5,7 @@ import { VisionSection } from "@/containers/VisionSection";
 import { IntroSection } from "@/containers/IntroSection";
 import { TeamSection } from "@/containers/TeamSection";
 import { FeatureSection } from "@/containers/FeatureSection";
+import { Element as ScrollAnchorWrapper } from "react-scroll";
 
 export function HomePage() {
   return (
@@ -22,13 +23,21 @@ export function HomePage() {
         flexDirection="column"
         alignItems="center"
       >
-        <IntroSection />
+        <ScrollAnchorWrapper name="/#">
+          <IntroSection />
+        </ScrollAnchorWrapper>
         <CalloutSection />
         <Divider w={"200px"} my="32" borderColor="gray.500" />
-        <VisionSection />
-        <TeamSection />
+        <ScrollAnchorWrapper name="/#vision">
+          <VisionSection />
+        </ScrollAnchorWrapper>
+        <ScrollAnchorWrapper name="/#team">
+          <TeamSection />
+        </ScrollAnchorWrapper>
         <Divider w={"200px"} my="24" borderColor="gray.500" />
-        <FeatureSection />
+        <ScrollAnchorWrapper name="/#features">
+          <FeatureSection />
+        </ScrollAnchorWrapper>
         <StayTunedSection />
       </Flex>
     </Box>

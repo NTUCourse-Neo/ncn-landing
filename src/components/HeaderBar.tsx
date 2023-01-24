@@ -1,6 +1,7 @@
 import { Flex, Button, Tooltip, useMediaQuery } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { useTranslation } from "react-i18next";
+import { Link as ScrollLink } from "react-scroll";
 
 function HeaderBtn({ text = "", href = "/#", isComingSoon = false }) {
   const { t, i18n } = useTranslation();
@@ -18,18 +19,17 @@ function HeaderBtn({ text = "", href = "/#", isComingSoon = false }) {
       </Button>
     </Tooltip>
   ) : (
-    <Button
-      variant="ghost"
-      size="md"
-      fontWeight="600"
-      mx="4"
-      colorScheme={"gray"}
-      onClick={() => {
-        window.location.href = href;
-      }}
-    >
-      {text}
-    </Button>
+    <ScrollLink to={href} smooth={true} duration={500}>
+      <Button
+        variant="ghost"
+        size="md"
+        fontWeight="600"
+        mx="4"
+        colorScheme={"gray"}
+      >
+        {text}
+      </Button>
+    </ScrollLink>
   );
 }
 

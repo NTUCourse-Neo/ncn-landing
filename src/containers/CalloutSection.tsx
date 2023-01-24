@@ -10,7 +10,6 @@ export function CalloutSection() {
       justifyContent="center"
       alignItems="center"
       w="100%"
-      rounded="lg"
       py="24"
       bgGradient="linear(to-r, green.200, teal.500)"
     >

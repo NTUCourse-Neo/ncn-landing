@@ -1,3 +1,5 @@
+import CourseInfoRow from "@/components/CourseInfoRow";
+import mockCourses from "@/data/mockCourses";
 import {
   Box,
   Flex,
@@ -10,6 +12,7 @@ import {
   TabPanel,
   HStack,
   TextProps,
+  Accordion,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import {
@@ -137,7 +140,19 @@ export function FeatureSection() {
             </TabList>
 
             <TabPanels>
-              <TabPanel></TabPanel>
+              <TabPanel>
+                <Box py={10}>
+                  <Accordion allowToggle gap={2}>
+                    {mockCourses.map((c) => (
+                      <CourseInfoRow
+                        key={c.id}
+                        courseInfo={c}
+                        selected={false}
+                      />
+                    ))}
+                  </Accordion>
+                </Box>
+              </TabPanel>
               <TabPanel></TabPanel>
             </TabPanels>
           </Tabs>

@@ -5,12 +5,12 @@ import { DisplayTagsProvider } from "@/components/DisplayTagsProvider";
 
 function App() {
   return (
-    <Routes>
-      <DisplayTagsProvider>
+    <DisplayTagsProvider>
+      <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/mobile" element={<Mobile />} />
-      </DisplayTagsProvider>
-    </Routes>
+      </Routes>
+    </DisplayTagsProvider>
   );
 }
 

@@ -24,7 +24,7 @@ import { hashToColorHex } from "@/utils/colorAgent";
 import openPage from "@/utils/openPage";
 import parseCourseSchedlue from "@/utils/parseCourseSchedule";
 import type { Course } from "@/types/course";
-import { useDisplayTags } from "@/components/DisplayTagsProvider";
+import { DisplayTagName } from "@/components/demo/displayTags";
 
 function DeptBadge({ course }: { readonly course: Course }) {
   if (course.departments.length === 0) {
@@ -231,8 +231,13 @@ function CourseDrawerContainer({
 export interface CourseInfoRowProps {
   readonly courseInfo: Course;
   readonly selected: boolean;
+  readonly displayTags?: DisplayTagName[];
 }
-function CourseInfoRow({ courseInfo, selected }: CourseInfoRowProps) {
+function CourseInfoRow({
+  courseInfo,
+  selected,
+  displayTags = [],
+}: CourseInfoRowProps) {
   const rowColor = useColorModeValue("card.light", "card.dark");
   const textColor = useColorModeValue("text.light", "text.dark");
   const headingColor = useColorModeValue("heading.light", "heading.dark");
@@ -242,7 +247,6 @@ function CourseInfoRow({ courseInfo, selected }: CourseInfoRowProps) {
     hashToColorHex(courseInfo.id, 0.92, 0.3),
     hashToColorHex(courseInfo.id, 0.2, 0.1)
   );
-  const { displayTags } = useDisplayTags();
 
   return (
     <AccordionItem

@@ -24,6 +24,7 @@ import {
   FaRandom,
   FaTasks,
 } from "react-icons/fa";
+import DisplayTagsPanel from "@/components/demo/displayTags";
 
 function GradientText(
   props: TextProps & {
@@ -153,7 +154,9 @@ export function FeatureSection() {
                   </Accordion>
                 </Box>
               </TabPanel>
-              <TabPanel></TabPanel>
+              <TabPanel>
+                <DisplayTagsPanel />
+              </TabPanel>
             </TabPanels>
           </Tabs>
         </Flex>

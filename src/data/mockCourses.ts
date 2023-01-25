@@ -95,17 +95,17 @@ const mockCourses: Course[] = [
     schedules: [
       {
         weekday: 4,
+        interval: "3",
+        location: "BL 101",
+      },
+      {
+        weekday: 4,
         interval: "4",
         location: "BL 101",
       },
       {
         weekday: 4,
         interval: "5",
-        location: "BL 101",
-      },
-      {
-        weekday: 4,
-        interval: "3",
         location: "BL 101",
       },
     ],

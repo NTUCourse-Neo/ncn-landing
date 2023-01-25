@@ -110,6 +110,57 @@ const mockCourses: Course[] = [
       },
     ],
   },
+  {
+    id: "26753",
+    serial: "26753",
+    code: "26753",
+    identifier: "CSIE 3310",
+    name: "Operating System",
+    semester: "111-1",
+    teacher: "Justin Bieber",
+    limitation: null,
+    note: "課程加簽事項將會公布於 https://www.csie.ntu.edu.tw/~os/",
+    cool_url: null,
+    credits: 3,
+    can_be_selective: true,
+    is_half_year: true,
+    slot: 100,
+    enroll_method: 2,
+    intensive_weeks: [],
+    departments_raw: [],
+    class: "2",
+    syllabus_url: null,
+    requirement: "elective",
+    language: "zh_TW",
+    provider: "ntu",
+    areas: [],
+    departments: [
+      {
+        id: "9020",
+        college_id: "9",
+        name_alt: null,
+        name_full: "資訊工程學系",
+        name_short: null,
+      },
+    ],
+    schedules: [
+      {
+        weekday: 2,
+        interval: "2",
+        location: "unknown",
+      },
+      {
+        weekday: 2,
+        interval: "3",
+        location: "unknown",
+      },
+      {
+        weekday: 2,
+        interval: "4",
+        location: "unknown",
+      },
+    ],
+  },
 ];
 
 export default mockCourses;

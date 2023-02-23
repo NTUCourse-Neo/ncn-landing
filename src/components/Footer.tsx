@@ -11,7 +11,7 @@ import { FaCodeBranch, FaGithub } from "react-icons/fa";
 import { LanguageMenuBtn } from "@/components/LanguageMenuBtn";
 
 function Footer() {
-  const ver = "alpha-20230102";
+  const ver = "alpha-20230223";
   const secondaryColor = "gray.600";
   const handleOpenPage = (page: string) => {
     window.open(page, "_blank");
@@ -67,7 +67,7 @@ function Footer() {
         color={secondaryColor}
         fontWeight="500"
       >
-        Copyright © 2022 NTUCourse Neo Team (swh00tw / jc-hiroto).
+        Copyright © 2022 NTUCourse Neo (swh00tw / jc-hiroto).
       </Text>
       <Button
         size="md"

@@ -36,8 +36,8 @@ export function CalloutSection() {
         <br />
         {t("callout.content3")}
       </Text>
-      <Tooltip label={t("utils.comingSoon")} aria-label="coming-soon">
-        <Link mt="8">
+      <Tooltip label={t("utils.closedbeta")} aria-label="closed-beta">
+        <Link mt="8" href="https://course.ntu.edu.tw" isExternal>
           <HStack>
             <Text fontSize="2xl" fontWeight="600" color={"gray.800"}>
               {t("home.nolBtn")} <sup style={{ fontStyle: "italic" }}>beta</sup>

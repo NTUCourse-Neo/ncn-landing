@@ -39,7 +39,8 @@ export default function DisplayTagsPanel() {
         sx={{
           bg: "#2b2b2b",
           borderRadius: "8px",
-          p: 8,
+          px: 8,
+          py: 4,
           w: "22%",
           h: "fit-content",
         }}

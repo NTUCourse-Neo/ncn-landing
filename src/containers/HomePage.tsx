@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, useMediaQuery } from "@chakra-ui/react";
+import { Box, Divider, Flex } from "@chakra-ui/react";
 import { CalloutSection } from "@/containers/CalloutSection";
 import { StayTunedSection } from "@/containers/StayTunedSection";
 import { VisionSection } from "@/containers/VisionSection";
@@ -6,26 +6,28 @@ import { IntroSection } from "@/containers/IntroSection";
 import { TeamSection } from "@/containers/TeamSection";
 import { FeatureSection } from "@/containers/FeatureSection";
 import { Element as ScrollAnchorWrapper } from "react-scroll";
+import { MobileViewBlocker } from "@/containers/MobileViewBlocker";
 
 export function HomePage() {
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
-  if (isMobile) {
-    window.location.href = "/mobile";
-  }
   return (
-    <Box
-      maxW="screen-md"
-      minH="95vh"
-      mx="auto"
-      overflow="visible"
-      pt="64px"
-      bg="black"
-    >
-      <Flex
-        justifyContent="space-between"
-        grow="1"
-        flexDirection="column"
-        alignItems="center"
+    <>
+      <MobileViewBlocker
+        display={{
+          base: "block",
+          md: "none",
+        }}
+      />
+      <Box
+        maxW="screen-md"
+        minH="95vh"
+        mx="auto"
+        overflow="visible"
+        pt="64px"
+        bg="black"
+        display={{
+          base: "none",
+          md: "block",
+        }}
       >
         <ScrollAnchorWrapper name="/#">
           <IntroSection />
@@ -43,7 +45,7 @@ export function HomePage() {
           <FeatureSection />
         </ScrollAnchorWrapper>
         <StayTunedSection />
-      </Flex>
-    </Box>
+      </Box>
+    </>
   );
 }

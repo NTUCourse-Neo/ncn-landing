@@ -1,4 +1,4 @@
-import { Box, Divider, Flex } from "@chakra-ui/react";
+import { Box, Divider } from "@chakra-ui/react";
 import { CalloutSection } from "@/containers/CalloutSection";
 import { StayTunedSection } from "@/containers/StayTunedSection";
 import { VisionSection } from "@/containers/VisionSection";

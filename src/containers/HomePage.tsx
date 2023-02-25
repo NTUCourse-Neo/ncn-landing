@@ -1,4 +1,4 @@
-import { Box, Divider, Flex } from "@chakra-ui/react";
+import { Box, Divider, Flex, useMediaQuery } from "@chakra-ui/react";
 import { CalloutSection } from "@/containers/CalloutSection";
 import { StayTunedSection } from "@/containers/StayTunedSection";
 import { VisionSection } from "@/containers/VisionSection";
@@ -8,6 +8,10 @@ import { FeatureSection } from "@/containers/FeatureSection";
 import { Element as ScrollAnchorWrapper } from "react-scroll";
 
 export function HomePage() {
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  if (isMobile) {
+    window.location.href = "/mobile";
+  }
   return (
     <Box
       maxW="screen-md"

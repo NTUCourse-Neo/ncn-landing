@@ -11,7 +11,7 @@ export function MobileViewBlocker(props: BoxProps) {
             src={`/img/mobile.svg`}
             alt="ncnLogo"
             w="60%"
-            my="16"
+            mb="8"
             draggable="false"
             pointerEvents={"none"}
           />
@@ -23,7 +23,7 @@ export function MobileViewBlocker(props: BoxProps) {
           fontSize="sm"
           fontWeight="400"
           color={"gray.400"}
-          my="4"
+          mt="2"
           align="center"
         >
           {t("mobile.content")}

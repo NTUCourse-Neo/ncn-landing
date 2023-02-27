@@ -12,6 +12,7 @@ export function HomePage() {
   return (
     <>
       <MobileViewBlocker
+        px="6"
         display={{
           base: "block",
           md: "none",

@@ -1,4 +1,4 @@
-import { Flex, HStack, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { OldNolWindows } from "@/components/OldNolWindows";
 import { OldNolFlawText } from "@/components/OldNolFlawText";
 import { useTranslation } from "react-i18next";
@@ -44,24 +44,27 @@ export function VisionSection() {
         mb="60"
       >
         <OldNolWindows />
-        <Text
-          align="center"
-          fontSize="6vw"
-          fontWeight="800"
-          color={"white"}
-          zIndex={10}
-          textShadow="0px 10px 10px rgba(0, 0, 0, 0.3)"
-          position={"absolute"}
+
+        <motion.div
+          variants={titleVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: "all" }}
+          style={{
+            position: "absolute",
+            zIndex: 10,
+          }}
         >
-          <motion.div
-            variants={titleVariants}
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: "all" }}
+          <Text
+            align="center"
+            fontSize="6vw"
+            fontWeight="800"
+            color={"white"}
+            textShadow="0px 10px 10px rgba(0, 0, 0, 0.3)"
           >
             {t("vision.title")}
-          </motion.div>
-        </Text>
+          </Text>
+        </motion.div>
 
         <motion.div
           style={{

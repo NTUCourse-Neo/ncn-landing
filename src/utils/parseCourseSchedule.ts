@@ -2,10 +2,15 @@ import _ from "lodash";
 import type { Course } from "@/types/course";
 import { weekdayMap as numberToDay } from "@/data/CourseMapping";
 
-export default function parseCourseSchedlue(course: Course): string {
+export default function parseCourseSchedule(
+  course: Course,
+  language: string
+): string {
   const schedules = course.schedules;
   const scheduleGroupByDayAndLocation = _.groupBy(schedules, (schedule) => {
-    return `${numberToDay[schedule.weekday]}@${schedule.location}`;
+    return `${numberToDay[language == "zh" ? "zh" : "en"][schedule.weekday]}@${
+      schedule.location
+    }`;
   });
 
   return Object.entries(scheduleGroupByDayAndLocation)

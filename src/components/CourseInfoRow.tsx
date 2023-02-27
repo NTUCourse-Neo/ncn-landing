@@ -22,11 +22,14 @@ import { FaPlus } from "react-icons/fa";
 import { CourseInfoMap } from "@/data/CourseMapping";
 import { hashToColorHex } from "@/utils/colorAgent";
 import openPage from "@/utils/openPage";
-import parseCourseSchedlue from "@/utils/parseCourseSchedule";
+import parseCourseSchedule from "@/utils/parseCourseSchedule";
 import type { Course } from "@/types/course";
 import { DisplayTagName } from "@/components/demo/displayTags";
+import { useTranslation } from "react-i18next";
+import i18n from "@/i18n";
 
 function DeptBadge({ course }: { readonly course: Course }) {
+  const { t, i18n } = useTranslation();
   if (course.departments.length === 0) {
     return null;
   }
@@ -53,7 +56,7 @@ function DeptBadge({ course }: { readonly course: Course }) {
           }}
         >
           {isMultipleDepts
-            ? "多個系所"
+            ? t("features.courseInfoRow.multipleDepts")
             : course?.departments?.[0]?.name_full ?? ""}
         </Text>
       </Badge>
@@ -95,6 +98,7 @@ function CourseDrawerContainer({
 }: {
   readonly courseInfo: Course;
 }) {
+  const { t } = useTranslation();
   return (
     <Flex
       px="1"
@@ -111,19 +115,36 @@ function CourseDrawerContainer({
         flexWrap="wrap"
         css={{ gap: ".5rem" }}
       >
-        <DrawerDataTag fieldName={"課程識別碼"} label={courseInfo.identifier} />
-        <DrawerDataTag fieldName={"課號"} label={courseInfo.code} />
-        <DrawerDataTag fieldName={"班次"} label={courseInfo?.class ?? "未知"} />
         <DrawerDataTag
-          fieldName={CourseInfoMap.enroll_method.name}
-          label={CourseInfoMap.enroll_method.map[courseInfo.enroll_method]}
+          fieldName={t("features.courseInfoRow.courseIdentifier")}
+          label={courseInfo.identifier}
         />
         <DrawerDataTag
-          fieldName={CourseInfoMap.language.name}
-          label={CourseInfoMap.language.map[courseInfo.language]}
+          fieldName={t("features.courseInfoRow.courseCode")}
+          label={courseInfo.code}
         />
         <DrawerDataTag
-          fieldName={"開課單位"}
+          fieldName={t("features.courseInfoRow.courseClass")}
+          label={courseInfo?.class ?? t("features.courseInfoRow.unknown")}
+        />
+        <DrawerDataTag
+          fieldName={t("features.courseInfoRow.enrollMethod")}
+          label={
+            CourseInfoMap.enroll_method.map[
+              i18n.language == "zh" ? "zh" : "en"
+            ][courseInfo.enroll_method]
+          }
+        />
+        <DrawerDataTag
+          fieldName={t("features.courseInfoRow.language")}
+          label={
+            CourseInfoMap.language.map[i18n.language == "zh" ? "zh" : "en"][
+              courseInfo.language
+            ]
+          }
+        />
+        <DrawerDataTag
+          fieldName={t("features.courseInfoRow.lectureDept")}
           label={courseInfo.provider.toUpperCase()}
         />
       </Flex>
@@ -153,14 +174,14 @@ function CourseDrawerContainer({
             ml="4px"
             mb="1"
           >
-            修課限制
+            {t("features.courseInfoRow.limitation")}
           </Heading>
           <Text
             fontSize="sm"
             color={useColorModeValue("text.light", "text.dark")}
             mx="4px"
           >
-            {courseInfo?.limitation ?? "無"}
+            {courseInfo?.limitation ?? t("features.courseInfoRow.none")}
           </Text>
         </Flex>
         <Flex
@@ -177,14 +198,14 @@ function CourseDrawerContainer({
             ml="4px"
             mb="1"
           >
-            備註
+            {t("features.courseInfoRow.note")}
           </Heading>
           <Text
             fontSize="sm"
             color={useColorModeValue("text.light", "text.dark")}
             mx="4px"
           >
-            {courseInfo?.note || "無"}
+            {courseInfo?.note || t("features.courseInfoRow.none")}
           </Text>
         </Flex>
       </Flex>
@@ -220,7 +241,7 @@ function CourseDrawerContainer({
             size="sm"
             onClick={() => {}}
           >
-            加入課程網
+            {t("features.courseInfoRow.addCourse")}
           </Button>
         </ButtonGroup>
       </Flex>
@@ -247,6 +268,7 @@ function CourseInfoRow({
     hashToColorHex(courseInfo.id, 0.92, 0.3),
     hashToColorHex(courseInfo.id, 0.2, 0.1)
   );
+  const { t } = useTranslation();
 
   return (
     <AccordionItem
@@ -285,7 +307,7 @@ function CourseInfoRow({
               <Tooltip
                 hasArrow
                 placement="top"
-                label="課程流水號"
+                label={t("features.courseInfoRow.courseSerial")}
                 bg={tooltipBg}
                 color={tooltipText}
               >
@@ -320,7 +342,7 @@ function CourseInfoRow({
               <Tooltip
                 hasArrow
                 placement="top"
-                label="課程流水號"
+                label={t("features.courseInfoRow.courseSerial")}
                 bg={tooltipBg}
                 color={tooltipText}
               >
@@ -328,13 +350,17 @@ function CourseInfoRow({
                   variant="outline"
                   display={{ base: "inline-block", md: "none" }}
                 >
-                  {courseInfo.serial ? courseInfo.serial : "無流水號"}
+                  {courseInfo.serial
+                    ? courseInfo.serial
+                    : t("features.courseInfoRow.noSerial")}
                 </Badge>
               </Tooltip>
               <Tooltip
                 hasArrow
                 placement="top"
-                label={courseInfo.credits + " 學分"}
+                label={
+                  courseInfo.credits + " " + t("features.courseInfoRow.credits")
+                }
                 bg={tooltipBg}
                 color={tooltipText}
               >
@@ -358,7 +384,7 @@ function CourseInfoRow({
             <Tooltip
               hasArrow
               placement="top"
-              label={parseCourseSchedlue(courseInfo) ?? null}
+              label={parseCourseSchedule(courseInfo, i18n.language) ?? null}
               bg={tooltipBg}
               color={tooltipText}
             >
@@ -376,8 +402,8 @@ function CourseInfoRow({
                     textOverflow: "ellipsis",
                   }}
                 >
-                  {parseCourseSchedlue(courseInfo)
-                    ? parseCourseSchedlue(courseInfo)
+                  {parseCourseSchedule(courseInfo, i18n.language)
+                    ? parseCourseSchedule(courseInfo, i18n.language)
                     : "無課程時間"}
                 </Text>
               </Badge>
@@ -396,7 +422,7 @@ function CourseInfoRow({
                 let display_str = "";
                 let tooltip_str = "";
                 if (courseInfo.areas.length === 0) {
-                  display_str = "無";
+                  display_str = t("features.courseInfoRow.none");
                   tooltip_str = CourseInfoMap[tag].name + ": 無";
                 } else {
                   display_str = "多個領域";
@@ -432,13 +458,17 @@ function CourseInfoRow({
               const tagLabel =
                 (tag === "slot"
                   ? courseInfo?.[tag]
-                  : CourseInfoMap?.[tag]?.map?.[courseInfo?.[tag]] ??
-                    courseInfo?.[tag]) ?? "未知";
+                  : CourseInfoMap?.[tag]?.map?.[
+                      i18n.language == "zh" ? "zh" : "en"
+                    ][courseInfo?.[tag]] ?? courseInfo?.[tag]) ??
+                t("features.courseInfoRow.unknown");
               return (
                 <Tooltip
                   hasArrow
                   placement="top"
-                  label={CourseInfoMap[tag].name}
+                  label={
+                    CourseInfoMap[tag].name[i18n.language == "zh" ? "zh" : "en"]
+                  }
                   bg={tooltipBg}
                   color={tooltipText}
                   key={index}

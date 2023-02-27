@@ -41,7 +41,7 @@ export function HomePage() {
         <ScrollAnchorWrapper name="/#team">
           <TeamSection />
         </ScrollAnchorWrapper>
-        <Divider w={"200px"} my="24" borderColor="gray.500" />
+        <Divider w={"200px"} mx="auto" my="24" borderColor="gray.500" />
         <ScrollAnchorWrapper name="/#features">
           <FeatureSection />
         </ScrollAnchorWrapper>

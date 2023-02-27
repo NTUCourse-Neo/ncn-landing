@@ -12,6 +12,7 @@ import {
   TagLeftIcon,
 } from "@chakra-ui/react";
 import { FaFilter, FaPlus, FaMinus } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export type DisplayTagName = "requirement" | "slot" | "enroll_method" | "areas";
 export const availableTags: DisplayTagName[] = [
@@ -22,10 +23,11 @@ export const availableTags: DisplayTagName[] = [
 ];
 export default function DisplayTagsPanel() {
   const [displayTags, setDisplayTags] = useState<DisplayTagName[]>([]);
+  const { t, i18n } = useTranslation();
   return (
     <Flex py={10}>
-      <Accordion allowToggle gap={2} w="75%">
-        {mockCourses.map((c) => (
+      <Accordion allowToggle gap={2} w="80%">
+        {mockCourses[i18n.language == "zh" ? "zh" : "en"].map((c) => (
           <CourseInfoRow
             key={c.id}
             courseInfo={c}
@@ -41,7 +43,7 @@ export default function DisplayTagsPanel() {
           borderRadius: "8px",
           px: 8,
           py: 4,
-          w: "22%",
+          w: "18%",
           h: "fit-content",
         }}
       >
@@ -90,7 +92,7 @@ export default function DisplayTagsPanel() {
                   boxSize="12px"
                   as={selected ? FaMinus : FaPlus}
                 />
-                {CourseInfoMap[tag].name}
+                {CourseInfoMap[tag].name[i18n.language == "zh" ? "zh" : "en"]}
               </Tag>
             );
           })}

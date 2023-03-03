@@ -87,7 +87,7 @@ export function VisionSection() {
         w="100%"
         bg="#121316"
         my="10"
-        py="12"
+        py="24"
       >
         <Text
           align="center"

@@ -1,8 +1,14 @@
-import { Flex, Button, Tooltip, useMediaQuery } from "@chakra-ui/react";
+import { Flex, Button, Tooltip, useMediaQuery, Text } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { useTranslation } from "react-i18next";
+import { Link as ScrollLink } from "react-scroll";
 
-function HeaderBtn({ text = "", href = "/#", isComingSoon = false }) {
+function HeaderBtn({
+  text = "",
+  href = "/#",
+  isComingSoon = false,
+  isWIP = false,
+}) {
   const { t, i18n } = useTranslation();
   return isComingSoon ? (
     <Tooltip label={t("utils.stayTuned")}>
@@ -14,22 +20,35 @@ function HeaderBtn({ text = "", href = "/#", isComingSoon = false }) {
         colorScheme={"gray"}
         disabled
       >
-        {text}
+        {text}{" "}
+        {isWIP ? (
+          <sup>
+            <Text as="i">WIP</Text>
+          </sup>
+        ) : (
+          <></>
+        )}
       </Button>
     </Tooltip>
   ) : (
-    <Button
-      variant="ghost"
-      size="md"
-      fontWeight="600"
-      mx="4"
-      colorScheme={"gray"}
-      onClick={() => {
-        window.location.href = href;
-      }}
-    >
-      {text}
-    </Button>
+    <ScrollLink to={href} smooth={true} duration={500} offset={-64}>
+      <Button
+        variant="ghost"
+        size="md"
+        fontWeight="600"
+        mx="4"
+        colorScheme={"gray"}
+      >
+        {text}{" "}
+        {isWIP ? (
+          <sup>
+            <Text as="i">WIP</Text>
+          </sup>
+        ) : (
+          <></>
+        )}
+      </Button>
+    </ScrollLink>
   );
 }
 
@@ -78,7 +97,7 @@ function HeaderBar() {
           <HeaderBtn
             text={t("header.features") as string}
             href="/#features"
-            isComingSoon
+            isWIP
           />
           <HeaderBtn
             text={t("header.story") as string}

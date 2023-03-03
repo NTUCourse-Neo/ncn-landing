@@ -1,9 +1,11 @@
-import { Box, Divider, Flex } from "@chakra-ui/react";
+import { Box, Divider } from "@chakra-ui/react";
 import { CalloutSection } from "@/containers/CalloutSection";
 import { StayTunedSection } from "@/containers/StayTunedSection";
 import { VisionSection } from "@/containers/VisionSection";
 import { IntroSection } from "@/containers/IntroSection";
 import { TeamSection } from "@/containers/TeamSection";
+import { FeatureSection } from "@/containers/FeatureSection";
+import { Element as ScrollAnchorWrapper } from "react-scroll";
 import { MobileViewBlocker } from "@/containers/MobileViewBlocker";
 
 export function HomePage() {
@@ -28,20 +30,22 @@ export function HomePage() {
           md: "block",
         }}
       >
-        <Flex
-          justifyContent="space-between"
-          grow="1"
-          flexDirection="column"
-          alignItems="center"
-        >
+        <ScrollAnchorWrapper name="/#">
           <IntroSection />
-          <CalloutSection />
-          <Divider w={"200px"} my="32" borderColor="gray.500" />
+        </ScrollAnchorWrapper>
+        <CalloutSection />
+        <Divider w={"200px"} my="32" borderColor="gray.500" />
+        <ScrollAnchorWrapper name="/#vision">
           <VisionSection />
+        </ScrollAnchorWrapper>
+        <ScrollAnchorWrapper name="/#team">
           <TeamSection />
-          <Divider w={"200px"} borderColor="gray.500" />
-          <StayTunedSection />
-        </Flex>
+        </ScrollAnchorWrapper>
+        <Divider w={"200px"} mx="auto" my="24" borderColor="gray.500" />
+        <ScrollAnchorWrapper name="/#features">
+          <FeatureSection />
+        </ScrollAnchorWrapper>
+        <StayTunedSection />
       </Box>
     </>
   );

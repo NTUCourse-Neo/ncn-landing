@@ -9,16 +9,16 @@
   },
   "utils": {
     "stayTuned": "Stay Tuned",
-    "comingSoon": "Coming Soon"
+    "closedbeta": "Closed Beta: NTU Only"
   },
   "home": {
     "title": "Course Planning, Reimagined.",
-    "nolBtn": "Go to NTUCourse Online"
+    "nolBtn": "NTUCourse Online"
   },
   "callout": {
     "title": "Hey! We're still here!",
-    "content1": "We are collaborating with the Office of Academic Affairs at NTU to develop a new course website. A public beta will be launched soon.",
-    "content2": "NTUCourse Neo has stopped providing service and the website will be used to document the project",
+    "content1": "We are collaborating with the Office of Academic Affairs at NTU to develop a new course website. A public beta has been released.",
+    "content2": "NTUCourse Neo has stopped providing service and the website will be used to document the project.",
     "content3": "Thank you for your support and use of NTUCourse Neo. We look forward to seeing you soon!",
     "neoTeam": ", and Neo Team."
   },
@@ -50,7 +50,7 @@
       "github": "swh00tw",
       "website": "swh00tw.me",
       "role": "Frontend Dev, Backend Dev",
-      "avatar": "img/team_avatar/swh00tw.webp"
+      "avatar": "img/team_avatar/swh00tw.png"
     },
     "jc": {
       "name": "Po-Hao (James) Chang",
@@ -58,6 +58,58 @@
       "website": "jchiroto.dev",
       "role": "Backend Dev, System Architect",
       "avatar": "img/team_avatar/jc-hiroto.png"
+    }
+  },
+  "features": {
+    "simple": {
+      "title": "Simple",
+      "subtitle": "Highlight what's truly important.",
+      "content1": "Neo uses collapsible lists to display course information. The most important information is kept visible, while additional details can be expanded.",
+      "content2": "We also designed a customizable course information display feature, allowing you to choose which information you want to see.",
+      "tabs": {
+        "extend": "Expandable Course Info",
+        "custom": "Customize Display Fields"
+      }
+    },
+    "intuitive": {
+      "title": "Intuitive",
+      "subtitle": "Say goodbye to scheduling conflicts.",
+      "content1": "Interactive course schedules show time slots in real-time when hovering, making it easier to plan your schedule.",
+      "content2": "Easily adjust your priority order by dragging and dropping courses. In addition to global priority, you can also adjust the priority of courses that conflict with each other!",
+      "tabs": {
+        "table": "Interactive Course Schedule",
+        "global": "Global Priority",
+        "conflict": "Conflict Resolution"
+      }
+    },
+    "integration": {
+      "title": "Integration",
+      "subtitle": "Access all information you need in one place.",
+      "content1": "Found a course you like, but have to search for it again on Course Selection System to add it? We've built in a button that lets you add courses to the legacy system directly from Neo.",
+      "content2": "Our course dashboard combines official and unofficial data. From enrollment numbers, course outlines, and waitlist info, to course evaluations and past exams, we've consolidated all the information you need to select your courses.",
+      "tabs": {
+        "add": "Legacy Adding Support",
+        "info": "Course Dashboard"
+      },
+      "disclaimer1": "Waitlist information is provided by the community and may differ from actual situation. Course evaluations and past exams are sourced from PTT NTUCourse and PTT NTUExam. Neo does not guarantee the accuracy of these data."
+    },
+    "courseInfoRow": {
+      "multipleDepts": "Multiple Depts",
+      "courseSerial": "Serial No.",
+      "courseIdentifier": "Identifier",
+      "courseCode": "Course Code",
+      "courseClass": "Class",
+      "unknown": "Unknown",
+      "noSerial": "No Serial No.",
+      "lectureDept": "Lecture Department",
+      "limitation": "Limitations",
+      "note": "Notes",
+      "addCourse": "Add to NOL",
+      "credits": "Credits",
+      "enrollMethod": "Enrollment Method",
+      "language": "Language",
+      "noTime": "No Time Data",
+      "none": "None"
     }
   },
   "mobile": {

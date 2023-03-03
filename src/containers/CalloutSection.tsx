@@ -1,5 +1,6 @@
-import { Flex, Text, Link } from "@chakra-ui/react";
+import { Flex, Text, Tooltip, Link, HStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+import { FaArrowRight } from "react-icons/fa";
 
 export function CalloutSection() {
   const { t, i18n } = useTranslation();
@@ -9,20 +10,24 @@ export function CalloutSection() {
       justifyContent="center"
       alignItems="center"
       w="100%"
-      rounded="lg"
+      py="24"
+      bgGradient="linear(to-r, green.200, teal.500)"
     >
+      <Text fontSize={["xl", "6xl"]} fontWeight="extrabold" color={"gray.800"}>
+        👋
+      </Text>
       <Text
         fontSize={["xl", "7xl"]}
         fontWeight="extrabold"
-        color={"gray.400"}
-        my="4"
+        color={"gray.800"}
+        mb="4"
       >
         {t("callout.title")}
       </Text>
       <Text
         fontSize="xl"
-        fontWeight="bold"
-        color={"gray.500"}
+        fontWeight="500"
+        color={"gray.700"}
         textAlign="center"
       >
         {t("callout.content1")}
@@ -31,23 +36,18 @@ export function CalloutSection() {
         <br />
         {t("callout.content3")}
       </Text>
-      <Text
-        fontSize="lg"
-        fontWeight="600"
-        color={"gray.600"}
-        textAlign="center"
-        my="4"
-      >
-        ⏤{" "}
-        <Link href="https://swh00tw.me/" isExternal>
-          swh00tw
+      <Tooltip label={t("utils.closedbeta")} aria-label="closed-beta">
+        <Link mt="8" href="https://course.ntu.edu.tw" isExternal>
+          <HStack>
+            <Text fontSize="2xl" fontWeight="600" color={"gray.800"}>
+              {t("home.nolBtn")} <sup style={{ fontStyle: "italic" }}>beta</sup>
+            </Text>
+            <Text fontSize="2xl" fontWeight="600" color={"gray.800"}>
+              <FaArrowRight />
+            </Text>
+          </HStack>
         </Link>
-        ,{" "}
-        <Link href="https://jchiroto.dev" isExternal>
-          jc-hiroto
-        </Link>
-        {t("callout.neoTeam")}
-      </Text>
+      </Tooltip>
     </Flex>
   );
 }

@@ -404,7 +404,7 @@ function CourseInfoRow({
                 >
                   {parseCourseSchedule(courseInfo, i18n.language)
                     ? parseCourseSchedule(courseInfo, i18n.language)
-                    : "無課程時間"}
+                    : t("features.courseInfoRow.noTime")}
                 </Text>
               </Badge>
             </Tooltip>
@@ -423,9 +423,12 @@ function CourseInfoRow({
                 let tooltip_str = "";
                 if (courseInfo.areas.length === 0) {
                   display_str = t("features.courseInfoRow.none");
-                  tooltip_str = CourseInfoMap[tag].name + ": 無";
+                  tooltip_str =
+                    CourseInfoMap[tag].name +
+                    ": " +
+                    t("features.courseInfoRow.none");
                 } else {
-                  display_str = "多個領域";
+                  display_str = t("features.courseInfoRow.multipleDepts");
                   tooltip_str = courseInfo.areas
                     .map((area) => area.area.name ?? null)
                     .filter((x) => x !== null)

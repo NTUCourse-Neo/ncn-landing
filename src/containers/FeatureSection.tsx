@@ -25,7 +25,6 @@ import {
   FaTasks,
 } from "react-icons/fa";
 import DisplayTagsPanel from "@/components/demo/displayTags";
-import { TFunction } from "i18next";
 
 function GradientText(
   props: TextProps & {
@@ -60,9 +59,10 @@ function GradientText(
   );
 }
 
-function stayTunedPart(t: TFunction, brightness: number) {
+function StayTunedPart(brightness: number) {
+  const { t } = useTranslation();
   return (
-    <Flex minH="52" justifyContent="center" alignItems="center" mx="10">
+    <Flex minH="60" justifyContent="center" alignItems="center" mx="10">
       <Image
         src="img/course_row.png"
         w="80%"
@@ -244,9 +244,9 @@ export function FeatureSection() {
             </TabList>
 
             <TabPanels>
-              <TabPanel>{stayTunedPart(t, 0.5)}</TabPanel>
-              <TabPanel>{stayTunedPart(t, 0.5)}</TabPanel>
-              <TabPanel>{stayTunedPart(t, 0.5)}</TabPanel>
+              <TabPanel>{StayTunedPart(0.5)}</TabPanel>
+              <TabPanel>{StayTunedPart(0.5)}</TabPanel>
+              <TabPanel>{StayTunedPart(0.5)}</TabPanel>
             </TabPanels>
           </Tabs>
         </Flex>
@@ -303,8 +303,8 @@ export function FeatureSection() {
             </TabList>
 
             <TabPanels>
-              <TabPanel>{stayTunedPart(t, 1)}</TabPanel>
-              <TabPanel>{stayTunedPart(t, 1)}</TabPanel>
+              <TabPanel>{StayTunedPart(1)}</TabPanel>
+              <TabPanel>{StayTunedPart(1)}</TabPanel>
             </TabPanels>
           </Tabs>
           <Text fontSize="sm" fontWeight="400" color="gray.600" align="start">

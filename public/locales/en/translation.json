@@ -108,6 +108,7 @@
       "credits": "Credits",
       "enrollMethod": "Enrollment Method",
       "language": "Language",
+      "noTime": "No Time Data",
       "none": "None"
     }
   },

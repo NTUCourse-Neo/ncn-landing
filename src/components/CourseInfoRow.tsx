@@ -17,6 +17,7 @@ import {
   HStack,
   ButtonGroup,
   useColorModeValue,
+  AccordionItemProps,
 } from "@chakra-ui/react";
 import { FaPlus } from "react-icons/fa";
 import { CourseInfoMap } from "@/data/CourseMapping";
@@ -249,15 +250,18 @@ function CourseDrawerContainer({
   );
 }
 
-export interface CourseInfoRowProps {
+export interface CourseInfoRowProps extends AccordionItemProps {
   readonly courseInfo: Course;
   readonly selected: boolean;
   readonly displayTags?: DisplayTagName[];
+  readonly onClickAddBtn?: () => void;
 }
 function CourseInfoRow({
   courseInfo,
   selected,
   displayTags = [],
+  onClickAddBtn = () => {},
+  ...restProps
 }: CourseInfoRowProps) {
   const rowColor = useColorModeValue("card.light", "card.dark");
   const textColor = useColorModeValue("text.light", "text.dark");
@@ -277,6 +281,7 @@ function CourseInfoRow({
       transition="all ease-in-out 500ms"
       border="1px solid #808080"
       mb={1}
+      {...restProps}
     >
       <Flex
         alignItems="center"
@@ -521,7 +526,9 @@ function CourseInfoRow({
             size="sm"
             ml={{ base: 0, md: "10px" }}
             colorScheme={selected ? "red" : "blue"}
-            onClick={() => {}}
+            onClick={() => {
+              onClickAddBtn();
+            }}
           >
             <Box
               transform={selected ? "rotate(45deg)" : ""}

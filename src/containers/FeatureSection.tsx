@@ -59,7 +59,7 @@ function GradientText(
   );
 }
 
-function StayTunedPart(brightness: number) {
+function StayTunedPart({ brightness }: { brightness: number }) {
   const { t } = useTranslation();
   return (
     <Flex minH="60" justifyContent="center" alignItems="center" mx="10">
@@ -245,9 +245,15 @@ export function FeatureSection() {
             </TabList>
 
             <TabPanels>
-              <TabPanel>{StayTunedPart(0.5)}</TabPanel>
-              <TabPanel>{StayTunedPart(0.5)}</TabPanel>
-              <TabPanel>{StayTunedPart(0.5)}</TabPanel>
+              <TabPanel>
+                <StayTunedPart brightness={0.5} />
+              </TabPanel>
+              <TabPanel>
+                <StayTunedPart brightness={0.5} />
+              </TabPanel>
+              <TabPanel>
+                <StayTunedPart brightness={0.5} />
+              </TabPanel>
             </TabPanels>
           </Tabs>
         </Flex>
@@ -304,8 +310,12 @@ export function FeatureSection() {
             </TabList>
 
             <TabPanels>
-              <TabPanel>{StayTunedPart(1)}</TabPanel>
-              <TabPanel>{StayTunedPart(1)}</TabPanel>
+              <TabPanel>
+                <StayTunedPart brightness={1} />
+              </TabPanel>
+              <TabPanel>
+                <StayTunedPart brightness={1} />
+              </TabPanel>
             </TabPanels>
           </Tabs>
           <Text fontSize="sm" fontWeight="400" color="gray.600" align="start">

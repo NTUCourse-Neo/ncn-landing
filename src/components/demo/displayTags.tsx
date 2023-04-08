@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CourseInfoMap } from "@/data/CourseMapping";
+import { CourseInfoMap, CourseInfoTranslateMap } from "@/data/CourseMapping";
 import CourseInfoRow from "@/components/CourseInfoRow";
 import mockCourses from "@/data/mockCourses";
 import {
@@ -14,7 +14,7 @@ import {
 import { FaFilter, FaPlus, FaMinus } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
-export type DisplayTagName = "requirement" | "slot" | "enroll_method" | "areas";
+export type DisplayTagName = Exclude<keyof CourseInfoTranslateMap, "language">;
 export const availableTags: DisplayTagName[] = [
   "requirement",
   "slot",

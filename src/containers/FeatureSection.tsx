@@ -24,7 +24,7 @@ import {
   FaRandom,
   FaTasks,
 } from "react-icons/fa";
-import DisplayTagsPanel from "@/components/demo/DisplayTags";
+import DisplayTagsPanel from "@/components/demo/displayTags";
 import CourseTablePanel from "@/components/demo/CourseTable";
 
 function GradientText(

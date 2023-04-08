@@ -24,7 +24,7 @@ import { hashToColorHex } from "@/utils/colorAgent";
 import openPage from "@/utils/openPage";
 import parseCourseSchedule from "@/utils/parseCourseSchedule";
 import type { Course } from "@/types/course";
-import { DisplayTagName } from "@/components/demo/displayTags";
+import { DisplayTagName } from "@/components/demo/DisplayTags";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
 

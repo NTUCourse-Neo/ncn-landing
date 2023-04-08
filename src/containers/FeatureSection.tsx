@@ -89,6 +89,7 @@ export function FeatureSection() {
         alignItems="center"
         w="100%"
         minH="60vh"
+        h="87vh"
       >
         <Image src="/img/neo_home.png" h="60vh" position={"absolute"} />
         <Box

@@ -2,15 +2,14 @@ import CourseInfoRow from "@/components/CourseInfoRow";
 import mockCourses from "@/data/mockCourses";
 import { Flex, Accordion, Spacer, Box } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
-import { Course } from "@/types/course";
+import useSelectedCourses from "@/hooks/useSelectedCourses";
 import { setHoveredCourseData } from "@/utils/hoverCourse";
 import { courseTableScrollBarCss } from "@/components/demo/CourseTable";
 import CourseListContainer from "@/components/CourseTable/CourseList";
 
 export default function GlobalPriorityPanel() {
   const { t, i18n } = useTranslation();
-  const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
+  const { selectedCourses, setSelectedCourses } = useSelectedCourses();
 
   return (
     <Flex py={10}>

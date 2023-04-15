@@ -532,7 +532,7 @@ function CourseInfoRow({
           >
             <Box
               transform={selected ? "rotate(45deg)" : ""}
-              transition="all ease-in-out 200ms"
+              transition="all ease-in-out 100ms"
             >
               <FaPlus />
             </Box>

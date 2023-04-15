@@ -3,7 +3,8 @@ import mockCourses from "@/data/mockCourses";
 import { Flex, Accordion, Spacer, Box } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import CourseTableContainer from "@/components/CourseTable/CourseTable";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import useSelectedCourses from "@/hooks/useSelectedCourses";
 import { Course } from "@/types/course";
 import { parseCoursesToTimeMap, TimeMap } from "@/utils/parseCourseTime";
 import { setHoveredCourseData } from "@/utils/hoverCourse";
@@ -38,7 +39,7 @@ export function convertCourseArrayToObject(array: Course[]): {
 
 export default function CourseTablePanel() {
   const { t, i18n } = useTranslation();
-  const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
+  const { selectedCourses, setSelectedCourses } = useSelectedCourses();
 
   const courses: Record<string, Course> = useMemo(
     () => convertCourseArrayToObject(selectedCourses),

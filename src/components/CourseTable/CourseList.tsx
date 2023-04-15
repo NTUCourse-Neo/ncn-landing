@@ -235,7 +235,7 @@ function CourseListContainer(props: {
   const isEdited = () => {
     return (
       !courseListForSort.every(
-        (course, index) => course === selectedCourses[index].id
+        (course, index) => course === selectedCourses?.[index]?.id
       ) || prepareToRemoveCourseId.length > 0
     );
   };

@@ -26,6 +26,7 @@ import {
 } from "react-icons/fa";
 import DisplayTagsPanel from "@/components/demo/displayTags";
 import CourseTablePanel from "@/components/demo/CourseTable";
+import GlobalPriorityPanel from "@/components/demo/GlobalPriority";
 
 function GradientText(
   props: TextProps & {
@@ -250,7 +251,7 @@ export function FeatureSection() {
                 <CourseTablePanel />
               </TabPanel>
               <TabPanel>
-                <StayTunedPart brightness={0.5} />
+                <GlobalPriorityPanel />
               </TabPanel>
               <TabPanel>
                 <StayTunedPart brightness={0.5} />

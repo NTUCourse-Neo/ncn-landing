@@ -2,52 +2,15 @@ import CourseInfoRow from "@/components/CourseInfoRow";
 import mockCourses from "@/data/mockCourses";
 import { Flex, Accordion, Spacer, Box } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import CourseTableContainer from "@/components/CourseTable/CourseTable";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Course } from "@/types/course";
-import { parseCoursesToTimeMap, TimeMap } from "@/utils/parseCourseTime";
 import { setHoveredCourseData } from "@/utils/hoverCourse";
+import { courseTableScrollBarCss } from "@/components/demo/CourseTable";
+import CourseListContainer from "@/components/CourseTable/CourseList";
 
-export const courseTableScrollBarCss = {
-  "&::-webkit-scrollbar": {
-    w: "2",
-    h: "2",
-  },
-  "&::-webkit-scrollbar-track": {
-    w: "6",
-    h: "6",
-  },
-  "&::-webkit-scrollbar-thumb": {
-    borderRadius: "10",
-    bg: `gray.300`,
-  },
-};
-
-export function convertCourseArrayToObject(array: Course[]): {
-  [key: string]: Course;
-} {
-  const courseDict: {
-    [key: string]: Course;
-  } = {};
-  array.forEach((item: Course) => {
-    const courseKey = item.id;
-    courseDict[courseKey] = item;
-  });
-  return courseDict;
-}
-
-export default function CourseTablePanel() {
+export default function GlobalPriorityPanel() {
   const { t, i18n } = useTranslation();
   const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
-
-  const courses: Record<string, Course> = useMemo(
-    () => convertCourseArrayToObject(selectedCourses),
-    [selectedCourses]
-  );
-  const courseTimeMap: TimeMap = useMemo(
-    () => parseCoursesToTimeMap(convertCourseArrayToObject(selectedCourses)),
-    [selectedCourses]
-  );
 
   return (
     <Flex py={10}>
@@ -95,10 +58,12 @@ export default function CourseTablePanel() {
             alignItems="center"
             overflowX={"auto"}
             __css={courseTableScrollBarCss}
+            w="100%"
+            minH="50vh"
           >
-            <CourseTableContainer
-              courseTimeMap={courseTimeMap}
-              courses={courses}
+            <CourseListContainer
+              selectedCourses={selectedCourses}
+              setSelectedCourses={setSelectedCourses}
             />
           </Flex>
         </Flex>

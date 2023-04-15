@@ -228,8 +228,10 @@ function CourseListContainer(props: {
 
   const handleSaveCourseTable = async () => {
     setIsLoading(true);
-    setSelectedCourses(courseListForSort.map((cid, i) => courses[cid]));
-    setIsLoading(false);
+    setTimeout(() => {
+      setSelectedCourses(courseListForSort.map((cid, i) => courses[cid]));
+      setIsLoading(false);
+    }, 500);
   };
 
   const isEdited = () => {

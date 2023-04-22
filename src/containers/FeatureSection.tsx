@@ -21,7 +21,7 @@ import {
   FaHandPointer,
   FaInfoCircle,
   FaPlus,
-  FaRandom,
+  // FaRandom,
   FaTasks,
 } from "react-icons/fa";
 import DisplayTagsPanel from "@/components/demo/displayTags";
@@ -234,7 +234,7 @@ export function FeatureSection() {
                   </Text>
                 </HStack>
               </Tab>
-              <Tab color="teal.200">
+              {/* <Tab color="teal.200">
                 <HStack>
                   <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
                     <FaRandom />
@@ -243,7 +243,7 @@ export function FeatureSection() {
                     {t("features.intuitive.tabs.conflict")}
                   </Text>
                 </HStack>
-              </Tab>
+              </Tab> */}
             </TabList>
 
             <TabPanels>
@@ -253,9 +253,9 @@ export function FeatureSection() {
               <TabPanel>
                 <GlobalPriorityPanel />
               </TabPanel>
-              <TabPanel>
+              {/* <TabPanel>
                 <StayTunedPart brightness={0.5} />
-              </TabPanel>
+              </TabPanel> */}
             </TabPanels>
           </Tabs>
         </Flex>

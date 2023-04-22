@@ -255,12 +255,14 @@ export interface CourseInfoRowProps extends AccordionItemProps {
   readonly selected: boolean;
   readonly displayTags?: DisplayTagName[];
   readonly onClickAddBtn?: () => void;
+  readonly displayButton?: boolean;
 }
 function CourseInfoRow({
   courseInfo,
   selected,
   displayTags = [],
   onClickAddBtn = () => {},
+  displayButton = true,
   ...restProps
 }: CourseInfoRowProps) {
   const rowColor = useColorModeValue("card.light", "card.dark");
@@ -522,21 +524,23 @@ function CourseInfoRow({
               {<Icon as={isFavorite ? FaHeart : FaRegHeart} boxSize="4" />}
             </Box>
           </Button> */}
-          <Button
-            size="sm"
-            ml={{ base: 0, md: "10px" }}
-            colorScheme={selected ? "red" : "blue"}
-            onClick={() => {
-              onClickAddBtn();
-            }}
-          >
-            <Box
-              transform={selected ? "rotate(45deg)" : ""}
-              transition="all ease-in-out 100ms"
+          {displayButton ? (
+            <Button
+              size="sm"
+              ml={{ base: 0, md: "10px" }}
+              colorScheme={selected ? "red" : "blue"}
+              onClick={() => {
+                onClickAddBtn();
+              }}
             >
-              <FaPlus />
-            </Box>
-          </Button>
+              <Box
+                transform={selected ? "rotate(45deg)" : ""}
+                transition="all ease-in-out 100ms"
+              >
+                <FaPlus />
+              </Box>
+            </Button>
+          ) : null}
         </Flex>
       </Flex>
       <AccordionPanel>

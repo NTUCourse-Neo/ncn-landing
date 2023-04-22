@@ -33,6 +33,7 @@ export default function DisplayTagsPanel() {
             courseInfo={c}
             selected={false}
             displayTags={displayTags}
+            displayButton={false}
           />
         ))}
       </Accordion>

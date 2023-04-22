@@ -172,6 +172,7 @@ export function FeatureSection() {
                           key={c.id}
                           courseInfo={c}
                           selected={false}
+                          displayButton={false}
                         />
                       )
                     )}

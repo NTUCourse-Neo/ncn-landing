@@ -45,10 +45,9 @@ export default function CourseTablePanel() {
     () => convertCourseArrayToObject(selectedCourses),
     [selectedCourses]
   );
-  const courseTimeMap: TimeMap = useMemo(
-    () => parseCoursesToTimeMap(convertCourseArrayToObject(selectedCourses)),
-    [selectedCourses]
-  );
+  const courseTimeMap: TimeMap = useMemo(() => {
+    return parseCoursesToTimeMap(selectedCourses);
+  }, [selectedCourses]);
 
   return (
     <Flex py={10}>

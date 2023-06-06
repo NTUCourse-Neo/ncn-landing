@@ -16,8 +16,6 @@ const SelectedCourseProvider: React.FC<{
 }> = ({ children }) => {
   const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
 
-  console.log(selectedCourses);
-
   return (
     <SelectedCourseContext.Provider
       value={{ selectedCourses, setSelectedCourses }}

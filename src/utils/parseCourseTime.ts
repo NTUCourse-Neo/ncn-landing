@@ -23,15 +23,15 @@ const parseCourseTime = (course: Course, initTimeMap: TimeMap) => {
   return timeMap;
 };
 
-const parseCoursesToTimeMap = (courses: { [key: string]: Course }): TimeMap => {
+const parseCoursesToTimeMap = (courses: Course[]): TimeMap => {
   const parsed: string[] = [];
   let timeMap: TimeMap = {};
-  Object.keys(courses).forEach((key) => {
-    if (parsed.includes(courses[key].id)) {
+  courses.forEach((c) => {
+    if (parsed.includes(c.id)) {
       return;
     }
-    timeMap = parseCourseTime(courses[key], timeMap);
-    parsed.push(courses[key].id);
+    timeMap = parseCourseTime(c, timeMap);
+    parsed.push(c.id);
   });
   return timeMap;
 };

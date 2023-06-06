@@ -58,7 +58,7 @@ export default function DisplayTagsPanel() {
               fontSize: "22px",
             }}
           >
-            Display Tags
+            {t("features.courseInfoRow.displayTags")}
           </Flex>
         </Flex>
         <Flex

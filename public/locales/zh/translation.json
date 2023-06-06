@@ -109,7 +109,8 @@
       "enrollMethod": "加簽方式",
       "language": "授課語言",
       "noTime": "無課程時間",
-      "none": "無"
+      "none": "無",
+      "displayTags": "顯示標籤"
     }
   },
   "mobile": {

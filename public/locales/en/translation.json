@@ -109,7 +109,8 @@
       "enrollMethod": "Enrollment Method",
       "language": "Language",
       "noTime": "No Time Data",
-      "none": "None"
+      "none": "None",
+      "displayTags": "Display Tags"
     }
   },
   "mobile": {

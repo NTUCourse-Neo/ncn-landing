@@ -6,7 +6,6 @@ import {
   IconButton,
   Badge,
   Tag,
-  useToast,
   ScaleFade,
   TagLeftIcon,
   Spacer,
@@ -45,7 +44,7 @@ import {
   restrictToParentElement,
 } from "@dnd-kit/modifiers";
 import { convertCourseArrayToObject } from "@/components/demo/CourseTable";
-
+import { useSelectedCourses } from "@/components/SelectedCourseProvider";
 interface SortableElementProps {
   readonly course: Course;
   readonly courseIdx: number;
@@ -192,13 +191,9 @@ function SortableRowElement(props: SortableElementProps) {
   );
 }
 
-function CourseListContainer(props: {
-  readonly loading?: boolean;
-  readonly selectedCourses: Course[];
-  readonly setSelectedCourses: (courses: Course[]) => void;
-}) {
-  const { loading = false, selectedCourses, setSelectedCourses } = props;
-  const toast = useToast();
+function CourseListContainer(props: { readonly loading?: boolean }) {
+  const { selectedCourses, setSelectedCourses } = useSelectedCourses();
+  const { loading = false } = props;
   const [courseListForSort, setCourseListForSort] = useState<string[]>(
     selectedCourses.map((c, i) => c.id)
   );
@@ -229,18 +224,21 @@ function CourseListContainer(props: {
   const handleSaveCourseTable = async () => {
     setIsLoading(true);
     setTimeout(() => {
-      setSelectedCourses(courseListForSort.map((cid, i) => courses[cid]));
+      const newSelectedCourses = courseListForSort
+        .map((cid, i) => courses[cid])
+        .filter((c) => !prepareToRemoveCourseId.includes(c.id));
+      setPrepareToRemoveCourseId([]);
+      setSelectedCourses(newSelectedCourses);
       setIsLoading(false);
     }, 500);
   };
-
-  const isEdited = () => {
+  const isEdited = useMemo(() => {
     return (
       !courseListForSort.every(
         (course, index) => course === selectedCourses?.[index]?.id
       ) || prepareToRemoveCourseId.length > 0
     );
-  };
+  }, [courseListForSort, prepareToRemoveCourseId, selectedCourses]);
 
   const sensors = useSensors(
     useSensor(MouseSensor),
@@ -278,7 +276,7 @@ function CourseListContainer(props: {
           已選 {courseListForSort.length} 課程
         </Text>
         <Spacer />
-        <ScaleFade initialScale={0.9} in={isEdited()}>
+        <ScaleFade initialScale={0.9} in={isEdited}>
           <Tag colorScheme="yellow" variant="solid">
             <TagLeftIcon boxSize="12px" as={FaExclamationTriangle} />
             變更未儲存
@@ -289,7 +287,7 @@ function CourseListContainer(props: {
           size="sm"
           variant="ghost"
           colorScheme="blue"
-          disabled={!isEdited()}
+          disabled={!isEdited}
           onClick={() => {
             setCourseListForSort(selectedCourses.map((c, i) => c.id));
             setPrepareToRemoveCourseId([]);
@@ -302,7 +300,7 @@ function CourseListContainer(props: {
           size="sm"
           variant="solid"
           colorScheme="teal"
-          disabled={!isEdited()}
+          disabled={!isEdited}
           onClick={() => {
             handleSaveCourseTable();
           }}

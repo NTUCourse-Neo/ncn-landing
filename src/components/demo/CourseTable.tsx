@@ -4,7 +4,7 @@ import { Flex, Accordion, Spacer, Box } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import CourseTableContainer from "@/components/CourseTable/CourseTable";
 import { useMemo } from "react";
-import useSelectedCourses from "@/hooks/useSelectedCourses";
+import { useSelectedCourses } from "@/components/SelectedCourseProvider";
 import { Course } from "@/types/course";
 import { parseCoursesToTimeMap, TimeMap } from "@/utils/parseCourseTime";
 import { setHoveredCourseData } from "@/utils/hoverCourse";

@@ -27,6 +27,7 @@ import {
 import DisplayTagsPanel from "@/components/demo/displayTags";
 import CourseTablePanel from "@/components/demo/CourseTable";
 import GlobalPriorityPanel from "@/components/demo/GlobalPriority";
+import SelectedCourseProvider from "@/components/SelectedCourseProvider";
 
 function GradientText(
   props: TextProps & {
@@ -213,29 +214,50 @@ export function FeatureSection() {
             <br />
             {t("features.intuitive.content2")}
           </Text>
-          <Tabs mt="8">
-            <TabList>
-              <Tab color="teal.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    <FaHandPointer />
-                  </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    {t("features.intuitive.tabs.table")}
-                  </Text>
-                </HStack>
-              </Tab>
-              <Tab color="teal.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    <FaTasks />
-                  </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    {t("features.intuitive.tabs.global")}
-                  </Text>
-                </HStack>
-              </Tab>
-              {/* <Tab color="teal.200">
+          <SelectedCourseProvider>
+            <Tabs mt="8">
+              <TabList>
+                <Tab color="teal.200">
+                  <HStack>
+                    <Text
+                      fontSize="xl"
+                      fontWeight="600"
+                      color="gray.300"
+                      ml="2"
+                    >
+                      <FaHandPointer />
+                    </Text>
+                    <Text
+                      fontSize="xl"
+                      fontWeight="600"
+                      color="gray.300"
+                      ml="2"
+                    >
+                      {t("features.intuitive.tabs.table")}
+                    </Text>
+                  </HStack>
+                </Tab>
+                <Tab color="teal.200">
+                  <HStack>
+                    <Text
+                      fontSize="xl"
+                      fontWeight="600"
+                      color="gray.300"
+                      ml="2"
+                    >
+                      <FaTasks />
+                    </Text>
+                    <Text
+                      fontSize="xl"
+                      fontWeight="600"
+                      color="gray.300"
+                      ml="2"
+                    >
+                      {t("features.intuitive.tabs.global")}
+                    </Text>
+                  </HStack>
+                </Tab>
+                {/* <Tab color="teal.200">
                 <HStack>
                   <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
                     <FaRandom />
@@ -245,20 +267,21 @@ export function FeatureSection() {
                   </Text>
                 </HStack>
               </Tab> */}
-            </TabList>
+              </TabList>
 
-            <TabPanels>
-              <TabPanel>
-                <CourseTablePanel />
-              </TabPanel>
-              <TabPanel>
-                <GlobalPriorityPanel />
-              </TabPanel>
-              {/* <TabPanel>
+              <TabPanels>
+                <TabPanel>
+                  <CourseTablePanel />
+                </TabPanel>
+                <TabPanel>
+                  <GlobalPriorityPanel />
+                </TabPanel>
+                {/* <TabPanel>
                 <StayTunedPart brightness={0.5} />
               </TabPanel> */}
-            </TabPanels>
-          </Tabs>
+              </TabPanels>
+            </Tabs>
+          </SelectedCourseProvider>
         </Flex>
       </Flex>
       <Flex w="100%" bg="#121316" px="48" py="16" flexDirection={"column"}>

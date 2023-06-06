@@ -117,7 +117,10 @@
       "interval": " Interval",
       "changesNotSaved": "Changes not saved",
       "cancel": "Cancel",
-      "save": "Save"
+      "save": "Save",
+      "reset": "Reset",
+      "alreadyAdded": "Already added",
+      "course": "course"
     }
   },
   "mobile": {

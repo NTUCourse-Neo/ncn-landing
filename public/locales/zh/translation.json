@@ -117,7 +117,10 @@
       "interval": "節",
       "changesNotSaved": "變更未儲存",
       "cancel": "取消",
-      "save": "儲存"
+      "save": "儲存",
+      "reset": "重設",
+      "alreadyAdded": "已選",
+      "course": "課程"
     }
   },
   "mobile": {

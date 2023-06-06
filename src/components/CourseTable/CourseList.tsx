@@ -12,12 +12,7 @@ import {
   useBreakpointValue,
   useColorModeValue,
 } from "@chakra-ui/react";
-import {
-  FaPlus,
-  FaTrash,
-  FaExclamationTriangle,
-  FaInfoCircle,
-} from "react-icons/fa";
+import { FaTrash, FaExclamationTriangle } from "react-icons/fa";
 import { FadeLoader } from "react-spinners";
 import { MdDragHandle } from "react-icons/md";
 import { hashToColorHex } from "@/utils/colorAgent";
@@ -45,6 +40,7 @@ import {
 } from "@dnd-kit/modifiers";
 import { convertCourseArrayToObject } from "@/components/demo/CourseTable";
 import { useSelectedCourses } from "@/components/SelectedCourseProvider";
+import { useTranslation } from "react-i18next";
 interface SortableElementProps {
   readonly course: Course;
   readonly courseIdx: number;
@@ -136,18 +132,6 @@ function SortableRowElement(props: SortableElementProps) {
             {course.name}
           </Text>
         </Flex>
-        <Button
-          display={{ base: "none", md: "block" }}
-          flexDirection="row"
-          justifyContent="center"
-          ml={3}
-          size="sm"
-          colorScheme="blue"
-          variant="ghost"
-          onClick={() => {}}
-        >
-          <FaInfoCircle />
-        </Button>
       </Flex>
       <Flex
         ml={{ base: 0, md: 4 }}
@@ -155,25 +139,6 @@ function SortableRowElement(props: SortableElementProps) {
         justifyContent="end"
         alignItems="center"
       >
-        <Button
-          display={{ base: "inline-block", md: "none" }}
-          size="sm"
-          colorScheme="blue"
-          variant="ghost"
-          onClick={() => {}}
-        >
-          <FaInfoCircle />
-        </Button>
-        <Button
-          mx={{ base: 0, md: 2 }}
-          size="sm"
-          variant="ghost"
-          colorScheme="blue"
-          leftIcon={<FaPlus />}
-          onClick={() => {}}
-        >
-          課程網
-        </Button>
         <IconButton
           aria-label="Delete"
           variant={
@@ -192,6 +157,7 @@ function SortableRowElement(props: SortableElementProps) {
 }
 
 function CourseListContainer(props: { readonly loading?: boolean }) {
+  const { t, i18n } = useTranslation();
   const { selectedCourses, setSelectedCourses } = useSelectedCourses();
   const { loading = false } = props;
   const [courseListForSort, setCourseListForSort] = useState<string[]>(
@@ -273,13 +239,15 @@ function CourseListContainer(props: { readonly loading?: boolean }) {
         px="2"
       >
         <Text fontSize="md" fontWeight="bold" color="gray.600">
-          已選 {courseListForSort.length} 課程
+          {t("features.courseTable.alreadyAdded")} {courseListForSort.length}{" "}
+          {t("features.courseTable.course")}
+          {i18n.language === "en" && courseListForSort.length > 1 && "s"}
         </Text>
         <Spacer />
         <ScaleFade initialScale={0.9} in={isEdited}>
           <Tag colorScheme="yellow" variant="solid">
             <TagLeftIcon boxSize="12px" as={FaExclamationTriangle} />
-            變更未儲存
+            {t("features.courseTable.changesNotSaved")}
           </Tag>
         </ScaleFade>
         <Button
@@ -293,7 +261,7 @@ function CourseListContainer(props: { readonly loading?: boolean }) {
             setPrepareToRemoveCourseId([]);
           }}
         >
-          重設
+          {t("features.courseTable.reset")}
         </Button>
         <Button
           ml="2"
@@ -306,7 +274,7 @@ function CourseListContainer(props: { readonly loading?: boolean }) {
           }}
           isLoading={isLoading}
         >
-          儲存
+          {t("features.courseTable.save")}
         </Button>
       </Flex>
       <div>

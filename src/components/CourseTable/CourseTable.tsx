@@ -10,12 +10,11 @@ import {
   Box,
   Text,
   Skeleton,
-  Tooltip,
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
 import CourseTableCard from "@/components/CourseTable/CourseTableCard/index";
 import { weekdayMap, Weekday } from "@/data/CourseMapping";
 import { hashToColorHex } from "@/utils/colorAgent";
@@ -71,7 +70,6 @@ function CourseTableContainer(props: {
   const days: Weekday[] = ["1", "2", "3", "4", "5"];
   const intervalTextColor = useColorModeValue("gray.300", "gray.600");
 
-  const [activeDayCol, setActiveDayCol] = useState<"0" | Weekday>("0");
   const { hoveredCourse, hoveredCourseTimeMap } = useSnapshot(hoverCourseState);
   const renderIntervalContent = useCallback(
     (days: Weekday[], interval: Interval, i: number) => {
@@ -161,71 +159,23 @@ function CourseTableContainer(props: {
   return (
     <Table variant="simple" colorScheme="blue" borderRadius="lg" w="100%">
       <Thead>
-        {activeDayCol === "0" ? (
-          <Tr>
-            {days.map((day, j) => {
-              return (
-                <Th
-                  onClick={() => {
-                    setActiveDayCol(day);
-                  }}
-                  cursor="pointer"
-                  key={`${day}-${j}`}
-                >
-                  <Tooltip
-                    hasArrow
-                    placement="top"
-                    label="點擊展開單日"
-                    bg="gray.600"
-                    color="white"
-                  >
-                    <Center w={{ base: "70px", md: "110px", lg: "4vw" }}>
-                      {weekdayMap[i18n.language == "zh" ? "zh" : "en"][day]}
-                    </Center>
-                  </Tooltip>
-                </Th>
-              );
-            })}
-          </Tr>
-        ) : (
-          <Tr>
-            <Th
-              onClick={() => {
-                setActiveDayCol("0");
-              }}
-              cursor="pointer"
-            >
-              <Tooltip
-                hasArrow
-                placement="top"
-                label="點擊收合"
-                bg="gray.600"
-                color="white"
-              >
-                <Center>
-                  {
-                    weekdayMap[i18n.language == "zh" ? "zh" : "en"][
-                      activeDayCol
-                    ]
-                  }
+        <Tr>
+          {days.map((day, j) => {
+            return (
+              <Th key={`${day}-${j}`}>
+                <Center w={{ base: "70px", md: "110px", lg: "4vw" }}>
+                  {weekdayMap[i18n.language == "zh" ? "zh" : "en"][day]}
                 </Center>
-              </Tooltip>
-            </Th>
-          </Tr>
-        )}
+              </Th>
+            );
+          })}
+        </Tr>
       </Thead>
       <Tbody>
         {intervals.map((interval, i) => {
-          if (activeDayCol === "0") {
-            return (
-              <Tr key={`${interval}-${i}`}>
-                {renderIntervalContent(days, interval, i)}
-              </Tr>
-            );
-          }
           return (
             <Tr key={`${interval}-${i}`}>
-              {renderIntervalContent([activeDayCol], interval, i)}
+              {renderIntervalContent(days, interval, i)}
             </Tr>
           );
         })}

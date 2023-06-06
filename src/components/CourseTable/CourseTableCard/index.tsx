@@ -26,6 +26,7 @@ import SortablePopover from "@/components/CourseTable/CourseTableCard/SortablePo
 import { Interval, Course } from "@/types/course";
 import { useSelectedCourses } from "@/components/SelectedCourseProvider";
 import { convertCourseArrayToObject } from "@/components/demo/CourseTable";
+import { useTranslation } from "react-i18next";
 
 function CourseBox(props: {
   readonly courseId: string;
@@ -81,6 +82,7 @@ function CourseTableCard(props: {
     interval,
     hoverId = "",
   } = props;
+  const { t, i18n } = useTranslation();
   const { selectedCourses, setSelectedCourses } = useSelectedCourses();
   const { isOpen, onOpen, onClose } = useDisclosure();
   // temp state (buffer), used for decide the NEW course order / dispatch to server, when press "save"
@@ -137,8 +139,11 @@ function CourseTableCard(props: {
   const leavePopover = () => {
     onClose();
     // set buffer states to initial state
-    setPrepareToRemoveCourseId([]);
-    setCourseList([]);
+    // use Timeout to avoid the popover close weird animation
+    setTimeout(() => {
+      setPrepareToRemoveCourseId([]);
+      setCourseList([]);
+    }, 100);
   };
 
   return (
@@ -185,12 +190,24 @@ function CourseTableCard(props: {
               justifyContent="start"
               mb="2"
             >
-              節次資訊
+              {t("features.courseTable.intervalInfo")}
               <Badge key={day} ml="2" size="sm">
-                週{day}
+                {i18n.language === "zh" && "週"}
+                {day}
               </Badge>
               <Badge key={interval} ml="2" size="sm">
-                第{interval}節
+                {i18n.language === "zh" && "第"}
+                {interval}
+                {i18n.language === "en"
+                  ? parseInt(interval) === 1
+                    ? "st"
+                    : parseInt(interval) === 2
+                    ? "nd"
+                    : parseInt(interval) === 3
+                    ? "rd"
+                    : "th"
+                  : null}
+                {t("features.courseTable.interval")}
               </Badge>
             </Flex>
           </PopoverHeader>
@@ -210,7 +227,7 @@ function CourseTableCard(props: {
               <ScaleFade initialScale={0.9} in={isEdited}>
                 <Tag colorScheme="yellow" variant="solid">
                   <TagLeftIcon boxSize="12px" as={FaExclamationTriangle} />
-                  變更未儲存
+                  {t("features.courseTable.changesNotSaved")}
                 </Tag>
               </ScaleFade>
               <Spacer />
@@ -221,7 +238,7 @@ function CourseTableCard(props: {
                   leavePopover();
                 }}
               >
-                取消
+                {t("features.courseTable.cancel")}
               </Button>
               <Button
                 colorScheme="teal"
@@ -230,7 +247,7 @@ function CourseTableCard(props: {
                 }}
                 disabled={!isEdited}
               >
-                儲存
+                {t("features.courseTable.save")}
               </Button>
             </Flex>
           </PopoverFooter>

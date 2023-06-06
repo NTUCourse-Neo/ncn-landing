@@ -111,6 +111,13 @@
       "noTime": "No Time Data",
       "none": "None",
       "displayTags": "Display Tags"
+    },
+    "courseTable": {
+      "intervalInfo": "Interval Info",
+      "interval": " Interval",
+      "changesNotSaved": "Changes not saved",
+      "cancel": "Cancel",
+      "save": "Save"
     }
   },
   "mobile": {

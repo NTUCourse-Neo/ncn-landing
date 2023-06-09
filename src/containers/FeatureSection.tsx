@@ -333,6 +333,7 @@ export function FeatureSection() {
                         courseInfo={c}
                         selected={false}
                         displayAddToNol
+                        displayButton={false}
                       />
                     ))}
                 </Accordion>

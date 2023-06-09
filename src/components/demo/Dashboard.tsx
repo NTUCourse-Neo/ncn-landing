@@ -116,7 +116,7 @@ export default function DashboardPanel({
     >
       <Flex flexDirection={"column"} w={{ base: "100%", lg: "44%" }}>
         <Block>
-          <Text fontSize="2xl" fontWeight="800">
+          <Text fontSize="2xl" fontWeight="800" color={headingColor}>
             詳細資料
           </Text>
           <Flex
@@ -287,20 +287,35 @@ export default function DashboardPanel({
       </Flex>
       <Flex flexDirection={"column"} w={{ base: "100%", lg: "33%" }}>
         <Block>
+          <Text fontSize="2xl" fontWeight="800" color={headingColor}>
+            加簽資訊
+          </Text>
           <SignUpPanel />
         </Block>
         <Block>
+          <Text fontSize="2xl" fontWeight="800" color={headingColor}>
+            評價
+          </Text>
           <PTTReviewPanel />
         </Block>
         <Block>
+          <Text fontSize="2xl" fontWeight="800" color={headingColor}>
+            考古題資訊
+          </Text>
           <PTTExamPanel />
         </Block>
       </Flex>
       <Flex flexDirection={"column"} w={{ base: "100%", lg: "33%" }}>
         <Block>
+          <Text fontSize="2xl" fontWeight="800" color={headingColor}>
+            課程大綱
+          </Text>
           <SyllabusPanel />
         </Block>
         <Block>
+          <Text fontSize="2xl" fontWeight="800" color={headingColor}>
+            評分方式
+          </Text>
           <GradePolicyPanel />
         </Block>
       </Flex>

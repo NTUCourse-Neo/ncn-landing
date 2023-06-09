@@ -10,13 +10,6 @@ import {
   VStack,
   StatHelpText,
   Divider,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverHeader,
-  PopoverBody,
   Spacer,
   FlexProps,
   Badge,
@@ -38,6 +31,7 @@ import {
   syllabusFieldSource as syllabusTitle,
 } from "@/types/course";
 import type { PTTData } from "types/course";
+import { hashToColorHexWithHue } from "@/utils/colorAgent";
 
 export interface PTTContentRowContainerProps extends FlexProps {
   readonly info: PTTData;
@@ -459,7 +453,29 @@ export function SyllabusPanel() {
 
 export function GradePolicyPanel() {
   const syllabusData: CourseSyllabus = {
-    grade: [],
+    grade: [
+      {
+        comment: "",
+        title: "Final Project",
+        value: 50,
+      },
+      {
+        comment: "",
+        title: "Quiz",
+        value: 30,
+      },
+      {
+        comment: "",
+        title: "Attendance",
+        value: 20,
+      },
+    ].map((g) => ({
+      ...g,
+      color: hashToColorHexWithHue(g.title, {
+        min: 180,
+        max: 200,
+      }),
+    })),
     syllabus: {
       intro: "概述",
       objective: "目標",
@@ -507,70 +523,25 @@ export function GradePolicyPanel() {
             />
           </Box>
           <VStack mt={{ base: 4, lg: 0 }} align="start">
-            {syllabusData.grade.map((item, index) => {
-              const line = item.comment.split("\n");
-              const content = line.map((item, index) => {
-                return (
-                  <Text
-                    key={"SyllabusDataContent" + index}
-                    mb="1"
-                    fontSize="md"
-                    fontWeight="400"
-                    color={textColor}
-                  >
-                    {item.trim()}
-                  </Text>
-                );
-              });
+            {syllabusData.grade.map((item) => {
               return (
-                <Popover key={"SyllabusData" + index}>
-                  <PopoverTrigger>
-                    <HStack justify="start" cursor="pointer">
-                      <Icon
-                        as={FaCircle}
-                        size="20px"
-                        color={item.color ?? "current"}
-                      />
-                      <Text
-                        fontSize="lg"
-                        fontWeight="800"
-                        color={item.color ?? "current"}
-                      >
-                        {item.value}%
-                      </Text>
-                      <Text fontSize="md" fontWeight="600" color={headingColor}>
-                        {item.title}
-                      </Text>
-                    </HStack>
-                  </PopoverTrigger>
-                  <PopoverContent>
-                    <PopoverArrow />
-                    <PopoverCloseButton />
-                    <PopoverHeader>
-                      <HStack>
-                        <Text
-                          fontSize="lg"
-                          fontWeight="800"
-                          color={item.color ?? "current"}
-                        >
-                          {item.value}%
-                        </Text>
-                        <Text fontSize="md" fontWeight="600" color="gray.700">
-                          {item.title}
-                        </Text>
-                      </HStack>
-                    </PopoverHeader>
-                    <PopoverBody>
-                      {item.comment === "" ? (
-                        <Text fontSize="md" fontWeight="400" color="gray.700">
-                          無詳細資訊
-                        </Text>
-                      ) : (
-                        content
-                      )}
-                    </PopoverBody>
-                  </PopoverContent>
-                </Popover>
+                <HStack justify="start" cursor="pointer" key={`${item.title}`}>
+                  <Icon
+                    as={FaCircle}
+                    size="20px"
+                    color={item.color ?? "current"}
+                  />
+                  <Text
+                    fontSize="lg"
+                    fontWeight="800"
+                    color={item.color ?? "current"}
+                  >
+                    {item.value}%
+                  </Text>
+                  <Text fontSize="md" fontWeight="600" color={headingColor}>
+                    {item.title}
+                  </Text>
+                </HStack>
               );
             })}
           </VStack>

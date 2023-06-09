@@ -110,7 +110,8 @@
       "language": "授課語言",
       "noTime": "無課程時間",
       "none": "無",
-      "displayTags": "顯示標籤"
+      "displayTags": "顯示標籤",
+      "slot": "人數"
     },
     "courseTable": {
       "intervalInfo": "節次資訊",

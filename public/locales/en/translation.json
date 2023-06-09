@@ -110,7 +110,8 @@
       "language": "Language",
       "noTime": "No Time Data",
       "none": "None",
-      "displayTags": "Display Tags"
+      "displayTags": "Display Tags",
+      "slot": "Slot"
     },
     "courseTable": {
       "intervalInfo": "Interval Info",

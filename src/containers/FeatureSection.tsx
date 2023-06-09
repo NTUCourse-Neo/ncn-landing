@@ -28,6 +28,7 @@ import DisplayTagsPanel from "@/components/demo/displayTags";
 import CourseTablePanel from "@/components/demo/CourseTable";
 import GlobalPriorityPanel from "@/components/demo/GlobalPriority";
 import SelectedCourseProvider from "@/components/SelectedCourseProvider";
+import DashboardPanel from "@/components/demo/Dashboard";
 
 function GradientText(
   props: TextProps & {
@@ -339,7 +340,9 @@ export function FeatureSection() {
                 </Accordion>
               </TabPanel>
               <TabPanel>
-                <StayTunedPart brightness={1} />
+                <DashboardPanel
+                  course={mockCourses[i18n.language == "zh" ? "zh" : "en"][1]}
+                />
               </TabPanel>
             </TabPanels>
           </Tabs>

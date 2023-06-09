@@ -257,16 +257,6 @@ export function FeatureSection() {
                     </Text>
                   </HStack>
                 </Tab>
-                {/* <Tab color="teal.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    <FaRandom />
-                  </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    {t("features.intuitive.tabs.conflict")}
-                  </Text>
-                </HStack>
-              </Tab> */}
               </TabList>
 
               <TabPanels>
@@ -276,9 +266,6 @@ export function FeatureSection() {
                 <TabPanel>
                   <GlobalPriorityPanel />
                 </TabPanel>
-                {/* <TabPanel>
-                <StayTunedPart brightness={0.5} />
-              </TabPanel> */}
               </TabPanels>
             </Tabs>
           </SelectedCourseProvider>
@@ -337,7 +324,18 @@ export function FeatureSection() {
 
             <TabPanels>
               <TabPanel>
-                <StayTunedPart brightness={1} />
+                <Accordion allowToggle gap={2} index={0}>
+                  {mockCourses[i18n.language == "zh" ? "zh" : "en"]
+                    .slice(1, 2)
+                    .map((c) => (
+                      <CourseInfoRow
+                        key={c.id}
+                        courseInfo={c}
+                        selected={false}
+                        displayAddToNol
+                      />
+                    ))}
+                </Accordion>
               </TabPanel>
               <TabPanel>
                 <StayTunedPart brightness={1} />

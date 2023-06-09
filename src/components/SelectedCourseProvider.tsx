@@ -20,14 +20,15 @@ const SelectedCourseProvider: React.FC<{
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    const newCourses = selectedCourses.map((c) => {
-      const newCourse = mockCourses[i18n.language === "zh" ? "zh" : "en"].find(
-        (mc) => mc.id === c.id
-      );
-      return newCourse as Course;
-    });
-    setSelectedCourses(newCourses);
-  }, [i18n.language, selectedCourses]);
+    setSelectedCourses((courses) =>
+      courses.map((c) => {
+        const newCourse = mockCourses[
+          i18n.language === "zh" ? "zh" : "en"
+        ].find((mc) => mc.id === c.id);
+        return newCourse as Course;
+      })
+    );
+  }, [i18n.language]);
 
   return (
     <SelectedCourseContext.Provider

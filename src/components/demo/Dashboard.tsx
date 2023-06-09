@@ -9,11 +9,26 @@ import {
   Tag,
   Divider,
   VStack,
+  Tabs,
+  TabPanels,
+  TabList,
+  Icon,
+  TabPanel,
+  Tab,
 } from "@chakra-ui/react";
 import { Course } from "@/types/course";
 import { useTranslation } from "react-i18next";
 import { CourseInfoMap } from "@/data/CourseMapping";
 import parseCourseSchedule from "@/utils/parseCourseSchedule";
+import { FaCircle } from "react-icons/fa";
+import {
+  EnrollStatusPanel,
+  GradePolicyPanel,
+  PTTExamPanel,
+  PTTReviewPanel,
+  SignUpPanel,
+  SyllabusPanel,
+} from "@/components/Panels";
 
 function Block({ children, ...restProps }: FlexProps) {
   return (
@@ -91,6 +106,8 @@ export default function DashboardPanel({
         ],
     },
   ];
+
+  const headingColor = "#E2E8F0";
 
   return (
     <Flex
@@ -214,7 +231,7 @@ export default function DashboardPanel({
               <Text
                 fontSize="md"
                 textAlign="center"
-                color={"#E2E8F0"}
+                color={headingColor}
                 fontWeight="700"
               >
                 修課限制
@@ -229,7 +246,7 @@ export default function DashboardPanel({
               <Text
                 fontSize="md"
                 textAlign="center"
-                color={"#E2E8F0"}
+                color={headingColor}
                 fontWeight="700"
               >
                 備註
@@ -240,20 +257,52 @@ export default function DashboardPanel({
             </VStack>
           )}
           <Divider mt="4" mb="4" borderColor="gray.300" />
-          <Text mb="2" fontSize="lg" color={"#E2E8F0"} fontWeight="700">
+          <Text mb="2" fontSize="lg" color={headingColor} fontWeight="700">
             節次資訊
           </Text>
           <Text fontSize="sm" color={"#CBD5E0"}>
             {parseCourseSchedule(course, i18n.language) ?? "無資訊"}
           </Text>
         </Block>
-        <Block>123</Block>
+        <Block>
+          <Tabs variant="soft-rounded" size="sm">
+            <HStack spacing="4">
+              <Text fontSize="2xl" fontWeight="800" color={headingColor}>
+                選課資訊
+              </Text>
+              <TabList>
+                <Tab>
+                  <Icon mr="2" w="2" as={FaCircle} color="red.600" />
+                  即時
+                </Tab>
+              </TabList>
+            </HStack>
+            <TabPanels my="3">
+              <TabPanel>
+                <EnrollStatusPanel courseSerial={course.serial} />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Block>
       </Flex>
       <Flex flexDirection={"column"} w={{ base: "100%", lg: "33%" }}>
-        <Block>123</Block>
+        <Block>
+          <SignUpPanel />
+        </Block>
+        <Block>
+          <PTTReviewPanel />
+        </Block>
+        <Block>
+          <PTTExamPanel />
+        </Block>
       </Flex>
       <Flex flexDirection={"column"} w={{ base: "100%", lg: "33%" }}>
-        <Block>123</Block>
+        <Block>
+          <SyllabusPanel />
+        </Block>
+        <Block>
+          <GradePolicyPanel />
+        </Block>
       </Flex>
     </Flex>
   );

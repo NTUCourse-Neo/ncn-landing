@@ -68,3 +68,40 @@ export interface Schedule {
   interval: Interval;
   location: string;
 }
+
+export type PTTData = PTTArticle[];
+interface PTTArticle {
+  aid: string;
+  author: string;
+  date: string;
+  title: string;
+  url: string;
+}
+export const syllabusFieldSource = {
+  intro: "概述",
+  objective: "目標",
+  requirement: "要求",
+  office_hour: "Office Hour",
+  material: "參考書目",
+  specify: "指定閱讀",
+};
+export type SyllabusFieldName = keyof typeof syllabusFieldSource;
+export const syllabusFields = Object.keys(
+  syllabusFieldSource
+) as SyllabusFieldName[];
+export type CourseSyllabus = {
+  grade: {
+    color: string | null;
+    comment: string;
+    title: string;
+    value: number;
+  }[];
+  syllabus: Record<SyllabusFieldName, string>;
+};
+export type CourseEnrollStatus = {
+  enrolled: string;
+  enrolled_other: string;
+  fetch_ts?: number;
+  registered: string;
+  remain: string;
+};

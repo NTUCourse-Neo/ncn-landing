@@ -13,24 +13,27 @@ import {
   Spacer,
   FlexProps,
   Badge,
+  IconButton,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { PieChart } from "react-minimal-pie-chart";
 import {
   FaCircle,
   FaExclamationTriangle,
   FaQuestionCircle,
+  FaChevronRight,
+  FaChevronLeft,
 } from "react-icons/fa";
 import { IoMdOpen } from "react-icons/io";
-// import SignUpCard from "components/CourseInfo/SignUpCard";
-// import SignUpSubmitForm from "components/CourseInfo/SignUpSubmitForm";
+import SignUpCard from "@/components/SignUpCard";
+import SignUpSubmitForm from "@/components/SignUpSubmitForm";
 import {
   CourseEnrollStatus,
   CourseSyllabus,
   syllabusFields,
   syllabusFieldSource as syllabusTitle,
 } from "@/types/course";
-import type { PTTData } from "types/course";
+import type { PTTData, SignUpPost } from "@/types/course";
 import { hashToColorHexWithHue } from "@/utils/colorAgent";
 
 export interface PTTContentRowContainerProps extends FlexProps {
@@ -177,24 +180,29 @@ function PanelWrapper({
   return <>{children}</>;
 }
 
-export function SignUpPanel() {
-  // const {
-  //   data: signUpPostData,
-  //   isLoading,
-  //   mutate,
-  // } = useSignUpPostData(courseId);
-  // const [signUpCardIdx, setSignUpCardIdx] = useState(0);
+export function SignUpPanel({ courseId }: { readonly courseId: string }) {
+  const [signUpPostData, setSignUpPostData] = useState<SignUpPost[]>([
+    {
+      content: {
+        amount: 10,
+        comment: "第二週抽學生證加簽",
+        rule: "抽籤",
+        when: "第二週",
+        _id: "0",
+      },
+      course_id: courseId,
+      is_owner: false,
+      self_vote_status: 0,
+      create_ts: Date.now(),
+      type: "???",
+      upvotes: 10,
+      downvotes: 5,
+      user_type: "teacher",
+      _id: "0",
+    },
+  ]);
+  const [signUpCardIdx, setSignUpCardIdx] = useState(0);
   const textColor = "#CBD5E0";
-
-  // trigger after delete sign up card
-  // useEffect(() => {
-  //   if (
-  //     Array.isArray(signUpPostData) &&
-  //     signUpCardIdx >= signUpPostData.length
-  //   ) {
-  //     setSignUpCardIdx(Math.max(signUpPostData.length - 1, 0));
-  //   }
-  // }, [signUpPostData, setSignUpCardIdx, signUpCardIdx]);
 
   return (
     <PanelWrapper
@@ -202,8 +210,7 @@ export function SignUpPanel() {
         <LoadingPanel title="努力跑加簽大地中..." height="100%" />
       }
     >
-      <>123</>
-      {/* {!signUpPostData ? (
+      {!signUpPostData ? (
         <PanelPlaceholder title="無加簽相關資訊" height="100%" />
       ) : signUpPostData.length === 0 ? (
         <Flex
@@ -219,6 +226,7 @@ export function SignUpPanel() {
             <SignUpSubmitForm
               courseId={courseId}
               haveSubmitted={signUpPostData.some((obj) => obj.is_owner)}
+              setSignUpPostData={setSignUpPostData}
             />
           </HStack>
         </Flex>
@@ -232,8 +240,9 @@ export function SignUpPanel() {
           alignItems={{ base: "start", lg: "center" }}
         >
           <SignUpCard
+            setSignUpPostData={setSignUpPostData}
+            setSignUpCardIdx={setSignUpCardIdx}
             post={signUpPostData[signUpCardIdx]}
-            courseId={courseId}
           />
           <HStack w="100%" pr="8" mt="8">
             <HStack>
@@ -250,6 +259,14 @@ export function SignUpPanel() {
                   )
                 }
               />
+              <Text
+                fontSize="sm"
+                fontWeight="800"
+                color={textColor}
+                textAlign="center"
+              >
+                {signUpCardIdx + 1}/{signUpPostData.length}
+              </Text>
               <IconButton
                 aria-label="next"
                 size="md"
@@ -259,23 +276,16 @@ export function SignUpPanel() {
                   setSignUpCardIdx((signUpCardIdx + 1) % signUpPostData.length)
                 }
               />
-              <Text
-                fontSize="sm"
-                fontWeight="800"
-                color={textColor}
-                textAlign="center"
-              >
-                {signUpCardIdx + 1}/{signUpPostData.length}
-              </Text>
             </HStack>
             <Spacer />
             <SignUpSubmitForm
-              courseId={courseId}
+              setSignUpPostData={setSignUpPostData}
               haveSubmitted={signUpPostData.some((obj) => obj.is_owner)}
+              courseId={courseId}
             />
           </HStack>
         </Flex>
-      )} */}
+      )}
     </PanelWrapper>
   );
 }

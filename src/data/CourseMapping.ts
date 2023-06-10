@@ -262,4 +262,15 @@ const weekdayMap: { en: Record<Weekday, string>; zh: Record<Weekday, string> } =
     },
   };
 
-export { CourseInfoMap, weekdayMap };
+const socialUserTypeMap = {
+  student: "學生",
+  teacher: "教師",
+  course_teacher: "此課程講師",
+  course_assistant: "此課程助教",
+  others: "其他",
+};
+
+export type SocialUser = keyof typeof socialUserTypeMap;
+const socialUserTypes = Object.keys(socialUserTypeMap) as SocialUser[];
+
+export { CourseInfoMap, weekdayMap, socialUserTypes, socialUserTypeMap };

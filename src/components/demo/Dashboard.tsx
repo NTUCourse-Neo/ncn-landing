@@ -257,12 +257,12 @@ export default function DashboardPanel({
           </Tabs>
         </Block>
       </Flex>
-      <Flex flexDirection={"column"} w={{ base: "100%", lg: "33%" }}>
+      <Flex flexDirection={"column"} w={{ base: "100%", lg: "43%" }}>
         <Block>
           <Text fontSize="2xl" fontWeight="800" color={headingColor}>
             加簽資訊
           </Text>
-          <SignUpPanel />
+          <SignUpPanel courseId={course.id} />
         </Block>
         <Block>
           <Text fontSize="2xl" fontWeight="800" color={headingColor}>

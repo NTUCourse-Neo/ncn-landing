@@ -1,3 +1,5 @@
+import { SocialUser } from "@/data/CourseMapping";
+
 export interface Course {
   id: string;
   serial: string | null;
@@ -105,3 +107,22 @@ export type CourseEnrollStatus = {
   registered: string;
   remain: string;
 };
+
+export interface SignUpPost {
+  content: {
+    amount: number;
+    comment: string;
+    rule: string;
+    when: string;
+    _id: string;
+  };
+  course_id: string;
+  create_ts: number;
+  is_owner: boolean;
+  self_vote_status: number;
+  type: string;
+  upvotes: number;
+  downvotes: number;
+  user_type: SocialUser;
+  _id: string;
+}

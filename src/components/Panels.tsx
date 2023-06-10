@@ -35,6 +35,7 @@ import {
 } from "@/types/course";
 import type { PTTData, SignUpPost } from "@/types/course";
 import { hashToColorHexWithHue } from "@/utils/colorAgent";
+import { useTranslation } from "react-i18next";
 
 export interface PTTContentRowContainerProps extends FlexProps {
   readonly info: PTTData;
@@ -301,50 +302,42 @@ export function EnrollStatusPanel({
     registered: "100",
     remain: "80",
   };
+  const { t } = useTranslation();
   return (
     <PanelWrapper
       loadingFallback={
         <LoadingPanel title="努力取得資訊中..." height="100%" pt={8} />
       }
     >
-      {!courseEnrollStatus || courseSerial === null ? (
-        <PanelPlaceholder
-          title="無法取得課程即時資訊"
-          isEmpty={false}
-          h="100%"
-          pt="8"
-        />
-      ) : (
-        <Flex
-          w="100%"
-          mt="4"
-          flexDirection="row"
-          justifyContent="center"
-          alignItems={{ base: "start", lg: "center" }}
-          flexWrap="wrap"
-        >
-          <Stat>
-            <StatLabel>選上</StatLabel>
-            <StatNumber>{courseEnrollStatus.enrolled}</StatNumber>
-            <StatHelpText>人</StatHelpText>
-          </Stat>
-          <Stat>
-            <StatLabel>選上外系</StatLabel>
-            <StatNumber>{courseEnrollStatus.enrolled_other}</StatNumber>
-            <StatHelpText>人</StatHelpText>
-          </Stat>
-          <Stat>
-            <StatLabel>登記</StatLabel>
-            <StatNumber>{courseEnrollStatus.registered}</StatNumber>
-            <StatHelpText>人</StatHelpText>
-          </Stat>
-          <Stat>
-            <StatLabel>剩餘</StatLabel>
-            <StatNumber>{courseEnrollStatus.remain}</StatNumber>
-            <StatHelpText>空位</StatHelpText>
-          </Stat>
-        </Flex>
-      )}
+      <Flex
+        w="100%"
+        mt="4"
+        flexDirection="row"
+        justifyContent="center"
+        alignItems={{ base: "start", lg: "center" }}
+        flexWrap="wrap"
+      >
+        <Stat>
+          <StatLabel>{t("features.dashboard.enrolled")}</StatLabel>
+          <StatNumber>{courseEnrollStatus.enrolled}</StatNumber>
+          <StatHelpText>{t("features.dashboard.people")}</StatHelpText>
+        </Stat>
+        {/* <Stat>
+          <StatLabel>選上外系</StatLabel>
+          <StatNumber>{courseEnrollStatus.enrolled_other}</StatNumber>
+          <StatHelpText>{t("features.dashboard.people")}</StatHelpText>
+        </Stat> */}
+        <Stat>
+          <StatLabel>{t("features.dashboard.registered")}</StatLabel>
+          <StatNumber>{courseEnrollStatus.registered}</StatNumber>
+          <StatHelpText>{t("features.dashboard.people")}</StatHelpText>
+        </Stat>
+        <Stat>
+          <StatLabel>{t("features.dashboard.remain")}</StatLabel>
+          <StatNumber>{courseEnrollStatus.remain}</StatNumber>
+          <StatHelpText>{t("features.courseInfoRow.slot")}</StatHelpText>
+        </Stat>
+      </Flex>
     </PanelWrapper>
   );
 }

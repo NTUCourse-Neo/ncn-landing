@@ -128,7 +128,18 @@
       "course": "課程"
     },
     "dashboard": {
-      "basicInfo": "詳細資料"
+      "basicInfo": "詳細資料",
+      "enrollStatus": "選課資訊",
+      "signUpInfo": "加簽資訊",
+      "review": "課程評價",
+      "pastExam": "考古題資訊",
+      "syllabus": "課程大綱",
+      "gradingPolicy": "評分方式",
+      "realtime": "即時",
+      "enrolled": "選上",
+      "people": "人",
+      "remain": "剩餘",
+      "registered": "登記"
     }
   },
   "mobile": {

@@ -249,12 +249,12 @@ export default function DashboardPanel({
           <Tabs variant="soft-rounded" size="sm">
             <HStack spacing="4">
               <Text fontSize="2xl" fontWeight="800" color={headingColor}>
-                選課資訊
+                {t("features.dashboard.enrollStatus")}
               </Text>
               <TabList>
                 <Tab>
                   <Icon mr="2" w="2" as={FaCircle} color="red.600" />
-                  即時
+                  {t("features.dashboard.realtime")}
                 </Tab>
               </TabList>
             </HStack>
@@ -269,19 +269,19 @@ export default function DashboardPanel({
       <Flex flexDirection={"column"} w={{ base: "100%", lg: "43%" }}>
         <Block>
           <Text fontSize="2xl" fontWeight="800" color={headingColor}>
-            加簽資訊
+            {t("features.dashboard.signUpInfo")}
           </Text>
           <SignUpPanel courseId={course.id} />
         </Block>
         <Block>
           <Text fontSize="2xl" fontWeight="800" color={headingColor}>
-            評價
+            {t("features.dashboard.review")}
           </Text>
           <PTTReviewPanel />
         </Block>
         <Block>
           <Text fontSize="2xl" fontWeight="800" color={headingColor}>
-            考古題資訊
+            {t("features.dashboard.pastExam")}
           </Text>
           <PTTExamPanel />
         </Block>
@@ -289,13 +289,13 @@ export default function DashboardPanel({
       <Flex flexDirection={"column"} w={{ base: "100%", lg: "33%" }}>
         <Block>
           <Text fontSize="2xl" fontWeight="800" color={headingColor}>
-            課程大綱
+            {t("features.dashboard.syllabus")}
           </Text>
           <SyllabusPanel />
         </Block>
         <Block>
           <Text fontSize="2xl" fontWeight="800" color={headingColor}>
-            評分方式
+            {t("features.dashboard.gradingPolicy")}
           </Text>
           <GradePolicyPanel />
         </Block>

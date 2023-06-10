@@ -128,7 +128,18 @@
       "course": "course"
     },
     "dashboard": {
-      "basicInfo": "Basic Info"
+      "basicInfo": "Basic Info",
+      "enrollStatus": "Enroll Status",
+      "signUpInfo": "Sign Up Info",
+      "review": "Course Review",
+      "pastExam": "Past Exam",
+      "syllabus": "Syllabus",
+      "gradingPolicy": "Grading Policy",
+      "realtime": "Realtime",
+      "enrolled": "Enrolled",
+      "people": "people",
+      "remain": "Remain",
+      "registered": "Registered"
     }
   },
   "mobile": {

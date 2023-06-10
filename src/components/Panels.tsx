@@ -289,7 +289,7 @@ export function EnrollStatusPanel({
     enrolled: "30",
     enrolled_other: "10",
     registered: "100",
-    remain: "20",
+    remain: "140",
   };
   return (
     <PanelWrapper
@@ -377,12 +377,13 @@ export function SyllabusPanel() {
   const syllabusData: CourseSyllabus = {
     grade: [],
     syllabus: {
-      intro: "概述",
-      objective: "目標",
-      requirement: "要求",
-      office_hour: "Office Hour",
-      material: "參考書目",
-      specify: "指定閱讀",
+      intro: "介紹基本網路服務架構",
+      objective:
+        "學習全端網頁應用程式設計，學會使用MongoDB, Express, React, Node.js",
+      requirement: "無",
+      office_hour: "Mon 10:00-12:00",
+      material: "無",
+      specify: "	總人數上限：180人 ",
     },
   };
   const headingColor = "#E2E8F0";

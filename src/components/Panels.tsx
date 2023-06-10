@@ -374,8 +374,7 @@ export function PTTExamPanel() {
 }
 
 export function SyllabusPanel() {
-  const syllabusData: CourseSyllabus = {
-    grade: [],
+  const syllabusData: Pick<CourseSyllabus, "syllabus"> = {
     syllabus: {
       intro: "介紹基本網路服務架構",
       objective:
@@ -453,7 +452,7 @@ export function SyllabusPanel() {
 }
 
 export function GradePolicyPanel() {
-  const syllabusData: CourseSyllabus = {
+  const syllabusData: Pick<CourseSyllabus, "grade"> = {
     grade: [
       {
         comment: "",
@@ -477,17 +476,8 @@ export function GradePolicyPanel() {
         max: 200,
       }),
     })),
-    syllabus: {
-      intro: "概述",
-      objective: "目標",
-      requirement: "要求",
-      office_hour: "Office Hour",
-      material: "參考書目",
-      specify: "指定閱讀",
-    },
   };
   const headingColor = "#E2E8F0";
-  const textColor = "#CBD5E0";
   const pieChartData = syllabusData?.grade.filter((g) => g.color !== null) as {
     title?: string | number;
     color: string;

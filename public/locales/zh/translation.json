@@ -111,7 +111,11 @@
       "noTime": "無課程時間",
       "none": "無",
       "displayTags": "顯示標籤",
-      "slot": "人數"
+      "slot": "人數",
+      "requirement": "必選修",
+      "semester": "開課學期",
+      "departments": "系所",
+      "timeLoc": "節次資訊"
     },
     "courseTable": {
       "intervalInfo": "節次資訊",
@@ -122,6 +126,9 @@
       "reset": "重設",
       "alreadyAdded": "已選",
       "course": "課程"
+    },
+    "dashboard": {
+      "basicInfo": "詳細資料"
     }
   },
   "mobile": {

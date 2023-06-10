@@ -55,23 +55,32 @@ export default function DashboardPanel({
 }) {
   const { t, i18n } = useTranslation();
   const course_codes_1 = [
-    { title: "流水號", value: course.serial },
-    { title: "課號", value: course.code },
-    { title: "課程識別碼", value: course.identifier },
-    { title: "班次", value: course?.class ?? "無" },
+    {
+      title: t("features.courseInfoRow.courseSerial"),
+      value: course.serial,
+    },
+    { title: t("features.courseInfoRow.courseCode"), value: course.code },
+    {
+      title: t("features.courseInfoRow.courseIdentifier"),
+      value: course.identifier,
+    },
+    {
+      title: t("features.courseInfoRow.courseClass"),
+      value: course?.class ?? "無",
+    },
   ];
   const course_codes_2 = [
-    { title: "人數上限", value: course.slot },
+    { title: t("features.courseInfoRow.slot"), value: course.slot },
     {
-      title: "必選修",
+      title: t("features.courseInfoRow.requirement"),
       value:
         CourseInfoMap.requirement.map[i18n.language === "en" ? "en" : "zh"][
           course.requirement
         ],
     },
-    { title: "開課學期", value: course.semester },
+    { title: t("features.courseInfoRow.semester"), value: course.semester },
     {
-      title: "授課語言",
+      title: t("features.courseInfoRow.language"),
       value:
         CourseInfoMap.language.map[i18n.language === "en" ? "en" : "zh"][
           course.language
@@ -89,7 +98,7 @@ export default function DashboardPanel({
       <Flex flexDirection={"column"} w={{ base: "100%", lg: "33%" }}>
         <Block>
           <Text fontSize="2xl" fontWeight="800" color={headingColor}>
-            詳細資料
+            {t("features.dashboard.basicInfo")}
           </Text>
           <Flex
             mt="4"
@@ -130,13 +139,13 @@ export default function DashboardPanel({
             <Flex flexDirection="column" flexWrap="wrap">
               <Stat>
                 <StatLabel color={"gray.500"} mb="-1">
-                  系所
+                  {t("features.courseInfoRow.departments")}
                 </StatLabel>
                 <StatNumber mb="1">
                   <HStack spacing="2">
                     {course.departments.length === 0 ? (
                       <Tag colorScheme="blackAlpha" size="lg">
-                        無資訊
+                        {t("features.courseInfoRow.unknown")}
                       </Tag>
                     ) : (
                       <Flex flexDirection={"row"} flexWrap="wrap">
@@ -159,14 +168,14 @@ export default function DashboardPanel({
               </Stat>
               <Stat>
                 <StatLabel color={"gray.500"} mb="-1">
-                  學分
+                  {t("features.courseInfoRow.credits")}
                 </StatLabel>
                 <StatNumber mb="2">{course.credits}</StatNumber>
               </Stat>
               {course.enroll_method ? (
                 <Stat>
                   <StatLabel color={"gray.500"} mb="-1">
-                    加簽方式
+                    {t("features.courseInfoRow.enrollMethod")}
                   </StatLabel>
                   <StatNumber mb="2">
                     <HStack spacing="2">
@@ -191,7 +200,7 @@ export default function DashboardPanel({
               ) : null}
               <Stat>
                 <StatLabel color={"gray.500"} mb="-1">
-                  開課單位
+                  {t("features.courseInfoRow.lectureDept")}
                 </StatLabel>
                 <StatNumber>{course.provider.toUpperCase()}</StatNumber>
               </Stat>
@@ -206,7 +215,7 @@ export default function DashboardPanel({
                 color={headingColor}
                 fontWeight="700"
               >
-                修課限制
+                {t("features.courseInfoRow.limitation")}
               </Text>
               <Text fontSize="sm" color={"#CBD5E0"} align="start">
                 {course.limitation}
@@ -221,7 +230,7 @@ export default function DashboardPanel({
                 color={headingColor}
                 fontWeight="700"
               >
-                備註
+                {t("features.courseInfoRow.note")}
               </Text>
               <Text fontSize="sm" color={"#CBD5E0"} align="start">
                 {course.note}
@@ -230,7 +239,7 @@ export default function DashboardPanel({
           )}
           <Divider mt="4" mb="4" borderColor="gray.300" />
           <Text mb="2" fontSize="lg" color={headingColor} fontWeight="700">
-            節次資訊
+            {t("features.courseInfoRow.timeLoc")}
           </Text>
           <Text fontSize="sm" color={"#CBD5E0"}>
             {parseCourseSchedule(course, i18n.language) ?? "無資訊"}

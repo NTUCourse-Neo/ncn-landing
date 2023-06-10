@@ -111,7 +111,11 @@
       "noTime": "No Time Data",
       "none": "None",
       "displayTags": "Display Tags",
-      "slot": "Slot"
+      "slot": "Slot",
+      "requirement": "Requirement",
+      "semester": "Semester",
+      "departments": "Departments",
+      "timeLoc": "Time & Location"
     },
     "courseTable": {
       "intervalInfo": "Interval Info",
@@ -122,6 +126,9 @@
       "reset": "Reset",
       "alreadyAdded": "Already added",
       "course": "course"
+    },
+    "dashboard": {
+      "basicInfo": "Basic Info"
     }
   },
   "mobile": {

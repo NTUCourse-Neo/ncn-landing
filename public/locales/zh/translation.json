@@ -145,7 +145,11 @@
       "signUpDate": "加簽時間",
       "moreInfo": "更多資訊",
       "disclaimer": "此資訊基於社群回報取得資訊，可能有缺漏或不完全正確，亦不代表本站立場，請確實做好事實查證。",
-      "source": "提供者"
+      "source": "提供者",
+      "fakeSyllabus": {
+        "intro": "介紹基本網路服務架構",
+        "objective": "學習全端網頁應用程式設計，學會使用MongoDB, Express, React, Node.js"
+      }
     }
   },
   "mobile": {

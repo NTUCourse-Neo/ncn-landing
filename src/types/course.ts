@@ -80,12 +80,12 @@ interface PTTArticle {
   url: string;
 }
 export const syllabusFieldSource = {
-  intro: "概述",
-  objective: "目標",
-  requirement: "要求",
-  office_hour: "Office Hour",
-  material: "參考書目",
-  specify: "指定閱讀",
+  intro: { zh: "概述", en: "Introduction" },
+  objective: { zh: "目標", en: "Objective" },
+  requirement: { zh: "要求", en: "Requirement" },
+  office_hour: { zh: "Office Hour", en: "Office Hour" },
+  material: { zh: "參考書目", en: "Reference" },
+  specify: { zh: "指定閱讀", en: "Reading Materials" },
 };
 export type SyllabusFieldName = keyof typeof syllabusFieldSource;
 export const syllabusFields = Object.keys(

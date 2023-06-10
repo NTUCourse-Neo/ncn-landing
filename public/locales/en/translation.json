@@ -145,7 +145,11 @@
       "signUpDate": "Sign Up Date",
       "moreInfo": "More Info",
       "disclaimer": "This information is obtained based on community feedback and may have omissions or be incomplete and not entirely accurate. It also does not represent the position of this website. Please verify the facts thoroughly.",
-      "source": "Source"
+      "source": "Source",
+      "fakeSyllabus": {
+        "intro": "Introduction to basic full stack web development.",
+        "objective": "Learn how to build a website from scratch. This course will cover the basics of HTML, CSS, JavaScript, MongoDB, Express, React, and Node.js."
+      }
     }
   },
   "mobile": {

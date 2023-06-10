@@ -377,6 +377,8 @@ export function PTTReviewPanel() {
 }
 
 export function PTTExamPanel() {
+  const { i18n } = useTranslation();
+  const isEnglish = i18n.language === "en";
   const pttExamData: PTTData | null = null;
   return (
     <PanelWrapper
@@ -385,7 +387,11 @@ export function PTTExamPanel() {
       }
     >
       {!pttExamData || !Array.isArray(pttExamData) ? (
-        <PanelPlaceholder title="無相關貼文資訊" h="100%" pt="8" />
+        <PanelPlaceholder
+          title={isEnglish ? "Can't find any information" : "無相關貼文資訊"}
+          h="100%"
+          pt="8"
+        />
       ) : (
         <PTTContentRowContainer info={pttExamData} height="150px" />
       )}
@@ -394,15 +400,18 @@ export function PTTExamPanel() {
 }
 
 export function SyllabusPanel() {
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === "en";
   const syllabusData: Pick<CourseSyllabus, "syllabus"> = {
     syllabus: {
-      intro: "介紹基本網路服務架構",
-      objective:
-        "學習全端網頁應用程式設計，學會使用MongoDB, Express, React, Node.js",
-      requirement: "無",
+      intro: t("features.dashboard.fakeSyllabus.intro"),
+      objective: t("features.dashboard.fakeSyllabus.objective"),
+      requirement: isEnglish ? "None" : "無",
       office_hour: "Mon 10:00-12:00",
-      material: "無",
-      specify: "	總人數上限：120人 ",
+      material: isEnglish ? "None" : "無",
+      specify: isEnglish
+        ? "The maximum capacity is 120 people."
+        : "總人數上限：120人 ",
     },
   };
   const headingColor = "#E2E8F0";
@@ -439,7 +448,7 @@ export function SyllabusPanel() {
             });
 
             return (
-              <React.Fragment key={syllabusTitle[key]}>
+              <React.Fragment key={syllabusTitle[key][isEnglish ? "en" : "zh"]}>
                 <Text
                   flexBasis="20%"
                   mb="1"
@@ -447,7 +456,7 @@ export function SyllabusPanel() {
                   fontWeight="600"
                   color={headingColor}
                 >
-                  {syllabusTitle[key]}
+                  {syllabusTitle[key][isEnglish ? "en" : "zh"]}
                 </Text>
                 {syllabusData.syllabus[key] !== "" ? (
                   content
@@ -458,7 +467,7 @@ export function SyllabusPanel() {
                     fontWeight="400"
                     color="gray.500"
                   >
-                    無
+                    None
                   </Text>
                 )}
                 <Divider my="4" />

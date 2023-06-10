@@ -139,7 +139,13 @@
       "enrolled": "Enrolled",
       "people": "people",
       "remain": "Remain",
-      "registered": "Registered"
+      "registered": "Registered",
+      "signUpSlot": "Sign Up Slot",
+      "signUpMethod": "Sign Up Method",
+      "signUpDate": "Sign Up Date",
+      "moreInfo": "More Info",
+      "disclaimer": "This information is obtained based on community feedback and may have omissions or be incomplete and not entirely accurate. It also does not represent the position of this website. Please verify the facts thoroughly.",
+      "source": "Source"
     }
   },
   "mobile": {

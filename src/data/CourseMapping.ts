@@ -263,11 +263,11 @@ const weekdayMap: { en: Record<Weekday, string>; zh: Record<Weekday, string> } =
   };
 
 const socialUserTypeMap = {
-  student: "學生",
-  teacher: "教師",
-  course_teacher: "此課程講師",
-  course_assistant: "此課程助教",
-  others: "其他",
+  student: { zh: "學生", en: "Student" },
+  teacher: { zh: "教師", en: "Teacher" },
+  course_teacher: { zh: "此課程講師", en: "Course Teacher" },
+  course_assistant: { zh: "此課程助教", en: "Course Assistant" },
+  others: { zh: "其他", en: "Others" },
 };
 
 export type SocialUser = keyof typeof socialUserTypeMap;

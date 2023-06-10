@@ -24,6 +24,7 @@ import {
   SocialUser,
 } from "@/data/CourseMapping";
 import { SignUpPost } from "@/types/course";
+import { useTranslation } from "react-i18next";
 
 function SignUpSubmitForm(props: {
   readonly courseId: string;
@@ -46,6 +47,8 @@ function SignUpSubmitForm(props: {
     rule: "",
     comment: "",
   });
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === "en";
 
   const handleSubmitSignUpCardForm = async () => {
     // check all fields first
@@ -55,7 +58,9 @@ function SignUpSubmitForm(props: {
         const amount = parseInt(signUpCardForm[key]);
         if (amount < 0) {
           toast({
-            title: "加簽人數請填入大於0的數字",
+            title: isEnglish
+              ? "Please enter positive integer"
+              : "加簽人數請填入大於0的數字",
             description: "",
             status: "error",
             duration: 3000,
@@ -68,7 +73,9 @@ function SignUpSubmitForm(props: {
       if (key !== "comment") {
         if (signUpCardForm[key] === "") {
           toast({
-            title: "請填寫所有欄位",
+            title: isEnglish
+              ? "Please fill-in all required fields"
+              : "請填寫所有欄位",
             description: "",
             status: "error",
             duration: 3000,
@@ -109,6 +116,10 @@ function SignUpSubmitForm(props: {
     onClose();
   };
 
+  const requiredBadge = (
+    <Badge colorScheme={"blue"}>{isEnglish ? "Required" : "必填"}</Badge>
+  );
+
   return (
     <Popover
       placement="bottom"
@@ -125,7 +136,13 @@ function SignUpSubmitForm(props: {
           size="md"
           isDisabled={haveSubmitted}
         >
-          {haveSubmitted ? "已提供過" : "提供資訊"}
+          {haveSubmitted
+            ? isEnglish
+              ? "Submitted"
+              : "已提供過"
+            : isEnglish
+            ? "Provide Information"
+            : "提供資訊"}
         </Button>
       </PopoverTrigger>
       <PopoverContent>
@@ -139,7 +156,7 @@ function SignUpSubmitForm(props: {
             color={headingColor}
             textAlign="center"
           >
-            提供加簽相關資訊
+            {isEnglish ? "Provide Sign Up Information" : "提供加簽相關資訊"}
           </Text>
           <HStack pb={1}>
             <Text
@@ -148,13 +165,13 @@ function SignUpSubmitForm(props: {
               color={headingColor}
               textAlign="center"
             >
-              我是...
+              {isEnglish ? "I am..." : "我是..."}
             </Text>
-            <Badge colorScheme={"blue"}>必填</Badge>
+            {requiredBadge}
           </HStack>
           <Select
             mb="2"
-            placeholder="請選擇身份"
+            placeholder={isEnglish ? "Please select who you are" : "請選擇身份"}
             value={signUpCardForm.user_type}
             onChange={(e) => {
               setSignUpCardForm({
@@ -166,7 +183,7 @@ function SignUpSubmitForm(props: {
             {socialUserTypes.map((key) => {
               return (
                 <option value={key} key={key}>
-                  {socialUserTypeMap[key]}
+                  {socialUserTypeMap[key][i18n.language === "en" ? "en" : "zh"]}
                 </option>
               );
             })}
@@ -178,14 +195,18 @@ function SignUpSubmitForm(props: {
               color={headingColor}
               textAlign="center"
             >
-              加簽人數
+              {t("features.dashboard.signUpSlot")}
             </Text>
-            <Badge colorScheme={"blue"}>必填</Badge>
+            {requiredBadge}
           </HStack>
           <Input
             mb="2"
             type="number"
-            placeholder="限填數字。若不確定，請於下方補充"
+            placeholder={
+              isEnglish
+                ? "Positive Integer Only"
+                : "限填數字。若不確定，請於下方補充"
+            }
             value={signUpCardForm.amount}
             onChange={(e) => {
               setSignUpCardForm({
@@ -201,15 +222,17 @@ function SignUpSubmitForm(props: {
               color={headingColor}
               textAlign="center"
             >
-              加簽時間
+              {t("features.dashboard.signUpDate")}
             </Text>
-            <Badge colorScheme={"blue"}>必填</Badge>
+            {requiredBadge}
           </HStack>
           <Input
             mb="2"
             type="text"
             value={signUpCardForm.when}
-            placeholder="第一週上課、2/15 等..."
+            placeholder={
+              isEnglish ? "Ex: 1st week, or 2/15" : "第一週上課、2/15 等..."
+            }
             onChange={(e) => {
               setSignUpCardForm({
                 ...signUpCardForm,
@@ -224,15 +247,19 @@ function SignUpSubmitForm(props: {
               color={headingColor}
               textAlign="center"
             >
-              加簽方式
+              {t("features.dashboard.signUpMethod")}
             </Text>
-            <Badge colorScheme={"blue"}>必填</Badge>
+            {requiredBadge}
           </HStack>
           <Input
             value={signUpCardForm.rule}
             mb="2"
             type="text"
-            placeholder="抽學生證、填表單、網路抽選 等..."
+            placeholder={
+              isEnglish
+                ? "Ex: Randomly select, Online Form, etc."
+                : "抽學生證、填表單、網路抽選 等..."
+            }
             onChange={(e) => {
               setSignUpCardForm({
                 ...signUpCardForm,
@@ -246,13 +273,13 @@ function SignUpSubmitForm(props: {
             color={headingColor}
             textAlign="center"
           >
-            更多資訊
+            {t("features.dashboard.moreInfo")}
           </Text>
           <Textarea
             mb="2"
             size="md"
             value={signUpCardForm.comment}
-            placeholder="輸入補充資訊"
+            placeholder={isEnglish ? "Other Information" : "輸入補充資訊"}
             onChange={(e) => {
               setSignUpCardForm({
                 ...signUpCardForm,
@@ -276,7 +303,7 @@ function SignUpSubmitForm(props: {
                 setSendingForm(false);
               }}
             >
-              送出
+              {isEnglish ? "Submit" : "送出"}
             </Button>
           </ButtonGroup>
         </Flex>

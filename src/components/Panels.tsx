@@ -182,13 +182,17 @@ function PanelWrapper({
 }
 
 export function SignUpPanel({ courseId }: { readonly courseId: string }) {
+  const { i18n } = useTranslation();
   const [signUpPostData, setSignUpPostData] = useState<SignUpPost[]>([
     {
       content: {
         amount: 10,
-        comment: "第二週抽學生證加簽",
-        rule: "抽籤",
-        when: "第二週",
+        comment:
+          i18n.language === "en"
+            ? "Randomly select student ID cards in the second week"
+            : "第二週抽學生證加簽",
+        rule: i18n.language === "en" ? "Random selection" : "抽籤",
+        when: i18n.language === "en" ? "2nd week" : "第二週",
         _id: "0",
       },
       course_id: courseId,

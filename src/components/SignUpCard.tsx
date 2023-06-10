@@ -11,7 +11,6 @@ import {
   Icon,
   Badge,
   Button,
-  useDisclosure,
   useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -24,6 +23,7 @@ import {
 import { socialUserTypeMap } from "@/data/CourseMapping";
 import Moment from "moment";
 import type { SignUpPost } from "@/types/course";
+import { useTranslation } from "react-i18next";
 
 function SignUpCard({
   post,
@@ -39,13 +39,10 @@ function SignUpCard({
   const is_owner = post?.is_owner;
   const [isVotingPost, setIsVotingPost] = useState(0);
   const [isDeletingPost, setIsDeletingPost] = useState(false);
-  const [isReportingPost, setIsReportingPost] = useState(false);
-  const [reportReason, setReportReason] = useState("");
-  const { onOpen, onClose, isOpen } = useDisclosure();
-  const cardBg = useColorModeValue("gray.200", "gray.700");
   const textColor = useColorModeValue("gray.800", "gray.300");
   const commentColor = useColorModeValue("gray.600", "gray.400");
   const downvoteBtnColor = useColorModeValue("orange", "red");
+  const { t, i18n } = useTranslation();
   Moment.locale("zh-tw");
 
   const handleVotePost = async (post_id: string, vote_type: number) => {
@@ -131,9 +128,9 @@ function SignUpCard({
       justifyContent="space-around"
       alignItems="start"
       flexDirection={{ base: "column", md: "row" }}
-      bg={cardBg}
+      bg={"gray.600"}
       borderRadius="lg"
-      boxShadow="lg"
+      boxShadow="2xl"
     >
       <Flex
         h="100%"
@@ -142,17 +139,17 @@ function SignUpCard({
         alignItems="start"
       >
         <Stat minW="16">
-          <StatLabel>加簽人數</StatLabel>
+          <StatLabel>{t("features.dashboard.signUpSlot")}</StatLabel>
           <StatNumber>{post.content.amount}</StatNumber>
         </Stat>
         <Stat minW="16">
-          <StatLabel>加簽方式</StatLabel>
+          <StatLabel>{t("features.dashboard.signUpMethod")}</StatLabel>
           <Text mt="1" fontSize="lg" fontWeight="600">
             {post.content.rule}
           </Text>
         </Stat>
         <Stat minW="16">
-          <StatLabel>加簽日期</StatLabel>
+          <StatLabel>{t("features.dashboard.signUpDate")}</StatLabel>
           <Text mt="1" fontSize="lg" fontWeight="600">
             {post.content.when}
           </Text>
@@ -162,10 +159,10 @@ function SignUpCard({
         <VStack w="100%" h="100%" justify="start" align="start">
           <HStack w="100%">
             <Text fontSize="sm" fontWeight="600" color={textColor}>
-              更多資訊
+              {t("features.dashboard.moreInfo")}
             </Text>
             <Tooltip
-              label="此資訊基於社群回報取得資訊，可能有缺漏或不完全正確，亦不代表本站立場，請確實做好事實查證。"
+              label={t("features.dashboard.disclaimer")}
               placement="top"
               hasArrow
             >
@@ -175,10 +172,16 @@ function SignUpCard({
             </Tooltip>
             <Spacer />
             <Text fontSize="xs" fontWeight="600" color="gray.500">
-              提供者
+              {t("features.dashboard.source")}
             </Text>
             <Badge colorScheme="blue">
-              {is_owner ? "我" : socialUserTypeMap[post.user_type]}
+              {is_owner
+                ? i18n.language === "en"
+                  ? "Me"
+                  : "我"
+                : socialUserTypeMap[post.user_type][
+                    i18n.language === "en" ? "en" : "zh"
+                  ]}
             </Badge>
             {is_owner ? (
               <Button

@@ -71,7 +71,7 @@ export interface Schedule {
 
 export type PTTData = PTTArticle[];
 interface PTTArticle {
-  aid: string;
+  aid?: string;
   author: string;
   date: string;
   title: string;

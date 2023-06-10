@@ -289,7 +289,7 @@ export function EnrollStatusPanel({
     enrolled: "30",
     enrolled_other: "10",
     registered: "100",
-    remain: "140",
+    remain: "80",
   };
   return (
     <PanelWrapper
@@ -340,7 +340,20 @@ export function EnrollStatusPanel({
 }
 
 export function PTTReviewPanel() {
-  const pttReviewData: PTTData | null = [];
+  const pttReviewData: PTTData | null = [
+    {
+      author: "fpsamuraig",
+      title: "[評價] 105-2 黃鐘揚 Ric's Web Programming",
+      date: "2017-07-02",
+      url: "https://www.ptt.cc/bbs/NTUcourse/M.1498960083.A.05D.html",
+    },
+    {
+      author: "hahaismela",
+      url: "https://www.ptt.cc/bbs/NTUcourse/M.1630048724.A.1EE.html",
+      date: "2021-08-27",
+      title: "[評價] 109-2 黃鐘揚 網路服務程式設計",
+    },
+  ];
   return (
     <PanelWrapper
       loadingFallback={
@@ -357,7 +370,7 @@ export function PTTReviewPanel() {
 }
 
 export function PTTExamPanel() {
-  const pttExamData: PTTData | null = [];
+  const pttExamData: PTTData | null = null;
   return (
     <PanelWrapper
       loadingFallback={
@@ -382,7 +395,7 @@ export function SyllabusPanel() {
       requirement: "無",
       office_hour: "Mon 10:00-12:00",
       material: "無",
-      specify: "	總人數上限：180人 ",
+      specify: "	總人數上限：120人 ",
     },
   };
   const headingColor = "#E2E8F0";

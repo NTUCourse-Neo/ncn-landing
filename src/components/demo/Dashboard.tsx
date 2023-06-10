@@ -48,34 +48,6 @@ function Block({ children, ...restProps }: FlexProps) {
   );
 }
 
-function StatBox({
-  label,
-  value,
-}: {
-  readonly label: string;
-  readonly value: string;
-}) {
-  return (
-    <Stat>
-      <StatLabel
-        sx={{
-          fontSize: "sm",
-          color: "#CBD5E090",
-        }}
-      >
-        {label}
-      </StatLabel>
-      <StatNumber
-        sx={{
-          fontSize: "md",
-        }}
-      >
-        {value}
-      </StatNumber>
-    </Stat>
-  );
-}
-
 export default function DashboardPanel({
   course,
 }: {
@@ -114,7 +86,7 @@ export default function DashboardPanel({
       justifyContent={"center"}
       flexDirection={{ base: "column", lg: "row" }}
     >
-      <Flex flexDirection={"column"} w={{ base: "100%", lg: "44%" }}>
+      <Flex flexDirection={"column"} w={{ base: "100%", lg: "33%" }}>
         <Block>
           <Text fontSize="2xl" fontWeight="800" color={headingColor}>
             詳細資料
@@ -125,7 +97,7 @@ export default function DashboardPanel({
             alignItems="start"
             flexWrap="wrap"
           >
-            <Flex mr="4" flexDirection="column" flexWrap="wrap">
+            <Flex mr="8" flexDirection="column" flexWrap="wrap">
               {course_codes_1.map((item, index) => {
                 if (!item.value) {
                   return null;

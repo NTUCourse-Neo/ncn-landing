@@ -5,6 +5,7 @@ import { VisionSection } from "@/containers/VisionSection";
 import { IntroSection } from "@/containers/IntroSection";
 import { TeamSection } from "@/containers/TeamSection";
 import { FeatureSection } from "@/containers/FeatureSection";
+import { StorySection } from "@/containers/StorySection";
 import { Element as ScrollAnchorWrapper } from "react-scroll";
 import { MobileViewBlocker } from "@/containers/MobileViewBlocker";
 
@@ -44,6 +45,9 @@ export function HomePage() {
         <Divider w={"200px"} mx="auto" my="24" borderColor="gray.500" />
         <ScrollAnchorWrapper name="/#features">
           <FeatureSection />
+        </ScrollAnchorWrapper>
+        <ScrollAnchorWrapper name="/#story">
+          <StorySection />
         </ScrollAnchorWrapper>
         <StayTunedSection />
       </Box>

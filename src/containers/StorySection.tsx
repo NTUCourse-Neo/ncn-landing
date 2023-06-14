@@ -1,7 +1,8 @@
-import { Flex, Box, BoxProps } from "@chakra-ui/react";
+import { Text, Flex, Box, BoxProps, VStack, Center } from "@chakra-ui/react";
 import { useEffect, useCallback, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import stories, { Story } from "@/data/stories";
 
 // in svh
 const HEADERBAR_HEIGHT = 8;
@@ -11,9 +12,11 @@ interface TimelineCardProps extends BoxProps {
   mountPage: (page: number) => void;
   unmountPage: () => void;
   pageIndex: number;
+  story: Story;
 }
 function TimelineCard(props: TimelineCardProps) {
-  const { children, index, mountPage, unmountPage, pageIndex, ...rest } = props;
+  const { children, story, index, mountPage, unmountPage, pageIndex, ...rest } =
+    props;
   const { ref, inView } = useInView({
     threshold: 0.5,
   });
@@ -60,9 +63,11 @@ function TimelineCard(props: TimelineCardProps) {
               <Box
                 sx={{
                   color: isActive ? "white" : "gray.500",
+                  fontSize: "xl",
+                  fontWeight: "900",
                 }}
               >
-                {index}
+                {story.title}
               </Box>
             </Flex>
           </motion.div>
@@ -95,7 +100,6 @@ function TimelineCard(props: TimelineCardProps) {
 
 function StorySection() {
   const [pages, setPages] = useState<number[]>([]); // stack of setPages
-  // console.log(pages);
   const mountPage = useCallback((page: number) => {
     setPages((pages) => [...pages, page]);
   }, []);
@@ -122,16 +126,29 @@ function StorySection() {
           w: "30%",
         }}
       >
-        {Array.from({ length: 5 }, (_, i) => i).map((i) => {
+        {stories.map((s, i) => {
+          const date = new Date(s.startDate);
+          const year = date.getFullYear();
+          const month = date.toLocaleString("default", { month: "short" });
           return (
-            <Box
+            <Flex
               sx={{
                 h: "8svh",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                position: "relative",
               }}
               key={i}
             >
-              {i}
-            </Box>
+              <Text
+                sx={{
+                  color: pageIndex === i ? "white" : "gray.500",
+                  fontWeight: "bold",
+                  fontSize: "lg",
+                }}
+              >{`${month}, ${year}`}</Text>
+            </Flex>
           );
         })}
       </Box>
@@ -139,9 +156,10 @@ function StorySection() {
         sx={{
           position: "relative",
           w: "70%",
+          pr: "10%",
         }}
       >
-        {Array.from({ length: 5 }, (_, i) => i).map((i) => {
+        {stories.map((s, i) => {
           return (
             <TimelineCard
               mountPage={mountPage}
@@ -149,6 +167,7 @@ function StorySection() {
               pageIndex={pageIndex}
               key={i}
               index={i}
+              story={s}
               sx={{
                 position: "sticky",
                 top: `${HEADERBAR_HEIGHT + i * 8}svh`,

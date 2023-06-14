@@ -84,7 +84,7 @@ function TimelineCard(props: TimelineCardProps) {
         sx={{
           width: "100%",
           position: "absolute",
-          bottom: "1vh",
+          bottom: `1svh`,
           zIndex: 10,
           height: "2px",
         }}
@@ -95,7 +95,7 @@ function TimelineCard(props: TimelineCardProps) {
 
 function StorySection() {
   const [pages, setPages] = useState<number[]>([]); // stack of setPages
-  console.log(pages);
+  // console.log(pages);
   const mountPage = useCallback((page: number) => {
     setPages((pages) => [...pages, page]);
   }, []);
@@ -105,7 +105,6 @@ function StorySection() {
   const pageIndex = useMemo(() => {
     return pages?.[pages.length - 1] ?? 0;
   }, [pages]);
-  console.log(pageIndex);
 
   return (
     <Flex
@@ -119,10 +118,23 @@ function StorySection() {
           position: "sticky",
           top: `${HEADERBAR_HEIGHT}svh`,
           width: "10px",
-          height: "100svh",
+          height: "91svh",
           w: "30%",
         }}
-      />
+      >
+        {Array.from({ length: 5 }, (_, i) => i).map((i) => {
+          return (
+            <Box
+              sx={{
+                h: "8svh",
+              }}
+              key={i}
+            >
+              {i}
+            </Box>
+          );
+        })}
+      </Box>
       <Box
         sx={{
           position: "relative",

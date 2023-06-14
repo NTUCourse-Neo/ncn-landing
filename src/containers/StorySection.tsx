@@ -63,7 +63,7 @@ function TimelineCard(props: TimelineCardProps) {
               <Box
                 sx={{
                   color: isActive ? "white" : "gray.500",
-                  fontSize: "xl",
+                  fontSize: "3xl",
                   fontWeight: "900",
                 }}
               >

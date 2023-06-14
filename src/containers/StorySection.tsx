@@ -1,4 +1,4 @@
-import { Text, Flex, Box, BoxProps, VStack, Center } from "@chakra-ui/react";
+import { Text, Flex, Box, BoxProps, Center } from "@chakra-ui/react";
 import { useEffect, useCallback, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -58,17 +58,14 @@ function TimelineCard(props: TimelineCardProps) {
               sx={{
                 h: "8svh",
                 alignItems: "center",
+                color: isActive ? "white" : "gray.500",
+                fontSize: "3xl",
+                fontWeight: "900",
+                gap: "20px",
               }}
             >
-              <Box
-                sx={{
-                  color: isActive ? "white" : "gray.500",
-                  fontSize: "3xl",
-                  fontWeight: "900",
-                }}
-              >
-                {story.title}
-              </Box>
+              <Box>{story.title}</Box>
+              <Center>{story.emoji}</Center>
             </Flex>
           </motion.div>
         ) : null}
@@ -113,6 +110,7 @@ function StorySection() {
   return (
     <Flex
       sx={{
+        pt: "10vh",
         position: "relative",
         width: "100%",
       }}
@@ -123,7 +121,7 @@ function StorySection() {
           top: `${HEADERBAR_HEIGHT}svh`,
           width: "10px",
           height: "91svh",
-          w: "30%",
+          w: "25%",
         }}
       >
         {stories.map((s, i) => {
@@ -155,8 +153,8 @@ function StorySection() {
       <Box
         sx={{
           position: "relative",
-          w: "70%",
-          pr: "10%",
+          w: "75%",
+          pr: "15%",
         }}
       >
         {stories.map((s, i) => {

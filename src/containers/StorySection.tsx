@@ -1,5 +1,5 @@
 import { Flex, Box, BoxProps } from "@chakra-ui/react";
-import { useEffect, useCallback, useMemo, useRef, useState } from "react";
+import { useEffect, useCallback, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -17,6 +17,7 @@ function TimelineCard(props: TimelineCardProps) {
   const { ref, inView } = useInView({
     threshold: 0.5,
   });
+  const isActive = useMemo(() => pageIndex === index, [pageIndex, index]);
 
   useEffect(() => {
     if (inView) {
@@ -40,7 +41,7 @@ function TimelineCard(props: TimelineCardProps) {
     exit: {
       opacity: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.1,
       },
     },
   };
@@ -56,7 +57,13 @@ function TimelineCard(props: TimelineCardProps) {
                 alignItems: "center",
               }}
             >
-              <Box>{index}</Box>
+              <Box
+                sx={{
+                  color: isActive ? "white" : "gray.500",
+                }}
+              >
+                {index}
+              </Box>
             </Flex>
           </motion.div>
         ) : null}
@@ -67,8 +74,7 @@ function TimelineCard(props: TimelineCardProps) {
         }}
       >
         <AnimatePresence>
-          {" "}
-          {pageIndex === index ? (
+          {isActive ? (
             <motion.div {...motionDivVariant}>{children}</motion.div>
           ) : null}
         </AnimatePresence>

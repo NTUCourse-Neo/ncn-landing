@@ -3,6 +3,7 @@ import { useEffect, useCallback, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import stories, { Story } from "@/data/stories";
+import { useTranslation } from "react-i18next";
 
 // in svh
 const HEADERBAR_HEIGHT = 8;
@@ -21,6 +22,8 @@ function TimelineCard(props: TimelineCardProps) {
     threshold: 0.5,
   });
   const isActive = useMemo(() => pageIndex === index, [pageIndex, index]);
+  const { i18n } = useTranslation();
+  const isEnglish = useMemo(() => i18n.language === "en", [i18n.language]);
 
   useEffect(() => {
     if (inView) {
@@ -64,17 +67,13 @@ function TimelineCard(props: TimelineCardProps) {
                 gap: "20px",
               }}
             >
-              <Box>{story.title}</Box>
+              <Box>{story.title[isEnglish ? "en" : "zh"]}</Box>
               <Center>{story.emoji}</Center>
             </Flex>
           </motion.div>
         ) : null}
       </AnimatePresence>
-      <Box
-        sx={{
-          transition: "all 0.3s ease",
-        }}
-      >
+      <Box>
         <AnimatePresence>
           {isActive ? (
             <motion.div {...motionDivVariant}>{children}</motion.div>
@@ -140,13 +139,35 @@ function StorySection() {
               }}
               key={i}
             >
+              <Box
+                sx={{
+                  w: "6px",
+                  h: "6px",
+                  bg: "gray.600",
+                  position: "absolute",
+                  top: 0.5,
+                  borderRadius: "50%",
+                  visibility: i !== 0 ? "visible" : "hidden",
+                }}
+              />
               <Text
                 sx={{
                   color: pageIndex === i ? "white" : "gray.500",
                   fontWeight: "bold",
                   fontSize: "lg",
                 }}
-              >{`${month}, ${year}`}</Text>
+              >{`${month}, ${year}`}</Text>{" "}
+              <Box
+                sx={{
+                  w: "6px",
+                  h: "6px",
+                  bg: "gray.600",
+                  position: "absolute",
+                  bottom: 0.5,
+                  borderRadius: "50%",
+                  visibility: i !== stories.length - 1 ? "visible" : "hidden",
+                }}
+              />
             </Flex>
           );
         })}

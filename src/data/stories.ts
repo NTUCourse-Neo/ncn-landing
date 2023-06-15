@@ -1,7 +1,10 @@
 export interface Story {
   startDate: number;
-  content: string[];
-  title: string;
+  content: {
+    en: string[];
+    zh: string[];
+  };
+  title: { en: string; zh: string };
   media?: string[];
   emoji: string;
 }
@@ -9,27 +12,27 @@ export interface Story {
 const stories: Story[] = [
   {
     startDate: 1635724800000,
-    content: ["hello mom"],
-    title: "How Neo was born",
+    content: { en: ["hello mom"], zh: [] },
+    title: { en: "How Neo was born", zh: "" },
     emoji: "👶",
   },
   {
     startDate: 1643673600000,
-    content: ["hello mom"],
-    title: "After the first success...",
-    emoji: "🎊",
+    content: { en: ["hello mom"], zh: [""] },
+    title: { en: "After the first success...", zh: "" },
+    emoji: "🚀",
   },
   {
     startDate: 1646092800000,
-    content: ["hello mom"],
-    title: "NTU x Neo",
+    content: { en: ["hello mom"], zh: [] },
+    title: { en: "NTU x Neo", zh: "" },
     emoji: "🤝",
   },
   {
     startDate: 1656633600000,
-    content: ["hello mom"],
-    title: "The Last Dance",
-    emoji: "🕺",
+    content: { en: ["hello mom"], zh: [] },
+    title: { en: "The Last Dance", zh: "" },
+    emoji: "💥",
   },
 ];
 

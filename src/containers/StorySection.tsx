@@ -105,6 +105,8 @@ function StorySection() {
   const pageIndex = useMemo(() => {
     return pages?.[pages.length - 1] ?? 0;
   }, [pages]);
+  const { i18n } = useTranslation();
+  const isEnglish = useMemo(() => i18n.language === "en", [i18n.language]);
 
   return (
     <Flex
@@ -156,7 +158,7 @@ function StorySection() {
                   fontWeight: "bold",
                   fontSize: "lg",
                 }}
-              >{`${month}, ${year}`}</Text>{" "}
+              >{`${month}, ${year}`}</Text>
               <Box
                 sx={{
                   w: "6px",
@@ -194,8 +196,21 @@ function StorySection() {
                 height: `${99 - (i + 1) * 8}svh`,
               }}
             >
-              {`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`}
-              {`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`}
+              {s.content[isEnglish ? "en" : "zh"].map((t, i) => (
+                <Text
+                  key={i}
+                  sx={{
+                    cursor: "default",
+                    color: "gray.300",
+                    fontSize: "md",
+                    lineHeight: "1.5",
+                    py: 1,
+                    mb: 1,
+                  }}
+                >
+                  {t}
+                </Text>
+              ))}
             </TimelineCard>
           );
         })}

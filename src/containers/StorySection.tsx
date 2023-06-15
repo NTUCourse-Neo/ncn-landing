@@ -113,6 +113,7 @@ function StorySection() {
         pt: "10vh",
         position: "relative",
         width: "100%",
+        h: `${stories.length * 100 + 50}svh`,
       }}
     >
       <Box

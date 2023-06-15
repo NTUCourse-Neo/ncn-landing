@@ -65,6 +65,7 @@ function TimelineCard(props: TimelineCardProps) {
                 fontSize: "3xl",
                 fontWeight: "900",
                 gap: "20px",
+                transition: "all 0.5s",
               }}
             >
               <Box>{story.title[isEnglish ? "en" : "zh"]}</Box>
@@ -155,6 +156,7 @@ function StorySection() {
               <Text
                 sx={{
                   color: pageIndex === i ? "white" : "gray.500",
+                  transition: "all 0.5s",
                   fontWeight: "bold",
                   fontSize: "lg",
                 }}

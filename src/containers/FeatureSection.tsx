@@ -113,7 +113,7 @@ export function FeatureSection() {
           {t("features.integration.title")}
         </GradientText>
       </Flex>
-      <Flex w="100%" bg="#121316" px="48" py="16" flexDirection={"column"}>
+      <Flex w="100%" bg="#121316" px="20" py="16" flexDirection={"column"}>
         <Flex flexDirection={"column"}>
           <Text
             fontSize="3xl"
@@ -188,7 +188,7 @@ export function FeatureSection() {
           </Tabs>
         </Flex>
       </Flex>
-      <Flex w="100%" bg="black" px="48" py="16" flexDirection={"column"}>
+      <Flex w="100%" bg="black" px="20" py="16" flexDirection={"column"}>
         <Flex flexDirection={"column"}>
           <Text
             fontSize="3xl"
@@ -272,7 +272,7 @@ export function FeatureSection() {
           </SelectedCourseProvider>
         </Flex>
       </Flex>
-      <Flex w="100%" bg="#121316" px="48" py="16" flexDirection={"column"}>
+      <Flex w="100%" bg="#121316" px="20" py="16" flexDirection={"column"}>
         <Flex flexDirection={"column"}>
           <Text
             fontSize="3xl"

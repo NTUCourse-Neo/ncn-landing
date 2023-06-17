@@ -7,29 +7,17 @@ import { TeamSection } from "@/containers/TeamSection";
 import { FeatureSection } from "@/containers/FeatureSection";
 import { StorySection } from "@/containers/StorySection";
 import { Element as ScrollAnchorWrapper } from "react-scroll";
-import { MobileViewBlocker } from "@/containers/MobileViewBlocker";
 
 export function HomePage() {
   return (
     <>
-      <MobileViewBlocker
-        px="6"
-        display={{
-          base: "block",
-          md: "none",
-        }}
-      />
       <Box
         maxW="screen-md"
-        minH="95vh"
+        minH={{ base: "100svh", lg: "95vh" }}
         mx="auto"
         overflow="visible"
-        pt="64px"
+        pt={{ base: 0, lg: "64px" }}
         bg="black"
-        display={{
-          base: "none",
-          md: "block",
-        }}
       >
         <ScrollAnchorWrapper name="/#">
           <IntroSection />

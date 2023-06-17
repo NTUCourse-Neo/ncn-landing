@@ -32,20 +32,36 @@ function TeamMemberBlock({
         <HStack spacing={4}>
           <Link href={"https://github.com/" + github} isExternal>
             <HStack spacing={2}>
-              <Text fontSize={["xl", "xl"]} fontWeight="500" color={"gray.400"}>
+              <Text
+                fontSize={{ base: "md", lg: "xl" }}
+                fontWeight="500"
+                color={"gray.400"}
+              >
                 <FaGithub />
               </Text>
-              <Text fontSize={["xl", "xl"]} fontWeight="500" color={"gray.400"}>
+              <Text
+                fontSize={{ base: "md", lg: "xl" }}
+                fontWeight="500"
+                color={"gray.400"}
+              >
                 {github}
               </Text>
             </HStack>
           </Link>
           <Link href={"https://" + website} isExternal>
             <HStack spacing={2}>
-              <Text fontSize={["xl", "xl"]} fontWeight="500" color={"gray.400"}>
+              <Text
+                fontSize={{ base: "md", lg: "xl" }}
+                fontWeight="500"
+                color={"gray.400"}
+              >
                 <FaGlobeAmericas />
               </Text>
-              <Text fontSize={["xl", "xl"]} fontWeight="500" color={"gray.400"}>
+              <Text
+                fontSize={{ base: "md", lg: "xl" }}
+                fontWeight="500"
+                color={"gray.400"}
+              >
                 {website}
               </Text>
             </HStack>
@@ -53,7 +69,7 @@ function TeamMemberBlock({
         </HStack>
         <Text
           mt="2"
-          fontSize={["lg", "lg"]}
+          fontSize={{ base: "md", lg: "xl" }}
           fontWeight="400"
           color={"gray.400"}
         >
@@ -65,7 +81,7 @@ function TeamMemberBlock({
 }
 
 export function TeamSection() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <Box id="team" w="100%">
       <Flex
@@ -80,13 +96,9 @@ export function TeamSection() {
           flexDirection={"row"}
           justifyContent={"center"}
           alignItems={"center"}
+          px={2}
         >
-          <Text
-            fontSize={["4xl", "4xl"]}
-            mr="4"
-            fontWeight="300"
-            color={"gray.200"}
-          >
+          <Text fontSize={["3xl", "4xl"]} fontWeight="300" color={"gray.200"}>
             {t("vision.createdNeo")}
           </Text>
           <NeoLogoText />
@@ -94,7 +106,7 @@ export function TeamSection() {
         <Flex
           w={"100%"}
           mt="16"
-          flexDirection={"row"}
+          flexDirection={{ base: "column", lg: "row" }}
           justifyContent={"center"}
           alignItems={"center"}
         >

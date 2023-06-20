@@ -115,6 +115,7 @@ export function VisionSection() {
         alignItems={{ base: "start", lg: "center" }}
         py={{ base: 4, lg: 12 }}
         px={{ lg: 12 }}
+        mt={{ md: 40, lg: 0 }}
       >
         <Flex
           w={{ base: "40%", lg: "30%" }}

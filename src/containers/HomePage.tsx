@@ -23,7 +23,7 @@ export function HomePage() {
           <IntroSection />
         </ScrollAnchorWrapper>
         <CalloutSection />
-        <Divider w={"200px"} my="32" borderColor="gray.500" />
+        <Divider w={"200px"} my="32" borderColor="transparent" />
         <ScrollAnchorWrapper name="/#vision">
           <VisionSection />
         </ScrollAnchorWrapper>

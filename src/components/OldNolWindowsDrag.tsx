@@ -1,25 +1,32 @@
-import { Flex, Image } from "@chakra-ui/react";
+import { Flex, Image, FlexProps } from "@chakra-ui/react";
 import { useRef } from "react";
 import { motion } from "framer-motion";
 
-export function OldNolWindowsDrag({ scale = 1 }) {
+interface OldNolWindowsDragProps extends FlexProps {
+  scale?: number;
+}
+export function OldNolWindowsDrag({
+  scale = 1,
+  ...restProps
+}: OldNolWindowsDragProps) {
   const constraintsRef = useRef(null);
   return (
     <Flex
       as={motion.div}
       flexDirection={"row"}
       w="80vw"
-      h="40em"
+      h={{ base: "40vh", lg: "40em" }}
       justifyContent="center"
       alignItems={"center"}
       transform={`scale(${scale})`}
       ref={constraintsRef}
+      {...restProps}
     >
       <motion.div style={{ position: "absolute" }}>
         <Image
           src="img/section_vision/vision_7.png"
           alt="old-ntu-course-website"
-          w="50vw"
+          w={{ base: "100vw", lg: "50vw" }}
           draggable={false}
           pointerEvents={"none"}
         />
@@ -34,7 +41,7 @@ export function OldNolWindowsDrag({ scale = 1 }) {
         <Image
           src="img/section_vision/vision_1.png"
           alt="old-ntu-course-website"
-          w="30vw"
+          w={{ base: "60vw", lg: "30vw" }}
           draggable={false}
           pointerEvents={"none"}
         />
@@ -49,7 +56,7 @@ export function OldNolWindowsDrag({ scale = 1 }) {
         <Image
           src="img/section_vision/vision_2.png"
           alt="old-ntu-course-website"
-          w="20vw"
+          w={{ base: "45vw", lg: "20vw" }}
           draggable={false}
           pointerEvents={"none"}
         />
@@ -64,7 +71,7 @@ export function OldNolWindowsDrag({ scale = 1 }) {
         <Image
           src="img/section_vision/vision_3.png"
           alt="old-ntu-course-website"
-          w="20vw"
+          w={{ base: "50vw", lg: "20vw" }}
           draggable={false}
           pointerEvents={"none"}
         />
@@ -79,7 +86,7 @@ export function OldNolWindowsDrag({ scale = 1 }) {
         <Image
           src="img/section_vision/vision_4.png"
           alt="old-ntu-course-website"
-          w="30vw"
+          w={{ base: "55vw", lg: "30vw" }}
           draggable={false}
           pointerEvents={"none"}
         />

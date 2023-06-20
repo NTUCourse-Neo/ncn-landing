@@ -93,10 +93,11 @@ export function TeamSection() {
       >
         <Flex
           w={"100%"}
-          flexDirection={"row"}
+          flexDirection={{ base: "column", lg: "row" }}
           justifyContent={"center"}
           alignItems={"center"}
-          px={2}
+          gap={4}
+          px={8}
         >
           <Text fontSize={["3xl", "4xl"]} fontWeight="300" color={"gray.200"}>
             {t("vision.createdNeo")}

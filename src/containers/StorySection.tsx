@@ -62,7 +62,7 @@ function TimelineCard(props: TimelineCardProps) {
                 h: "8svh",
                 alignItems: "center",
                 color: isActive ? "white" : "gray.500",
-                fontSize: "3xl",
+                fontSize: { base: "md", lg: "3xl" },
                 fontWeight: "900",
                 gap: "20px",
                 transition: "all 0.5s",
@@ -116,6 +116,7 @@ function StorySection() {
         position: "relative",
         width: "100%",
         h: `${stories.length * 100 + 50}svh`,
+        px: { base: 4, lg: 0 },
       }}
     >
       <Box
@@ -180,7 +181,8 @@ function StorySection() {
         sx={{
           position: "relative",
           w: "75%",
-          pr: "15%",
+          px: { base: "5%", lg: 0 },
+          pr: { lg: "15%" },
         }}
       >
         {stories.map((s, i) => {
@@ -204,7 +206,7 @@ function StorySection() {
                   sx={{
                     cursor: "default",
                     color: "gray.300",
-                    fontSize: "md",
+                    fontSize: { base: "12px", lg: "md" },
                     lineHeight: "1.5",
                     py: 1,
                     mb: 1,

@@ -62,7 +62,7 @@ function TimelineCard(props: TimelineCardProps) {
                 h: "8svh",
                 alignItems: "center",
                 color: isActive ? "white" : "gray.500",
-                fontSize: { base: "md", lg: "3xl" },
+                fontSize: { base: "md", md: "3xl" },
                 fontWeight: "900",
                 gap: "20px",
                 transition: "all 0.5s",

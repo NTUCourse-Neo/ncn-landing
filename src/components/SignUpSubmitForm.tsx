@@ -133,8 +133,8 @@ function SignUpSubmitForm(props: {
         <Button
           colorScheme="blue"
           variant="solid"
-          size="md"
           isDisabled={haveSubmitted}
+          fontSize={{ base: "xs", lg: "md" }}
         >
           {haveSubmitted
             ? isEnglish

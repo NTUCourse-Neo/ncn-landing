@@ -249,7 +249,7 @@ export function SignUpPanel({ courseId }: { readonly courseId: string }) {
             setSignUpCardIdx={setSignUpCardIdx}
             post={signUpPostData[signUpCardIdx]}
           />
-          <HStack w="100%" pr="8" mt="8">
+          <HStack w="100%" pr={{ lg: 8 }} mt="8">
             <HStack>
               <IconButton
                 aria-label="prev"

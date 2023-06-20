@@ -137,6 +137,8 @@ function SignUpCard({
         w={{ base: "100%", md: "24" }}
         flexWrap="wrap"
         alignItems="start"
+        flexDirection={{ base: "column", lg: "row" }}
+        gap={{ base: 4, lg: 0 }}
       >
         <Stat minW="16">
           <StatLabel>{t("features.dashboard.signUpSlot")}</StatLabel>

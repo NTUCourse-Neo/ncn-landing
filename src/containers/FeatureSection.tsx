@@ -92,15 +92,19 @@ export function FeatureSection() {
         justifyContent="center"
         alignItems="center"
         w="100%"
-        minH="60vh"
-        h="87vh"
+        minH={{ base: "30svh", lg: "60vh" }}
+        my={8}
       >
-        <Image src="/img/neo_home.png" h="60vh" position={"absolute"} />
+        <Image
+          src="/img/neo_home.png"
+          h={{ lg: "60vh" }}
+          position={"absolute"}
+        />
         <Box
           bg="black"
           opacity={"0.5"}
           w="100%"
-          h="60vh"
+          h={{ base: "30svh", lg: "60vh" }}
           position={"absolute"}
         />
         <GradientText gradient="linear-gradient(180deg, #ffffff 38%, #9AE6B4 65%, #4FD1C5)">
@@ -113,7 +117,13 @@ export function FeatureSection() {
           {t("features.integration.title")}
         </GradientText>
       </Flex>
-      <Flex w="100%" bg="#121316" px="20" py="16" flexDirection={"column"}>
+      <Flex
+        w="100%"
+        bg="#121316"
+        px={{ base: 8, lg: 20 }}
+        py="16"
+        flexDirection={"column"}
+      >
         <Flex flexDirection={"column"}>
           <Text
             fontSize="3xl"
@@ -143,21 +153,43 @@ export function FeatureSection() {
           <Tabs mt="8">
             <TabList>
               <Tab color="green.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                <HStack gap={2}>
+                  <Text
+                    fontSize={{ base: "md", lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                  >
                     <FaArrowsAltV />
                   </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                  <Text
+                    fontSize={{ base: "md", lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                    align="start"
+                  >
                     {t("features.simple.tabs.extend")}
                   </Text>
                 </HStack>
               </Tab>
               <Tab color="green.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                <HStack gap={2}>
+                  <Text
+                    fontSize={{ base: "md", lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                  >
                     <FaEye />
                   </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                  <Text
+                    fontSize={{ base: "md", lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                    align="start"
+                  >
                     {t("features.simple.tabs.custom")}
                   </Text>
                 </HStack>
@@ -188,7 +220,13 @@ export function FeatureSection() {
           </Tabs>
         </Flex>
       </Flex>
-      <Flex w="100%" bg="black" px="20" py="16" flexDirection={"column"}>
+      <Flex
+        w="100%"
+        bg="black"
+        px={{ base: 8, lg: 20 }}
+        py="16"
+        flexDirection={"column"}
+      >
         <Flex flexDirection={"column"}>
           <Text
             fontSize="3xl"
@@ -219,9 +257,9 @@ export function FeatureSection() {
             <Tabs mt="8">
               <TabList>
                 <Tab color="teal.200">
-                  <HStack>
+                  <HStack gap={2}>
                     <Text
-                      fontSize="xl"
+                      fontSize={{ lg: "xl" }}
                       fontWeight="600"
                       color="gray.300"
                       ml="2"
@@ -229,19 +267,20 @@ export function FeatureSection() {
                       <FaHandPointer />
                     </Text>
                     <Text
-                      fontSize="xl"
+                      fontSize={{ lg: "xl" }}
                       fontWeight="600"
                       color="gray.300"
                       ml="2"
+                      align="start"
                     >
                       {t("features.intuitive.tabs.table")}
                     </Text>
                   </HStack>
                 </Tab>
                 <Tab color="teal.200">
-                  <HStack>
+                  <HStack gap={2}>
                     <Text
-                      fontSize="xl"
+                      fontSize={{ lg: "xl" }}
                       fontWeight="600"
                       color="gray.300"
                       ml="2"
@@ -249,10 +288,11 @@ export function FeatureSection() {
                       <FaTasks />
                     </Text>
                     <Text
-                      fontSize="xl"
+                      fontSize={{ lg: "xl" }}
                       fontWeight="600"
                       color="gray.300"
                       ml="2"
+                      align="start"
                     >
                       {t("features.intuitive.tabs.global")}
                     </Text>
@@ -272,7 +312,13 @@ export function FeatureSection() {
           </SelectedCourseProvider>
         </Flex>
       </Flex>
-      <Flex w="100%" bg="#121316" px="20" py="16" flexDirection={"column"}>
+      <Flex
+        w="100%"
+        bg="#121316"
+        px={{ base: 8, lg: 20 }}
+        py="16"
+        flexDirection={"column"}
+      >
         <Flex flexDirection={"column"}>
           <Text
             fontSize="3xl"
@@ -302,21 +348,43 @@ export function FeatureSection() {
           <Tabs mt="8">
             <TabList>
               <Tab color="blue.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                <HStack gap={2}>
+                  <Text
+                    fontSize={{ lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                  >
                     <FaPlus />
                   </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                  <Text
+                    fontSize={{ lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                    align="start"
+                  >
                     {t("features.integration.tabs.add")}
                   </Text>
                 </HStack>
               </Tab>
               <Tab color="blue.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                <HStack gap={2}>
+                  <Text
+                    fontSize={{ lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                  >
                     <FaInfoCircle />
                   </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                  <Text
+                    fontSize={{ lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                    align="start"
+                  >
                     {t("features.integration.tabs.info")}
                   </Text>
                 </HStack>

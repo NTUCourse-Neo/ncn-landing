@@ -108,7 +108,7 @@ function SortableRowElement(props: SortableElementProps) {
           direction={{ base: "column", md: "row" }}
           alignItems={{ base: "start", md: "center" }}
           ml={{ base: 2, md: 0 }}
-          flexShrink={1}
+          flexShrink={{ lg: 1 }}
         >
           <Badge
             colorScheme="blue"
@@ -127,7 +127,7 @@ function SortableRowElement(props: SortableElementProps) {
             fontSize={{ base: "lg", md: "md" }}
             fontWeight="bold"
             noOfLines={1}
-            maxW={{ base: "120px", md: "50vw", lg: "16vw" }}
+            maxW={{ base: "100%", lg: "16vw" }}
           >
             {course.name}
           </Text>

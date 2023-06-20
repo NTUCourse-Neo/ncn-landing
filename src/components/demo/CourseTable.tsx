@@ -8,6 +8,7 @@ import { useSelectedCourses } from "@/components/SelectedCourseProvider";
 import { Course } from "@/types/course";
 import { parseCoursesToTimeMap, TimeMap } from "@/utils/parseCourseTime";
 import { setHoveredCourseData } from "@/utils/hoverCourse";
+import { ModalWrapper } from "@/components/demo/GlobalPriority";
 
 export const courseTableScrollBarCss = {
   "&::-webkit-scrollbar": {
@@ -50,8 +51,44 @@ export default function CourseTablePanel() {
   }, [selectedCourses]);
 
   return (
-    <Flex py={10}>
-      <Accordion allowToggle gap={2} w="50%">
+    <Flex py={10} flexDirection={{ base: "column", lg: "row" }}>
+      <Flex
+        display={{ base: "inline-block", lg: "none" }}
+        w="100%"
+        justifyContent={"center"}
+        mb={8}
+      >
+        <ModalWrapper title="Course Table">
+          <Box
+            overflow="auto"
+            w="100%"
+            __css={courseTableScrollBarCss}
+            h="90vh"
+          >
+            <Flex
+              flexDirection="row"
+              justifyContent="start"
+              p={4}
+              bg={"#131720"}
+              borderRadius={"8px"}
+            >
+              <Flex
+                flexDirection="row"
+                justifyContent="start"
+                alignItems="center"
+                overflowX={"auto"}
+                __css={courseTableScrollBarCss}
+              >
+                <CourseTableContainer
+                  courseTimeMap={courseTimeMap}
+                  courses={courses}
+                />
+              </Flex>
+            </Flex>
+          </Box>
+        </ModalWrapper>
+      </Flex>
+      <Accordion allowToggle gap={2} w={{ base: "100%", lg: "50%" }}>
         {mockCourses[i18n.language == "zh" ? "zh" : "en"].map((c) => (
           <CourseInfoRow
             key={c.id}
@@ -80,7 +117,13 @@ export default function CourseTablePanel() {
         ))}
       </Accordion>
       <Spacer />
-      <Box overflow="auto" w="45%" __css={courseTableScrollBarCss} h="70vh">
+      <Box
+        display={{ base: "none", lg: "inline-block" }}
+        overflow="auto"
+        w="45%"
+        __css={courseTableScrollBarCss}
+        h="70vh"
+      >
         <Flex
           flexDirection="row"
           justifyContent="start"

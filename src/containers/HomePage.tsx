@@ -1,12 +1,12 @@
 import { Box, Divider } from "@chakra-ui/react";
 import { CalloutSection } from "@/containers/CalloutSection";
-import { StayTunedSection } from "@/containers/StayTunedSection";
 import { VisionSection } from "@/containers/VisionSection";
 import { IntroSection } from "@/containers/IntroSection";
 import { TeamSection } from "@/containers/TeamSection";
 import { FeatureSection } from "@/containers/FeatureSection";
 import { StorySection } from "@/containers/StorySection";
 import { Element as ScrollAnchorWrapper } from "react-scroll";
+import CreditSection from "@/containers/CreditSection";
 
 export function HomePage() {
   return (
@@ -37,7 +37,9 @@ export function HomePage() {
         <ScrollAnchorWrapper name="/#story">
           <StorySection />
         </ScrollAnchorWrapper>
-        <StayTunedSection />
+        <ScrollAnchorWrapper name="/#credits">
+          <CreditSection />
+        </ScrollAnchorWrapper>
       </Box>
     </>
   );

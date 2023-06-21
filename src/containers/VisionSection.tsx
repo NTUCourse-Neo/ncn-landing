@@ -7,19 +7,6 @@ import { OldNolWindowsDrag } from "@/components/OldNolWindowsDrag";
 
 export function VisionSection() {
   const { t } = useTranslation();
-  const overlayVariants: Variants = {
-    offscreen: {
-      opacity: 0,
-    },
-    onscreen: {
-      opacity: 0.8,
-      transition: {
-        type: "ease-in",
-        duration: 0.4,
-        delay: 0.5,
-      },
-    },
-  };
   const titleVariants: Variants = {
     offscreen: {
       opacity: 0,
@@ -41,7 +28,7 @@ export function VisionSection() {
         alignItems="center"
         w="100%"
         rounded="lg"
-        mb="60"
+        py={{ base: 2, lg: 20 }}
       >
         <OldNolWindows />
 
@@ -65,20 +52,6 @@ export function VisionSection() {
             {t("vision.title")}
           </Text>
         </motion.div>
-
-        <motion.div
-          style={{
-            zIndex: 9,
-            height: "75vh",
-            width: "100%",
-            background: "black",
-            position: "absolute",
-          }}
-          variants={overlayVariants}
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: "some" }}
-        ></motion.div>
       </Flex>
       <Flex
         flexDirection="column"

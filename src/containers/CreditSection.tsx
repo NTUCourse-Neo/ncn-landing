@@ -73,25 +73,27 @@ export default function CreditSection() {
         justifyContent: "center",
         alignItems: "center",
         gap: 6,
+        mt: { base: 1, lg: 0 },
       }}
     >
       <Flex
         sx={{
           justifyContent: "center",
           alignItems: "center",
-          gap: 2,
+          gap: { lg: 2 },
           fontSize: { base: "2xl", md: "3xl" },
           fontWeight: "bold",
           color: "gray.100",
+          px: 8,
         }}
       >
-        <Text>✨</Text>
-        <Text>
+        <Text align="center">
+          ✨{" "}
           {lang === "en"
             ? "Thank everyone who has supported us on our journey"
-            : "感謝參與我們旅程的每個人"}
+            : "感謝參與我們旅程的每個人"}{" "}
+          ✨
         </Text>
-        <Text>✨</Text>
       </Flex>
       <Flex
         sx={{

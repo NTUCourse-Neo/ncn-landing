@@ -159,7 +159,9 @@ function StorySection() {
                   color: pageIndex === i ? "white" : "gray.500",
                   transition: "all 0.5s",
                   fontWeight: "bold",
-                  fontSize: "lg",
+                  fontSize: { base: "sm", lg: "lg" },
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
                 }}
               >{`${month}, ${year}`}</Text>
               <Box

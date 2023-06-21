@@ -206,7 +206,7 @@ function StorySection() {
                   sx={{
                     cursor: "default",
                     color: "gray.300",
-                    fontSize: { base: "12px", lg: "md" },
+                    fontSize: { base: "12px", md: "md" },
                     lineHeight: "1.5",
                     py: 1,
                     mb: 1,

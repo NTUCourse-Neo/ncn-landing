@@ -31,7 +31,7 @@ export default function DisplayTagsPanel() {
         gap={2}
         w={{
           base: "100%",
-          lg: "20%",
+          lg: "80%",
         }}
       >
         {mockCourses[i18n.language == "zh" ? "zh" : "en"].map((c) => (

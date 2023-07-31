@@ -14,7 +14,6 @@ export function OldNolWindowsDrag({
     <Flex
       as={motion.div}
       flexDirection={"row"}
-      w="80vw"
       h={{ base: "40vh", lg: "40em" }}
       justifyContent="center"
       alignItems={"center"}

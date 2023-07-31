@@ -104,7 +104,13 @@ export function VisionSection() {
             content="vision.popups.content"
           />
         </Flex>
-        <OldNolWindowsDrag display={{ base: "none", lg: "inline-block" }} />
+        <OldNolWindowsDrag
+          display={{ base: "none", lg: "inline-block" }}
+          maxH="60svh"
+          w={{
+            lg: "1000px",
+          }}
+        />
         <Flex
           w={{ base: "40%", lg: "30%" }}
           flexDirection={"column"}

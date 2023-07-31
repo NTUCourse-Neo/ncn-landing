@@ -11,7 +11,7 @@ import { FaCodeBranch, FaGithub } from "react-icons/fa";
 import { LanguageMenuBtn } from "@/components/LanguageMenuBtn";
 
 function Footer() {
-  const ver = "alpha-20230223";
+  const ver = "alpha-20230621";
   const secondaryColor = "gray.600";
   const handleOpenPage = (page: string) => {
     window.open(page, "_blank");

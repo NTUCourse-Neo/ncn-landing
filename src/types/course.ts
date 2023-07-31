@@ -1,3 +1,5 @@
+import { SocialUser } from "@/data/CourseMapping";
+
 export interface Course {
   id: string;
   serial: string | null;
@@ -67,4 +69,60 @@ export interface Schedule {
   weekday: 1 | 2 | 3 | 4 | 5 | 6 | 7;
   interval: Interval;
   location: string;
+}
+
+export type PTTData = PTTArticle[];
+interface PTTArticle {
+  aid?: string;
+  author: string;
+  date: string;
+  title: string;
+  url: string;
+}
+export const syllabusFieldSource = {
+  intro: { zh: "概述", en: "Introduction" },
+  objective: { zh: "目標", en: "Objective" },
+  requirement: { zh: "要求", en: "Requirement" },
+  office_hour: { zh: "Office Hour", en: "Office Hour" },
+  material: { zh: "參考書目", en: "Reference" },
+  specify: { zh: "指定閱讀", en: "Reading Materials" },
+};
+export type SyllabusFieldName = keyof typeof syllabusFieldSource;
+export const syllabusFields = Object.keys(
+  syllabusFieldSource
+) as SyllabusFieldName[];
+export type CourseSyllabus = {
+  grade: {
+    color: string | null;
+    comment: string;
+    title: string;
+    value: number;
+  }[];
+  syllabus: Record<SyllabusFieldName, string>;
+};
+export type CourseEnrollStatus = {
+  enrolled: string;
+  enrolled_other: string;
+  fetch_ts?: number;
+  registered: string;
+  remain: string;
+};
+
+export interface SignUpPost {
+  content: {
+    amount: number;
+    comment: string;
+    rule: string;
+    when: string;
+    _id: string;
+  };
+  course_id: string;
+  create_ts: number;
+  is_owner: boolean;
+  self_vote_status: number;
+  type: string;
+  upvotes: number;
+  downvotes: number;
+  user_type: SocialUser;
+  _id: string;
 }

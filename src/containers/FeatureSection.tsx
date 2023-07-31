@@ -21,11 +21,14 @@ import {
   FaHandPointer,
   FaInfoCircle,
   FaPlus,
-  FaRandom,
+  // FaRandom,
   FaTasks,
 } from "react-icons/fa";
 import DisplayTagsPanel from "@/components/demo/displayTags";
 import CourseTablePanel from "@/components/demo/CourseTable";
+import GlobalPriorityPanel from "@/components/demo/GlobalPriority";
+import SelectedCourseProvider from "@/components/SelectedCourseProvider";
+import DashboardPanel from "@/components/demo/Dashboard";
 
 function GradientText(
   props: TextProps & {
@@ -89,15 +92,19 @@ export function FeatureSection() {
         justifyContent="center"
         alignItems="center"
         w="100%"
-        minH="60vh"
-        h="87vh"
+        minH={{ base: "30svh", lg: "60vh" }}
+        my={8}
       >
-        <Image src="/img/neo_home.png" h="60vh" position={"absolute"} />
+        <Image
+          src="/img/neo_home.png"
+          h={{ lg: "60vh" }}
+          position={"absolute"}
+        />
         <Box
           bg="black"
           opacity={"0.5"}
           w="100%"
-          h="60vh"
+          h={{ base: "30svh", lg: "60vh" }}
           position={"absolute"}
         />
         <GradientText gradient="linear-gradient(180deg, #ffffff 38%, #9AE6B4 65%, #4FD1C5)">
@@ -110,7 +117,13 @@ export function FeatureSection() {
           {t("features.integration.title")}
         </GradientText>
       </Flex>
-      <Flex w="100%" bg="#121316" px="48" py="16" flexDirection={"column"}>
+      <Flex
+        w="100%"
+        bg="#121316"
+        px={{ base: 8, lg: 20 }}
+        py="16"
+        flexDirection={"column"}
+      >
         <Flex flexDirection={"column"}>
           <Text
             fontSize="3xl"
@@ -140,21 +153,43 @@ export function FeatureSection() {
           <Tabs mt="8">
             <TabList>
               <Tab color="green.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                <HStack gap={2}>
+                  <Text
+                    fontSize={{ base: "md", lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                  >
                     <FaArrowsAltV />
                   </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                  <Text
+                    fontSize={{ base: "md", lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                    align="start"
+                  >
                     {t("features.simple.tabs.extend")}
                   </Text>
                 </HStack>
               </Tab>
               <Tab color="green.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                <HStack gap={2}>
+                  <Text
+                    fontSize={{ base: "md", lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                  >
                     <FaEye />
                   </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                  <Text
+                    fontSize={{ base: "md", lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                    align="start"
+                  >
                     {t("features.simple.tabs.custom")}
                   </Text>
                 </HStack>
@@ -171,6 +206,7 @@ export function FeatureSection() {
                           key={c.id}
                           courseInfo={c}
                           selected={false}
+                          displayButton={false}
                         />
                       )
                     )}
@@ -184,7 +220,13 @@ export function FeatureSection() {
           </Tabs>
         </Flex>
       </Flex>
-      <Flex w="100%" bg="black" px="48" py="16" flexDirection={"column"}>
+      <Flex
+        w="100%"
+        bg="black"
+        px={{ base: 8, lg: 20 }}
+        py="16"
+        flexDirection={"column"}
+      >
         <Flex flexDirection={"column"}>
           <Text
             fontSize="3xl"
@@ -211,55 +253,72 @@ export function FeatureSection() {
             <br />
             {t("features.intuitive.content2")}
           </Text>
-          <Tabs mt="8">
-            <TabList>
-              <Tab color="teal.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    <FaHandPointer />
-                  </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    {t("features.intuitive.tabs.table")}
-                  </Text>
-                </HStack>
-              </Tab>
-              <Tab color="teal.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    <FaTasks />
-                  </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    {t("features.intuitive.tabs.global")}
-                  </Text>
-                </HStack>
-              </Tab>
-              <Tab color="teal.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    <FaRandom />
-                  </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
-                    {t("features.intuitive.tabs.conflict")}
-                  </Text>
-                </HStack>
-              </Tab>
-            </TabList>
+          <SelectedCourseProvider>
+            <Tabs mt="8">
+              <TabList>
+                <Tab color="teal.200">
+                  <HStack gap={2}>
+                    <Text
+                      fontSize={{ lg: "xl" }}
+                      fontWeight="600"
+                      color="gray.300"
+                      ml="2"
+                    >
+                      <FaHandPointer />
+                    </Text>
+                    <Text
+                      fontSize={{ lg: "xl" }}
+                      fontWeight="600"
+                      color="gray.300"
+                      ml="2"
+                      align="start"
+                    >
+                      {t("features.intuitive.tabs.table")}
+                    </Text>
+                  </HStack>
+                </Tab>
+                <Tab color="teal.200">
+                  <HStack gap={2}>
+                    <Text
+                      fontSize={{ lg: "xl" }}
+                      fontWeight="600"
+                      color="gray.300"
+                      ml="2"
+                    >
+                      <FaTasks />
+                    </Text>
+                    <Text
+                      fontSize={{ lg: "xl" }}
+                      fontWeight="600"
+                      color="gray.300"
+                      ml="2"
+                      align="start"
+                    >
+                      {t("features.intuitive.tabs.global")}
+                    </Text>
+                  </HStack>
+                </Tab>
+              </TabList>
 
-            <TabPanels>
-              <TabPanel>
-                <CourseTablePanel />
-              </TabPanel>
-              <TabPanel>
-                <StayTunedPart brightness={0.5} />
-              </TabPanel>
-              <TabPanel>
-                <StayTunedPart brightness={0.5} />
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <CourseTablePanel />
+                </TabPanel>
+                <TabPanel>
+                  <GlobalPriorityPanel />
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+          </SelectedCourseProvider>
         </Flex>
       </Flex>
-      <Flex w="100%" bg="#121316" px="48" py="16" flexDirection={"column"}>
+      <Flex
+        w="100%"
+        bg="#121316"
+        px={{ base: 8, lg: 20 }}
+        py="16"
+        flexDirection={"column"}
+      >
         <Flex flexDirection={"column"}>
           <Text
             fontSize="3xl"
@@ -289,21 +348,43 @@ export function FeatureSection() {
           <Tabs mt="8">
             <TabList>
               <Tab color="blue.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                <HStack gap={2}>
+                  <Text
+                    fontSize={{ lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                  >
                     <FaPlus />
                   </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                  <Text
+                    fontSize={{ lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                    align="start"
+                  >
                     {t("features.integration.tabs.add")}
                   </Text>
                 </HStack>
               </Tab>
               <Tab color="blue.200">
-                <HStack>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                <HStack gap={2}>
+                  <Text
+                    fontSize={{ lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                  >
                     <FaInfoCircle />
                   </Text>
-                  <Text fontSize="xl" fontWeight="600" color="gray.300" ml="2">
+                  <Text
+                    fontSize={{ lg: "xl" }}
+                    fontWeight="600"
+                    color="gray.300"
+                    ml="2"
+                    align="start"
+                  >
                     {t("features.integration.tabs.info")}
                   </Text>
                 </HStack>
@@ -312,10 +393,24 @@ export function FeatureSection() {
 
             <TabPanels>
               <TabPanel>
-                <StayTunedPart brightness={1} />
+                <Accordion allowToggle gap={2} index={0}>
+                  {mockCourses[i18n.language == "zh" ? "zh" : "en"]
+                    .slice(1, 2)
+                    .map((c) => (
+                      <CourseInfoRow
+                        key={c.id}
+                        courseInfo={c}
+                        selected={false}
+                        displayAddToNol
+                        displayButton={false}
+                      />
+                    ))}
+                </Accordion>
               </TabPanel>
               <TabPanel>
-                <StayTunedPart brightness={1} />
+                <DashboardPanel
+                  course={mockCourses[i18n.language == "zh" ? "zh" : "en"][1]}
+                />
               </TabPanel>
             </TabPanels>
           </Tabs>

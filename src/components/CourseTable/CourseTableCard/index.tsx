@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   Flex,
   Text,
@@ -25,6 +24,9 @@ import { hashToColorHex } from "@/utils/colorAgent";
 import { FaExclamationTriangle } from "react-icons/fa";
 import SortablePopover from "@/components/CourseTable/CourseTableCard/SortablePopover";
 import { Interval, Course } from "@/types/course";
+import { useSelectedCourses } from "@/components/SelectedCourseProvider";
+import { convertCourseArrayToObject } from "@/components/demo/CourseTable";
+import { useTranslation } from "react-i18next";
 
 function CourseBox(props: {
   readonly courseId: string;
@@ -73,10 +75,16 @@ function CourseTableCard(props: {
   readonly day: string;
   readonly hoverId: string;
 }) {
-  const { courseInitialOrder, courseData, day, interval, hoverId = "" } = props;
+  const {
+    courseInitialOrder: courseOrder, // initial order
+    courseData,
+    day,
+    interval,
+    hoverId = "",
+  } = props;
+  const { t, i18n } = useTranslation();
+  const { selectedCourses, setSelectedCourses } = useSelectedCourses();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // initial order of courses
-  const courseOrder = courseInitialOrder;
   // temp state (buffer), used for decide the NEW course order / dispatch to server, when press "save"
   const [courseList, setCourseList] = useState<string[]>([]);
   const [prepareToRemoveCourseId, setPrepareToRemoveCourseId] = useState<
@@ -93,21 +101,49 @@ function CourseTableCard(props: {
     }
   };
 
-  const isEdited = () => {
+  const courses: Record<string, Course> = useMemo(
+    () => convertCourseArrayToObject(selectedCourses),
+    [selectedCourses]
+  );
+
+  const isEdited = useMemo(() => {
     // return true if the popup data is different from the original data.
     return (
       !courseOrder.every((course, index) => course === courseList[index]) ||
       prepareToRemoveCourseId.length > 0
     );
-  };
+  }, [courseOrder, courseList, prepareToRemoveCourseId]);
 
-  const saveChanges = async () => {};
+  const saveChanges = async () => {
+    const indices: number[] = [];
+    const courseIdSet = new Set(courseList);
+    selectedCourses.forEach((course, index) => {
+      if (courseIdSet.has(course.id)) {
+        indices.push(index);
+      }
+    });
+    const newSelectedCourses = [...selectedCourses];
+    indices.forEach((targetPosition, i) => {
+      const targetCourseId = courseList[i];
+      const course = courses[targetCourseId];
+      newSelectedCourses[targetPosition] = course;
+    });
+    setSelectedCourses(
+      newSelectedCourses.filter(
+        (c, i) => !prepareToRemoveCourseId.includes(c.id)
+      )
+    );
+    leavePopover();
+  };
 
   const leavePopover = () => {
     onClose();
     // set buffer states to initial state
-    setPrepareToRemoveCourseId([]);
-    setCourseList([]);
+    // use Timeout to avoid the popover close weird animation
+    setTimeout(() => {
+      setPrepareToRemoveCourseId([]);
+      setCourseList([]);
+    }, 100);
   };
 
   return (
@@ -154,12 +190,24 @@ function CourseTableCard(props: {
               justifyContent="start"
               mb="2"
             >
-              節次資訊
+              {t("features.courseTable.intervalInfo")}
               <Badge key={day} ml="2" size="sm">
-                週{day}
+                {i18n.language === "zh" && "週"}
+                {day}
               </Badge>
               <Badge key={interval} ml="2" size="sm">
-                第{interval}節
+                {i18n.language === "zh" && "第"}
+                {interval}
+                {i18n.language === "en"
+                  ? parseInt(interval) === 1
+                    ? "st"
+                    : parseInt(interval) === 2
+                    ? "nd"
+                    : parseInt(interval) === 3
+                    ? "rd"
+                    : "th"
+                  : null}
+                {t("features.courseTable.interval")}
               </Badge>
             </Flex>
           </PopoverHeader>
@@ -176,10 +224,10 @@ function CourseTableCard(props: {
           </PopoverBody>
           <PopoverFooter>
             <Flex justifyContent="end" alignItems="center">
-              <ScaleFade initialScale={0.9} in={isEdited()}>
+              <ScaleFade initialScale={0.9} in={isEdited}>
                 <Tag colorScheme="yellow" variant="solid">
                   <TagLeftIcon boxSize="12px" as={FaExclamationTriangle} />
-                  變更未儲存
+                  {t("features.courseTable.changesNotSaved")}
                 </Tag>
               </ScaleFade>
               <Spacer />
@@ -190,16 +238,16 @@ function CourseTableCard(props: {
                   leavePopover();
                 }}
               >
-                取消
+                {t("features.courseTable.cancel")}
               </Button>
               <Button
                 colorScheme="teal"
                 onClick={() => {
                   saveChanges();
                 }}
-                disabled={!isEdited()}
+                disabled={!isEdited}
               >
-                儲存
+                {t("features.courseTable.save")}
               </Button>
             </Flex>
           </PopoverFooter>

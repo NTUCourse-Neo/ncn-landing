@@ -29,6 +29,11 @@ import { DisplayTagName } from "@/components/demo/displayTags";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
 
+const getNolAddUrl = (course: Course) => {
+  const d_id = "T010"; // TODO: move to parameter?
+  return `https://nol.ntu.edu.tw/nol/coursesearch/myschedule.php?add=${course.serial}&ddd=${d_id}`;
+};
+
 function DeptBadge({ course }: { readonly course: Course }) {
   const { t, i18n } = useTranslation();
   if (course.departments.length === 0) {
@@ -96,8 +101,10 @@ function DrawerDataTag({
 
 function CourseDrawerContainer({
   courseInfo,
+  displayAddToNol = false,
 }: {
   readonly courseInfo: Course;
+  readonly displayAddToNol?: boolean;
 }) {
   const { t } = useTranslation();
   return (
@@ -236,11 +243,15 @@ function CourseDrawerContainer({
         </ButtonGroup>
         <ButtonGroup>
           <Button
+            display={displayAddToNol ? "block" : "none"}
             variant="ghost"
             colorScheme="blue"
             leftIcon={<FaPlus />}
             size="sm"
-            onClick={() => {}}
+            onClick={() => {
+              const url = getNolAddUrl(courseInfo);
+              openPage(url);
+            }}
           >
             {t("features.courseInfoRow.addCourse")}
           </Button>
@@ -255,12 +266,16 @@ export interface CourseInfoRowProps extends AccordionItemProps {
   readonly selected: boolean;
   readonly displayTags?: DisplayTagName[];
   readonly onClickAddBtn?: () => void;
+  readonly displayButton?: boolean;
+  readonly displayAddToNol?: boolean;
 }
 function CourseInfoRow({
   courseInfo,
   selected,
   displayTags = [],
   onClickAddBtn = () => {},
+  displayButton = true,
+  displayAddToNol = false,
   ...restProps
 }: CourseInfoRowProps) {
   const rowColor = useColorModeValue("card.light", "card.dark");
@@ -522,25 +537,30 @@ function CourseInfoRow({
               {<Icon as={isFavorite ? FaHeart : FaRegHeart} boxSize="4" />}
             </Box>
           </Button> */}
-          <Button
-            size="sm"
-            ml={{ base: 0, md: "10px" }}
-            colorScheme={selected ? "red" : "blue"}
-            onClick={() => {
-              onClickAddBtn();
-            }}
-          >
-            <Box
-              transform={selected ? "rotate(45deg)" : ""}
-              transition="all ease-in-out 200ms"
+          {displayButton ? (
+            <Button
+              size="sm"
+              ml={{ base: 0, md: "10px" }}
+              colorScheme={selected ? "red" : "blue"}
+              onClick={() => {
+                onClickAddBtn();
+              }}
             >
-              <FaPlus />
-            </Box>
-          </Button>
+              <Box
+                transform={selected ? "rotate(45deg)" : ""}
+                transition="all ease-in-out 100ms"
+              >
+                <FaPlus />
+              </Box>
+            </Button>
+          ) : null}
         </Flex>
       </Flex>
       <AccordionPanel>
-        <CourseDrawerContainer courseInfo={courseInfo} />
+        <CourseDrawerContainer
+          courseInfo={courseInfo}
+          displayAddToNol={displayAddToNol}
+        />
       </AccordionPanel>
     </AccordionItem>
   );

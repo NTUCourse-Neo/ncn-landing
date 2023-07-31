@@ -1,40 +1,28 @@
 import { Box, Divider } from "@chakra-ui/react";
 import { CalloutSection } from "@/containers/CalloutSection";
-import { StayTunedSection } from "@/containers/StayTunedSection";
 import { VisionSection } from "@/containers/VisionSection";
 import { IntroSection } from "@/containers/IntroSection";
 import { TeamSection } from "@/containers/TeamSection";
 import { FeatureSection } from "@/containers/FeatureSection";
+import { StorySection } from "@/containers/StorySection";
 import { Element as ScrollAnchorWrapper } from "react-scroll";
-import { MobileViewBlocker } from "@/containers/MobileViewBlocker";
+import CreditSection from "@/containers/CreditSection";
 
 export function HomePage() {
   return (
     <>
-      <MobileViewBlocker
-        px="6"
-        display={{
-          base: "block",
-          md: "none",
-        }}
-      />
       <Box
         maxW="screen-md"
-        minH="95vh"
+        minH={{ base: "100svh", lg: "95vh" }}
         mx="auto"
         overflow="visible"
-        pt="64px"
+        pt={{ base: 0, lg: "64px" }}
         bg="black"
-        display={{
-          base: "none",
-          md: "block",
-        }}
       >
         <ScrollAnchorWrapper name="/#">
           <IntroSection />
         </ScrollAnchorWrapper>
         <CalloutSection />
-        <Divider w={"200px"} my="32" borderColor="gray.500" />
         <ScrollAnchorWrapper name="/#vision">
           <VisionSection />
         </ScrollAnchorWrapper>
@@ -45,7 +33,12 @@ export function HomePage() {
         <ScrollAnchorWrapper name="/#features">
           <FeatureSection />
         </ScrollAnchorWrapper>
-        <StayTunedSection />
+        <ScrollAnchorWrapper name="/#story">
+          <StorySection />
+        </ScrollAnchorWrapper>
+        <ScrollAnchorWrapper name="/#credits">
+          <CreditSection />
+        </ScrollAnchorWrapper>
       </Box>
     </>
   );

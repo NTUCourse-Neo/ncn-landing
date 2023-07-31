@@ -1,54 +1,53 @@
 import CourseInfoRow from "@/components/CourseInfoRow";
 import mockCourses from "@/data/mockCourses";
-import { Flex, Accordion, Spacer, Box } from "@chakra-ui/react";
+import {
+  useDisclosure,
+  Flex,
+  Accordion,
+  Spacer,
+  Box,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+} from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import CourseTableContainer from "@/components/CourseTable/CourseTable";
-import { useMemo } from "react";
-import { useSelectedCourses } from "@/components/SelectedCourseProvider";
-import { Course } from "@/types/course";
-import { parseCoursesToTimeMap, TimeMap } from "@/utils/parseCourseTime";
 import { setHoveredCourseData } from "@/utils/hoverCourse";
-import { ModalWrapper } from "@/components/demo/GlobalPriority";
+import { courseTableScrollBarCss } from "@/components/demo/CourseTable";
+import CourseListContainer from "@/components/CourseTable/CourseList";
+import { useSelectedCourses } from "@/components/SelectedCourseProvider";
 
-export const courseTableScrollBarCss = {
-  "&::-webkit-scrollbar": {
-    w: "2",
-    h: "2",
-  },
-  "&::-webkit-scrollbar-track": {
-    w: "6",
-    h: "6",
-  },
-  "&::-webkit-scrollbar-thumb": {
-    borderRadius: "10",
-    bg: `gray.300`,
-  },
-};
+interface ModalWrapperProps {
+  children: React.ReactNode;
+  title: string;
+}
+export function ModalWrapper(props: ModalWrapperProps) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { children, title } = props;
+  return (
+    <>
+      <Button onClick={onOpen} colorScheme="cyan">
+        Open {title}
+      </Button>
 
-export function convertCourseArrayToObject(array: Course[]): {
-  [key: string]: Course;
-} {
-  const courseDict: {
-    [key: string]: Course;
-  } = {};
-  array.forEach((item: Course) => {
-    const courseKey = item.id;
-    courseDict[courseKey] = item;
-  });
-  return courseDict;
+      <Modal isOpen={isOpen} onClose={onClose} size="full">
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{title}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>{children}</ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
+  );
 }
 
-export default function CourseTablePanel() {
+export default function GlobalPriorityPanel() {
   const { t, i18n } = useTranslation();
   const { selectedCourses, setSelectedCourses } = useSelectedCourses();
-
-  const courses: Record<string, Course> = useMemo(
-    () => convertCourseArrayToObject(selectedCourses),
-    [selectedCourses]
-  );
-  const courseTimeMap: TimeMap = useMemo(() => {
-    return parseCoursesToTimeMap(selectedCourses);
-  }, [selectedCourses]);
 
   return (
     <Flex py={10} flexDirection={{ base: "column", lg: "row" }}>
@@ -58,17 +57,12 @@ export default function CourseTablePanel() {
         justifyContent={"center"}
         mb={8}
       >
-        <ModalWrapper title="Course Table">
-          <Box
-            overflow="auto"
-            w="100%"
-            __css={courseTableScrollBarCss}
-            h="90vh"
-          >
+        <ModalWrapper title="Course List">
+          <Box overflow="auto" __css={courseTableScrollBarCss}>
             <Flex
               flexDirection="row"
-              justifyContent="start"
               p={4}
+              h="90vh"
               bg={"#131720"}
               borderRadius={"8px"}
             >
@@ -78,11 +72,10 @@ export default function CourseTablePanel() {
                 alignItems="center"
                 overflowX={"auto"}
                 __css={courseTableScrollBarCss}
+                w="100%"
+                minH="50vh"
               >
-                <CourseTableContainer
-                  courseTimeMap={courseTimeMap}
-                  courses={courses}
-                />
+                <CourseListContainer />
               </Flex>
             </Flex>
           </Box>
@@ -118,11 +111,11 @@ export default function CourseTablePanel() {
       </Accordion>
       <Spacer />
       <Box
-        display={{ base: "none", lg: "inline-block" }}
         overflow="auto"
         w="45%"
         __css={courseTableScrollBarCss}
         h="70vh"
+        display={{ base: "none", lg: "inline-block" }}
       >
         <Flex
           flexDirection="row"
@@ -138,11 +131,10 @@ export default function CourseTablePanel() {
             alignItems="center"
             overflowX={"auto"}
             __css={courseTableScrollBarCss}
+            w="100%"
+            minH="50vh"
           >
-            <CourseTableContainer
-              courseTimeMap={courseTimeMap}
-              courses={courses}
-            />
+            <CourseListContainer />
           </Flex>
         </Flex>
       </Box>

@@ -1,6 +1,20 @@
 import { Flex, Image } from "@chakra-ui/react";
+import { motion, Variants } from "framer-motion";
 
 export function OldNolWindows({ scale = 1 }) {
+  const overlayVariants: Variants = {
+    offscreen: {
+      opacity: 0,
+    },
+    onscreen: {
+      opacity: 0.8,
+      transition: {
+        type: "ease-in",
+        duration: 0.4,
+        delay: 0.5,
+      },
+    },
+  };
   return (
     <Flex
       flexDirection={"row"}
@@ -8,7 +22,22 @@ export function OldNolWindows({ scale = 1 }) {
       justifyContent="center"
       alignItems={"center"}
       transform={`scale(${scale})`}
+      position={"relative"}
+      h={"70vh"}
     >
+      <motion.div
+        style={{
+          zIndex: 9,
+          width: "100%",
+          height: "100%",
+          background: "black",
+          position: "absolute",
+        }}
+        variants={overlayVariants}
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: "some" }}
+      />
       <Image
         src="img/section_vision/vision_7.png"
         alt="old-ntu-course-website"

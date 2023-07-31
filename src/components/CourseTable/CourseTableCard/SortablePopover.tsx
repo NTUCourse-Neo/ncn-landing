@@ -5,12 +5,10 @@ import {
   Badge,
   Spacer,
   IconButton,
-  Button,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { hashToColorHex } from "@/utils/colorAgent";
 import { FaTrashAlt } from "react-icons/fa";
-import { FaInfoCircle } from "react-icons/fa";
 import React from "react";
 import { Course } from "@/types/course";
 import {
@@ -96,15 +94,6 @@ function SortableElement(props: SortableElementProps) {
       >
         {course.name}
       </Text>
-      <Button
-        variant="ghost"
-        colorScheme="blue"
-        leftIcon={<FaInfoCircle />}
-        size="sm"
-        onClick={() => {
-          // TODO:
-        }}
-      />
       <Spacer />
       <IconButton
         aria-label="Delete"

@@ -25,14 +25,22 @@ export default function DisplayTagsPanel() {
   const [displayTags, setDisplayTags] = useState<DisplayTagName[]>([]);
   const { t, i18n } = useTranslation();
   return (
-    <Flex py={10}>
-      <Accordion allowToggle gap={2} w="80%">
+    <Flex py={10} flexDirection={{ base: "column-reverse", lg: "row" }}>
+      <Accordion
+        allowToggle
+        gap={2}
+        w={{
+          base: "100%",
+          lg: "20%",
+        }}
+      >
         {mockCourses[i18n.language == "zh" ? "zh" : "en"].map((c) => (
           <CourseInfoRow
             key={c.id}
             courseInfo={c}
             selected={false}
             displayTags={displayTags}
+            displayButton={false}
           />
         ))}
       </Accordion>
@@ -43,8 +51,9 @@ export default function DisplayTagsPanel() {
           borderRadius: "8px",
           px: 8,
           py: 4,
-          w: "18%",
+          w: { base: "100%", lg: "18%" },
           h: "fit-content",
+          mb: { base: "18px", lg: "0px" },
         }}
       >
         <Flex mb="3" gap="10px">
@@ -57,7 +66,7 @@ export default function DisplayTagsPanel() {
               fontSize: "22px",
             }}
           >
-            Display Tags
+            {t("features.courseInfoRow.displayTags")}
           </Flex>
         </Flex>
         <Flex

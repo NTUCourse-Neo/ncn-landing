@@ -109,7 +109,47 @@
       "enrollMethod": "Enrollment Method",
       "language": "Language",
       "noTime": "No Time Data",
-      "none": "None"
+      "none": "None",
+      "displayTags": "Display Tags",
+      "slot": "Slot",
+      "requirement": "Requirement",
+      "semester": "Semester",
+      "departments": "Departments",
+      "timeLoc": "Time & Location"
+    },
+    "courseTable": {
+      "intervalInfo": "Interval Info",
+      "interval": " Interval",
+      "changesNotSaved": "Changes not saved",
+      "cancel": "Cancel",
+      "save": "Save",
+      "reset": "Reset",
+      "alreadyAdded": "Already added",
+      "course": "course"
+    },
+    "dashboard": {
+      "basicInfo": "Basic Info",
+      "enrollStatus": "Enroll Status",
+      "signUpInfo": "Sign Up Info",
+      "review": "Course Review",
+      "pastExam": "Past Exam",
+      "syllabus": "Syllabus",
+      "gradingPolicy": "Grading Policy",
+      "realtime": "Realtime",
+      "enrolled": "Enrolled",
+      "people": "people",
+      "remain": "Remain",
+      "registered": "Registered",
+      "signUpSlot": "Sign Up Slot",
+      "signUpMethod": "Sign Up Method",
+      "signUpDate": "Sign Up Date",
+      "moreInfo": "More Info",
+      "disclaimer": "This information is obtained based on community feedback and may have omissions or be incomplete and not entirely accurate. It also does not represent the position of this website. Please verify the facts thoroughly.",
+      "source": "Source",
+      "fakeSyllabus": {
+        "intro": "Introduction to basic full stack web development.",
+        "objective": "Learn how to build a website from scratch. This course will cover the basics of HTML, CSS, JavaScript, MongoDB, Express, React, and Node.js."
+      }
     }
   },
   "mobile": {
